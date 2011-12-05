@@ -1,0 +1,18 @@
+{
+	"description" : "rsvp to event",
+	"hide" : {
+		"setname" : "event",
+		"name" : "rsvp.json",
+		"version" : "0.1",
+		"threadid" : {
+			"type" : "string",
+			"required" : true
+		}
+	},
+	"show" : {
+		"attending" : {
+			"type" : "boolean",
+			"required" : true
+		}
+	}
+}

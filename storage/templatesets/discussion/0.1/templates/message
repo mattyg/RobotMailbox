@@ -1,0 +1,26 @@
+{
+	"description" : "Send a message starting a discussion",
+	"hide" : {
+		"setname" : "discussion",
+		"name" : "message",
+		"version" : "0.1",
+		"messagesetid" : {
+			"type" : "string",
+			"required" : true
+		},
+		"messageid" : {
+			"type" : "string",
+			"required" : true
+		}
+	},
+	"show" : { 
+		"subject" : {
+			"type" : "string",
+			"required" : true
+		},
+		"body" : {
+			"type" : "string",
+			"required" : true
+		}
+	}
+}

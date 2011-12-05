@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>robotmailbox.app.core.model</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="robotmailbox.app-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        Package&nbsp;robotmailbox ::
+        <a href="robotmailbox.app-module.html">Package&nbsp;app</a> ::
+        <a href="robotmailbox.app.core-module.html">Package&nbsp;core</a> ::
+        Module&nbsp;model
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="robotmailbox.app.core.model-pysrc.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<h1 class="epydoc">Source Code for <a href="robotmailbox.app.core.model-module.html">Module robotmailbox.app.core.model</a></h1>
+<pre class="py-src">
+<a name="L1"></a><tt class="py-lineno"> 1</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">library</tt><tt class="py-op">.</tt><tt id="link-0" class="py-name" targets="Variable robotmailbox.app.core.model.Model.db=robotmailbox.app.core.model.Model-class.html#db"><a title="robotmailbox.app.core.model.Model.db" class="py-name" href="#" onclick="return doclink('link-0', 'db', 'link-0');">db</a></tt><tt class="py-op">.</tt><tt class="py-name">dal</tt> <tt class="py-keyword">import</tt> <tt class="py-name">DAL</tt><tt class="py-op">,</tt><tt class="py-name">Field</tt> </tt>
+<a name="L2"></a><tt class="py-lineno"> 2</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">pysqlite2</tt><tt class="py-op">.</tt><tt class="py-name">dbapi2</tt> <tt class="py-keyword">import</tt> <tt class="py-name">OperationalError</tt> </tt>
+<a name="L3"></a><tt class="py-lineno"> 3</tt>  <tt class="py-line"> </tt>
+<a name="Model"></a><div id="Model-def"><a name="L4"></a><tt class="py-lineno"> 4</tt> <a class="py-toggle" href="#" id="Model-toggle" onclick="return toggle('Model');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="robotmailbox.app.core.model.Model-class.html">Model</a><tt class="py-op">:</tt> </tt>
+</div><div id="Model-collapsed" style="display:none;" pad="++" indent="++++"></div><div id="Model-expanded"><a name="L5"></a><tt class="py-lineno"> 5</tt>  <tt class="py-line">        <tt id="link-1" class="py-name" targets="Module robotmailbox.app.core.controller=robotmailbox.app.core.controller-module.html,Variable robotmailbox.app.core.model.Model.controller=robotmailbox.app.core.model.Model-class.html#controller,Variable robotmailbox.app.core.view.View.controller=robotmailbox.app.core.view.View-class.html#controller,Module robotmailbox.app.email.controller=robotmailbox.app.email.controller-module.html,Module robotmailbox.app.evmail.controller=robotmailbox.app.evmail.controller-module.html"><a title="robotmailbox.app.core.controller
+robotmailbox.app.core.model.Model.controller
+robotmailbox.app.core.view.View.controller
+robotmailbox.app.email.controller
+robotmailbox.app.evmail.controller" class="py-name" href="#" onclick="return doclink('link-1', 'controller', 'link-1');">controller</a></tt> <tt class="py-op">=</tt> <tt class="py-name">None</tt> </tt>
+<a name="L6"></a><tt class="py-lineno"> 6</tt>  <tt class="py-line">        <tt id="link-2" class="py-name"><a title="robotmailbox.app.core.model.Model.db" class="py-name" href="#" onclick="return doclink('link-2', 'db', 'link-0');">db</a></tt> <tt class="py-op">=</tt> <tt class="py-name">None</tt> </tt>
+<a name="Model.__init__"></a><div id="Model.__init__-def"><a name="L7"></a><tt class="py-lineno"> 7</tt> <a class="py-toggle" href="#" id="Model.__init__-toggle" onclick="return toggle('Model.__init__');">-</a><tt class="py-line">        <tt class="py-keyword">def</tt> <a class="py-def-name" href="robotmailbox.app.core.model.Model-class.html#__init__">__init__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt><tt class="py-param">controller</tt><tt class="py-op">,</tt><tt class="py-param">dbpath</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Model.__init__-collapsed" style="display:none;" pad="++" indent="++++++++++++"></div><div id="Model.__init__-expanded"><a name="L8"></a><tt class="py-lineno"> 8</tt>  <tt class="py-line">                <tt class="py-docstring">"""</tt> </tt>
+<a name="L9"></a><tt class="py-lineno"> 9</tt>  <tt class="py-line"><tt class="py-docstring">                Initialize class for all Models</tt> </tt>
+<a name="L10"></a><tt class="py-lineno">10</tt>  <tt class="py-line"><tt class="py-docstring">                @param controller: The parent core Controller</tt> </tt>
+<a name="L11"></a><tt class="py-lineno">11</tt>  <tt class="py-line"><tt class="py-docstring">                @type controller: L{Controller} </tt> </tt>
+<a name="L12"></a><tt class="py-lineno">12</tt>  <tt class="py-line"><tt class="py-docstring">                @param dbpath: path to database</tt> </tt>
+<a name="L13"></a><tt class="py-lineno">13</tt>  <tt class="py-line"><tt class="py-docstring">                @type dbpath: String</tt> </tt>
+<a name="L14"></a><tt class="py-lineno">14</tt>  <tt class="py-line"><tt class="py-docstring">                """</tt> </tt>
+<a name="L15"></a><tt class="py-lineno">15</tt>  <tt class="py-line">                <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-3" class="py-name"><a title="robotmailbox.app.core.controller
+robotmailbox.app.core.model.Model.controller
+robotmailbox.app.core.view.View.controller
+robotmailbox.app.email.controller
+robotmailbox.app.evmail.controller" class="py-name" href="#" onclick="return doclink('link-3', 'controller', 'link-1');">controller</a></tt> <tt class="py-op">=</tt> <tt id="link-4" class="py-name"><a title="robotmailbox.app.core.controller
+robotmailbox.app.core.model.Model.controller
+robotmailbox.app.core.view.View.controller
+robotmailbox.app.email.controller
+robotmailbox.app.evmail.controller" class="py-name" href="#" onclick="return doclink('link-4', 'controller', 'link-1');">controller</a></tt> </tt>
+<a name="L16"></a><tt class="py-lineno">16</tt>  <tt class="py-line">                <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-5" class="py-name"><a title="robotmailbox.app.core.model.Model.db" class="py-name" href="#" onclick="return doclink('link-5', 'db', 'link-0');">db</a></tt> <tt class="py-op">=</tt> <tt class="py-name">DAL</tt><tt class="py-op">(</tt><tt class="py-name">dbpath</tt><tt class="py-op">)</tt> </tt>
+<a name="L17"></a><tt class="py-lineno">17</tt>  <tt class="py-line">                <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-6" class="py-name" targets="Method robotmailbox.app.core.model.Model._defineSchema()=robotmailbox.app.core.model.Model-class.html#_defineSchema"><a title="robotmailbox.app.core.model.Model._defineSchema" class="py-name" href="#" onclick="return doclink('link-6', '_defineSchema', 'link-6');">_defineSchema</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L18"></a><tt class="py-lineno">18</tt>  <tt class="py-line"> </tt>
+<a name="Model._defineSchema"></a><div id="Model._defineSchema-def"><a name="L19"></a><tt class="py-lineno">19</tt> <a class="py-toggle" href="#" id="Model._defineSchema-toggle" onclick="return toggle('Model._defineSchema');">-</a><tt class="py-line">        <tt class="py-keyword">def</tt> <a class="py-def-name" href="robotmailbox.app.core.model.Model-class.html#_defineSchema">_defineSchema</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Model._defineSchema-collapsed" style="display:none;" pad="++" indent="++++++++++++"></div><div id="Model._defineSchema-expanded"><a name="L20"></a><tt class="py-lineno">20</tt>  <tt class="py-line">                <tt class="py-docstring">'''</tt> </tt>
+<a name="L21"></a><tt class="py-lineno">21</tt>  <tt class="py-line"><tt class="py-docstring">                Define database tables: person, attachment, email using dal.py web2py module</tt> </tt>
+<a name="L22"></a><tt class="py-lineno">22</tt>  <tt class="py-line"><tt class="py-docstring">                '''</tt> </tt>
+<a name="L23"></a><tt class="py-lineno">23</tt>  <tt class="py-line">                <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-7" class="py-name"><a title="robotmailbox.app.core.model.Model.db" class="py-name" href="#" onclick="return doclink('link-7', 'db', 'link-0');">db</a></tt><tt class="py-op">.</tt><tt class="py-name">define_table</tt><tt class="py-op">(</tt><tt class="py-string">'person'</tt><tt class="py-op">,</tt><tt class="py-name">Field</tt><tt class="py-op">(</tt><tt class="py-string">'id'</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name">Field</tt><tt class="py-op">(</tt><tt class="py-string">'email'</tt><tt class="py-op">,</tt><tt class="py-string">'string'</tt><tt class="py-op">,</tt><tt class="py-name">unique</tt><tt class="py-op">=</tt><tt class="py-name">True</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name">Field</tt><tt class="py-op">(</tt><tt class="py-string">'name'</tt><tt class="py-op">,</tt><tt class="py-string">'string'</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L24"></a><tt class="py-lineno">24</tt>  <tt class="py-line">                <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-8" class="py-name"><a title="robotmailbox.app.core.model.Model.db" class="py-name" href="#" onclick="return doclink('link-8', 'db', 'link-0');">db</a></tt><tt class="py-op">.</tt><tt class="py-name">define_table</tt><tt class="py-op">(</tt><tt class="py-string">'attachment'</tt><tt class="py-op">,</tt><tt class="py-name">Field</tt><tt class="py-op">(</tt><tt class="py-string">'id'</tt><tt class="py-op">)</tt><tt class="py-op">,</tt><tt class="py-name">Field</tt><tt class="py-op">(</tt><tt class="py-string">'name'</tt><tt class="py-op">,</tt><tt class="py-string">'string'</tt><tt class="py-op">)</tt><tt class="py-op">,</tt><tt class="py-name">Field</tt><tt class="py-op">(</tt><tt class="py-string">'message'</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L25"></a><tt class="py-lineno">25</tt>  <tt class="py-line">                <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-9" class="py-name"><a title="robotmailbox.app.core.model.Model.db" class="py-name" href="#" onclick="return doclink('link-9', 'db', 'link-0');">db</a></tt><tt class="py-op">.</tt><tt class="py-name">define_table</tt><tt class="py-op">(</tt><tt class="py-string">'message'</tt><tt class="py-op">,</tt><tt class="py-name">Field</tt><tt class="py-op">(</tt><tt class="py-string">'id'</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name">Field</tt><tt class="py-op">(</tt><tt class="py-string">'templateset'</tt><tt class="py-op">,</tt><tt class="py-string">'string'</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name">Field</tt><tt class="py-op">(</tt><tt class="py-string">'template'</tt><tt class="py-op">,</tt><tt class="py-string">'string'</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name">Field</tt><tt class="py-op">(</tt><tt class="py-string">'status'</tt><tt class="py-op">,</tt><tt class="py-string">'integer'</tt><tt class="py-op">,</tt><tt class="py-name">default</tt><tt class="py-op">=</tt><tt class="py-number">0</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name">Field</tt><tt class="py-op">(</tt><tt class="py-string">'subject'</tt><tt class="py-op">,</tt><tt class="py-string">'string'</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name">Field</tt><tt class="py-op">(</tt><tt class="py-string">'body'</tt><tt class="py-op">,</tt><tt class="py-string">'text'</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name">Field</tt><tt class="py-op">(</tt><tt class="py-string">'date'</tt><tt class="py-op">,</tt><tt class="py-string">'string'</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name">Field</tt><tt class="py-op">(</tt><tt class="py-string">'replyto'</tt><tt class="py-op">,</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-10" class="py-name"><a title="robotmailbox.app.core.model.Model.db" class="py-name" href="#" onclick="return doclink('link-10', 'db', 'link-0');">db</a></tt><tt class="py-op">.</tt><tt class="py-name">person</tt><tt class="py-op">)</tt><tt class="py-op">,</tt><tt class="py-name">Field</tt><tt class="py-op">(</tt><tt class="py-string">'evmail'</tt><tt class="py-op">,</tt><tt class="py-string">'text'</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name">Field</tt><tt class="py-op">(</tt><tt class="py-string">'attachments'</tt><tt class="py-op">,</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-11" class="py-name"><a title="robotmailbox.app.core.model.Model.db" class="py-name" href="#" onclick="return doclink('link-11', 'db', 'link-0');">db</a></tt><tt class="py-op">.</tt><tt class="py-name">attachment</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name">Field</tt><tt class="py-op">(</tt><tt class="py-string">'messageid'</tt><tt class="py-op">,</tt><tt class="py-string">'string'</tt><tt class="py-op">,</tt><tt class="py-name">unique</tt><tt class="py-op">=</tt><tt class="py-name">True</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L26"></a><tt class="py-lineno">26</tt>  <tt class="py-line">                <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-12" class="py-name"><a title="robotmailbox.app.core.model.Model.db" class="py-name" href="#" onclick="return doclink('link-12', 'db', 'link-0');">db</a></tt><tt class="py-op">.</tt><tt class="py-name">define_table</tt><tt class="py-op">(</tt><tt class="py-string">'messageset'</tt><tt class="py-op">,</tt><tt class="py-name">Field</tt><tt class="py-op">(</tt><tt class="py-string">'id'</tt><tt class="py-op">)</tt><tt class="py-op">,</tt><tt class="py-name">Field</tt><tt class="py-op">(</tt><tt class="py-string">'messageid'</tt><tt class="py-op">,</tt><tt class="py-string">'string'</tt><tt class="py-op">,</tt><tt class="py-name">unique</tt><tt class="py-op">=</tt><tt class="py-name">True</tt><tt class="py-op">)</tt><tt class="py-op">,</tt><tt class="py-name">Field</tt><tt class="py-op">(</tt><tt class="py-string">'messagesetid'</tt><tt class="py-op">,</tt><tt class="py-string">'string'</tt><tt class="py-op">)</tt><tt class="py-op">,</tt><tt class="py-name">Field</tt><tt class="py-op">(</tt><tt class="py-string">'status'</tt><tt class="py-op">,</tt><tt class="py-string">'integer'</tt><tt class="py-op">,</tt><tt class="py-name">default</tt><tt class="py-op">=</tt><tt class="py-number">0</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L27"></a><tt class="py-lineno">27</tt>  <tt class="py-line"> </tt>
+<a name="L28"></a><tt class="py-lineno">28</tt>  <tt class="py-line">                <tt class="py-comment"># To &amp; From persons</tt> </tt>
+<a name="L29"></a><tt class="py-lineno">29</tt>  <tt class="py-line">                <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-13" class="py-name"><a title="robotmailbox.app.core.model.Model.db" class="py-name" href="#" onclick="return doclink('link-13', 'db', 'link-0');">db</a></tt><tt class="py-op">.</tt><tt class="py-name">define_table</tt><tt class="py-op">(</tt><tt class="py-string">'message_to_person'</tt><tt class="py-op">,</tt> <tt class="py-name">Field</tt><tt class="py-op">(</tt><tt class="py-string">'message'</tt><tt class="py-op">,</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-14" class="py-name"><a title="robotmailbox.app.core.model.Model.db" class="py-name" href="#" onclick="return doclink('link-14', 'db', 'link-0');">db</a></tt><tt class="py-op">.</tt><tt class="py-name">message</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name">Field</tt><tt class="py-op">(</tt><tt class="py-string">'person'</tt><tt class="py-op">,</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-15" class="py-name"><a title="robotmailbox.app.core.model.Model.db" class="py-name" href="#" onclick="return doclink('link-15', 'db', 'link-0');">db</a></tt><tt class="py-op">.</tt><tt class="py-name">person</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L30"></a><tt class="py-lineno">30</tt>  <tt class="py-line">                <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-16" class="py-name"><a title="robotmailbox.app.core.model.Model.db" class="py-name" href="#" onclick="return doclink('link-16', 'db', 'link-0');">db</a></tt><tt class="py-op">.</tt><tt class="py-name">define_table</tt><tt class="py-op">(</tt><tt class="py-string">'message_from_person'</tt><tt class="py-op">,</tt> <tt class="py-name">Field</tt><tt class="py-op">(</tt><tt class="py-string">'message'</tt><tt class="py-op">,</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-17" class="py-name"><a title="robotmailbox.app.core.model.Model.db" class="py-name" href="#" onclick="return doclink('link-17', 'db', 'link-0');">db</a></tt><tt class="py-op">.</tt><tt class="py-name">message</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name">Field</tt><tt class="py-op">(</tt><tt class="py-string">'person'</tt><tt class="py-op">,</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-18" class="py-name"><a title="robotmailbox.app.core.model.Model.db" class="py-name" href="#" onclick="return doclink('link-18', 'db', 'link-0');">db</a></tt><tt class="py-op">.</tt><tt class="py-name">person</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L31"></a><tt class="py-lineno">31</tt>  <tt class="py-line"> </tt>
+<a name="L32"></a><tt class="py-lineno">32</tt>  <tt class="py-line"> </tt>
+<a name="L33"></a><tt class="py-lineno">33</tt>  <tt class="py-line">                <tt class="py-comment"># TEMPLATE tables</tt> </tt>
+<a name="L34"></a><tt class="py-lineno">34</tt>  <tt class="py-line">                <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-19" class="py-name"><a title="robotmailbox.app.core.model.Model.db" class="py-name" href="#" onclick="return doclink('link-19', 'db', 'link-0');">db</a></tt><tt class="py-op">.</tt><tt class="py-name">define_table</tt><tt class="py-op">(</tt><tt class="py-string">'template'</tt><tt class="py-op">,</tt> <tt class="py-name">Field</tt><tt class="py-op">(</tt><tt class="py-string">'name'</tt><tt class="py-op">,</tt><tt class="py-string">'string'</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name">Field</tt><tt class="py-op">(</tt><tt class="py-string">"towho"</tt><tt class="py-op">,</tt><tt class="py-string">"string"</tt><tt class="py-op">,</tt><tt class="py-name">default</tt><tt class="py-op">=</tt><tt class="py-string">""</tt><tt class="py-op">,</tt><tt class="py-name">comment</tt><tt class="py-op">=</tt><tt class="py-string">"{sender|recievers}"</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name">Field</tt><tt class="py-op">(</tt><tt class="py-string">"use"</tt><tt class="py-op">,</tt><tt class="py-string">"string"</tt><tt class="py-op">,</tt><tt class="py-name">comment</tt><tt class="py-op">=</tt><tt class="py-string">"{default|option}"</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name">Field</tt><tt class="py-op">(</tt><tt class="py-string">'templateset'</tt><tt class="py-op">,</tt><tt class="py-string">'integer'</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L35"></a><tt class="py-lineno">35</tt>  <tt class="py-line">                <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-20" class="py-name"><a title="robotmailbox.app.core.model.Model.db" class="py-name" href="#" onclick="return doclink('link-20', 'db', 'link-0');">db</a></tt><tt class="py-op">.</tt><tt class="py-name">define_table</tt><tt class="py-op">(</tt><tt class="py-string">'templateset'</tt><tt class="py-op">,</tt> <tt class="py-name">Field</tt><tt class="py-op">(</tt><tt class="py-string">'name'</tt><tt class="py-op">,</tt><tt class="py-string">'string'</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name">Field</tt><tt class="py-op">(</tt><tt class="py-string">'version'</tt><tt class="py-op">,</tt><tt class="py-string">'string'</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name">Field</tt><tt class="py-op">(</tt><tt class="py-string">'path'</tt><tt class="py-op">,</tt><tt class="py-string">'string'</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name">Field</tt><tt class="py-op">(</tt><tt class="py-string">'templates'</tt><tt class="py-op">,</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-21" class="py-name"><a title="robotmailbox.app.core.model.Model.db" class="py-name" href="#" onclick="return doclink('link-21', 'db', 'link-0');">db</a></tt><tt class="py-op">.</tt><tt class="py-name">template</tt><tt class="py-op">)</tt><tt class="py-op">)</tt>  </tt>
+<a name="L36"></a><tt class="py-lineno">36</tt>  <tt class="py-line">                <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-22" class="py-name"><a title="robotmailbox.app.core.model.Model.db" class="py-name" href="#" onclick="return doclink('link-22', 'db', 'link-0');">db</a></tt><tt class="py-op">.</tt><tt class="py-name">define_table</tt><tt class="py-op">(</tt><tt class="py-string">'template_response'</tt><tt class="py-op">,</tt> <tt class="py-name">Field</tt><tt class="py-op">(</tt><tt class="py-string">'id'</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name">Field</tt><tt class="py-op">(</tt><tt class="py-string">'template'</tt><tt class="py-op">,</tt><tt class="py-string">'integer'</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name">Field</tt><tt class="py-op">(</tt><tt class="py-string">'responsetemplate'</tt><tt class="py-op">,</tt><tt class="py-string">'integer'</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name">Field</tt><tt class="py-op">(</tt><tt class="py-string">'templateset'</tt><tt class="py-op">,</tt><tt class="py-string">'integer'</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+</div></div><a name="L37"></a><tt class="py-lineno">37</tt>  <tt class="py-line">                <tt class="py-comment"># there should be unique_key=['name','version'] BUT multi-column unique keys are not possible in dal.py</tt> </tt>
+<a name="L38"></a><tt class="py-lineno">38</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<!--
+expandto(location.href);
+// -->
+</script>
+</pre>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="robotmailbox.app-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Mon Dec  5 13:34:45 2011
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

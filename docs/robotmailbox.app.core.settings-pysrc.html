@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>robotmailbox.app.core.settings</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="robotmailbox.app-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        Package&nbsp;robotmailbox ::
+        <a href="robotmailbox.app-module.html">Package&nbsp;app</a> ::
+        <a href="robotmailbox.app.core-module.html">Package&nbsp;core</a> ::
+        Module&nbsp;settings
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="robotmailbox.app.core.settings-pysrc.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<h1 class="epydoc">Source Code for <a href="robotmailbox.app.core.settings-module.html">Module robotmailbox.app.core.settings</a></h1>
+<pre class="py-src">
+<a name="L1"></a><tt class="py-lineno"> 1</tt>  <tt class="py-line"><tt class="py-docstring">""" Store global SETTINGS variables """</tt> </tt>
+<a name="L2"></a><tt class="py-lineno"> 2</tt>  <tt class="py-line"> </tt>
+<a name="L3"></a><tt class="py-lineno"> 3</tt>  <tt class="py-line"> </tt>
+<a name="L4"></a><tt class="py-lineno"> 4</tt>  <tt class="py-line"><tt class="py-comment"># root path to application. Include trailing slash.</tt> </tt>
+<a name="L5"></a><tt class="py-lineno"> 5</tt>  <tt class="py-line"><tt id="link-0" class="py-name" targets="Variable robotmailbox.app.core.settings.BASE_PATH=robotmailbox.app.core.settings-module.html#BASE_PATH"><a title="robotmailbox.app.core.settings.BASE_PATH" class="py-name" href="#" onclick="return doclink('link-0', 'BASE_PATH', 'link-0');">BASE_PATH</a></tt> <tt class="py-op">=</tt> <tt class="py-string">"/home/matt/Brandeis/Email2.0/robotmailbox/"</tt> </tt>
+<a name="L6"></a><tt class="py-lineno"> 6</tt>  <tt class="py-line"> </tt>
+<a name="L7"></a><tt class="py-lineno"> 7</tt>  <tt class="py-line"><tt class="py-comment"># path to .xrc file with default wx interface</tt> </tt>
+<a name="L8"></a><tt class="py-lineno"> 8</tt>  <tt class="py-line"><tt id="link-1" class="py-name" targets="Variable robotmailbox.app.core.settings.XRC_PATH=robotmailbox.app.core.settings-module.html#XRC_PATH"><a title="robotmailbox.app.core.settings.XRC_PATH" class="py-name" href="#" onclick="return doclink('link-1', 'XRC_PATH', 'link-1');">XRC_PATH</a></tt> <tt class="py-op">=</tt> <tt id="link-2" class="py-name"><a title="robotmailbox.app.core.settings.BASE_PATH" class="py-name" href="#" onclick="return doclink('link-2', 'BASE_PATH', 'link-0');">BASE_PATH</a></tt><tt class="py-op">+</tt><tt class="py-string">"storage/wxformbuilder/noname.xrc"</tt> </tt>
+<a name="L9"></a><tt class="py-lineno"> 9</tt>  <tt class="py-line"> </tt>
+<a name="L10"></a><tt class="py-lineno">10</tt>  <tt class="py-line"><tt class="py-comment"># SMTP host address</tt> </tt>
+<a name="L11"></a><tt class="py-lineno">11</tt>  <tt class="py-line"><tt id="link-3" class="py-name" targets="Variable robotmailbox.app.core.settings.SMTP_HOST=robotmailbox.app.core.settings-module.html#SMTP_HOST"><a title="robotmailbox.app.core.settings.SMTP_HOST" class="py-name" href="#" onclick="return doclink('link-3', 'SMTP_HOST', 'link-3');">SMTP_HOST</a></tt> <tt class="py-op">=</tt> <tt class="py-string">"smtp.gmail.com"</tt> </tt>
+<a name="L12"></a><tt class="py-lineno">12</tt>  <tt class="py-line"><tt class="py-comment"># SMTP Host port</tt> </tt>
+<a name="L13"></a><tt class="py-lineno">13</tt>  <tt class="py-line"><tt id="link-4" class="py-name" targets="Variable robotmailbox.app.core.settings.SMTP_PORT=robotmailbox.app.core.settings-module.html#SMTP_PORT"><a title="robotmailbox.app.core.settings.SMTP_PORT" class="py-name" href="#" onclick="return doclink('link-4', 'SMTP_PORT', 'link-4');">SMTP_PORT</a></tt> <tt class="py-op">=</tt> <tt class="py-number">465</tt> </tt>
+<a name="L14"></a><tt class="py-lineno">14</tt>  <tt class="py-line"> </tt>
+<a name="L15"></a><tt class="py-lineno">15</tt>  <tt class="py-line"><tt class="py-comment"># IMAP host address</tt> </tt>
+<a name="L16"></a><tt class="py-lineno">16</tt>  <tt class="py-line"><tt id="link-5" class="py-name" targets="Variable robotmailbox.app.core.settings.IMAP_HOST=robotmailbox.app.core.settings-module.html#IMAP_HOST"><a title="robotmailbox.app.core.settings.IMAP_HOST" class="py-name" href="#" onclick="return doclink('link-5', 'IMAP_HOST', 'link-5');">IMAP_HOST</a></tt> <tt class="py-op">=</tt> <tt class="py-string">"imap.gmail.com"</tt> </tt>
+<a name="L17"></a><tt class="py-lineno">17</tt>  <tt class="py-line"> </tt>
+<a name="L18"></a><tt class="py-lineno">18</tt>  <tt class="py-line"><tt class="py-comment"># IMAP host port (default is 143)</tt> </tt>
+<a name="L19"></a><tt class="py-lineno">19</tt>  <tt class="py-line"><tt id="link-6" class="py-name" targets="Variable robotmailbox.app.core.settings.IMAP_PORT=robotmailbox.app.core.settings-module.html#IMAP_PORT"><a title="robotmailbox.app.core.settings.IMAP_PORT" class="py-name" href="#" onclick="return doclink('link-6', 'IMAP_PORT', 'link-6');">IMAP_PORT</a></tt> <tt class="py-op">=</tt> <tt class="py-number">993</tt> </tt>
+<a name="L20"></a><tt class="py-lineno">20</tt>  <tt class="py-line"> </tt>
+<a name="L21"></a><tt class="py-lineno">21</tt>  <tt class="py-line"><tt class="py-comment"># IMAP user name</tt> </tt>
+<a name="L22"></a><tt class="py-lineno">22</tt>  <tt class="py-line"><tt id="link-7" class="py-name" targets="Variable robotmailbox.app.core.settings.IMAP_EMAIL=robotmailbox.app.core.settings-module.html#IMAP_EMAIL"><a title="robotmailbox.app.core.settings.IMAP_EMAIL" class="py-name" href="#" onclick="return doclink('link-7', 'IMAP_EMAIL', 'link-7');">IMAP_EMAIL</a></tt> <tt class="py-op">=</tt> <tt class="py-string">"matt.gabrenya@gmail.com"</tt> </tt>
+<a name="L23"></a><tt class="py-lineno">23</tt>  <tt class="py-line"><tt id="link-8" class="py-name" targets="Variable robotmailbox.app.core.settings.IMAP_USER=robotmailbox.app.core.settings-module.html#IMAP_USER"><a title="robotmailbox.app.core.settings.IMAP_USER" class="py-name" href="#" onclick="return doclink('link-8', 'IMAP_USER', 'link-8');">IMAP_USER</a></tt> <tt class="py-op">=</tt> <tt class="py-string">"matt.gabrenya"</tt> </tt>
+<a name="L24"></a><tt class="py-lineno">24</tt>  <tt class="py-line"><tt id="link-9" class="py-name" targets="Variable robotmailbox.app.core.settings.IMAP_PASS=robotmailbox.app.core.settings-module.html#IMAP_PASS"><a title="robotmailbox.app.core.settings.IMAP_PASS" class="py-name" href="#" onclick="return doclink('link-9', 'IMAP_PASS', 'link-9');">IMAP_PASS</a></tt> <tt class="py-op">=</tt> <tt class="py-string">"fuckSchool"</tt> </tt>
+<a name="L25"></a><tt class="py-lineno">25</tt>  <tt class="py-line"> </tt>
+<a name="L26"></a><tt class="py-lineno">26</tt>  <tt class="py-line"><tt class="py-comment"># path to files directory (where attachements are stored)</tt> </tt>
+<a name="L27"></a><tt class="py-lineno">27</tt>  <tt class="py-line"><tt id="link-10" class="py-name" targets="Variable robotmailbox.app.core.settings.FILES_PATH=robotmailbox.app.core.settings-module.html#FILES_PATH"><a title="robotmailbox.app.core.settings.FILES_PATH" class="py-name" href="#" onclick="return doclink('link-10', 'FILES_PATH', 'link-10');">FILES_PATH</a></tt> <tt class="py-op">=</tt> <tt id="link-11" class="py-name"><a title="robotmailbox.app.core.settings.BASE_PATH" class="py-name" href="#" onclick="return doclink('link-11', 'BASE_PATH', 'link-0');">BASE_PATH</a></tt><tt class="py-op">+</tt><tt class="py-string">'storage/attachments/'</tt> </tt>
+<a name="L28"></a><tt class="py-lineno">28</tt>  <tt class="py-line"> </tt>
+<a name="L29"></a><tt class="py-lineno">29</tt>  <tt class="py-line"><tt class="py-comment"># path to templatesets directory (where templatesets are stored)</tt> </tt>
+<a name="L30"></a><tt class="py-lineno">30</tt>  <tt class="py-line"><tt id="link-12" class="py-name" targets="Variable robotmailbox.app.core.settings.TEMPLATESETS_PATH=robotmailbox.app.core.settings-module.html#TEMPLATESETS_PATH"><a title="robotmailbox.app.core.settings.TEMPLATESETS_PATH" class="py-name" href="#" onclick="return doclink('link-12', 'TEMPLATESETS_PATH', 'link-12');">TEMPLATESETS_PATH</a></tt> <tt class="py-op">=</tt> <tt id="link-13" class="py-name"><a title="robotmailbox.app.core.settings.BASE_PATH" class="py-name" href="#" onclick="return doclink('link-13', 'BASE_PATH', 'link-0');">BASE_PATH</a></tt><tt class="py-op">+</tt><tt class="py-string">'storage/templatesets/'</tt> </tt>
+<a name="L31"></a><tt class="py-lineno">31</tt>  <tt class="py-line"> </tt>
+<a name="L32"></a><tt class="py-lineno">32</tt>  <tt class="py-line"> </tt>
+<a name="L33"></a><tt class="py-lineno">33</tt>  <tt class="py-line"><tt class="py-comment"># path to database, can be any of the following:</tt> </tt>
+<a name="L34"></a><tt class="py-lineno">34</tt>  <tt class="py-line"><tt class="py-string">'''     SQLite  sqlite://storage.db</tt> </tt>
+<a name="L35"></a><tt class="py-lineno">35</tt>  <tt class="py-line"><tt class="py-string">        MySQL   mysql://username:password@localhost/test</tt> </tt>
+<a name="L36"></a><tt class="py-lineno">36</tt>  <tt class="py-line"><tt class="py-string">        PostgreSQL      postgres://username:password@localhost/test</tt> </tt>
+<a name="L37"></a><tt class="py-lineno">37</tt>  <tt class="py-line"><tt class="py-string">        MSSQL   mssql://username:password@localhost/test</tt> </tt>
+<a name="L38"></a><tt class="py-lineno">38</tt>  <tt class="py-line"><tt class="py-string">        FireBird        firebird://username:password@localhost/test</tt> </tt>
+<a name="L39"></a><tt class="py-lineno">39</tt>  <tt class="py-line"><tt class="py-string">        Oracle  oracle://username/password@test</tt> </tt>
+<a name="L40"></a><tt class="py-lineno">40</tt>  <tt class="py-line"><tt class="py-string">        DB2     db2://username:password@test</tt> </tt>
+<a name="L41"></a><tt class="py-lineno">41</tt>  <tt class="py-line"><tt class="py-string">        Ingres  ingres://username:password@localhost/test</tt> </tt>
+<a name="L42"></a><tt class="py-lineno">42</tt>  <tt class="py-line"><tt class="py-string">        Informix        informix://username:password@test</tt> </tt>
+<a name="L43"></a><tt class="py-lineno">43</tt>  <tt class="py-line"><tt class="py-string">        Google App Engine/SQL   google:sql</tt> </tt>
+<a name="L44"></a><tt class="py-lineno">44</tt>  <tt class="py-line"><tt class="py-string">        Google App Engine/NoSQL google:datastore</tt> </tt>
+<a name="L45"></a><tt class="py-lineno">45</tt>  <tt class="py-line"><tt class="py-string">'''</tt> </tt>
+<a name="L46"></a><tt class="py-lineno">46</tt>  <tt class="py-line"><tt id="link-14" class="py-name" targets="Variable robotmailbox.app.core.settings.DB_PATH=robotmailbox.app.core.settings-module.html#DB_PATH"><a title="robotmailbox.app.core.settings.DB_PATH" class="py-name" href="#" onclick="return doclink('link-14', 'DB_PATH', 'link-14');">DB_PATH</a></tt> <tt class="py-op">=</tt> <tt class="py-string">'sqlite://'</tt><tt class="py-op">+</tt><tt id="link-15" class="py-name"><a title="robotmailbox.app.core.settings.BASE_PATH" class="py-name" href="#" onclick="return doclink('link-15', 'BASE_PATH', 'link-0');">BASE_PATH</a></tt><tt class="py-op">+</tt><tt class="py-string">'storage/db/storage.db'</tt> </tt>
+<a name="L47"></a><tt class="py-lineno">47</tt>  <tt class="py-line"> </tt>
+<a name="L48"></a><tt class="py-lineno">48</tt>  <tt class="py-line"> </tt>
+<a name="L49"></a><tt class="py-lineno">49</tt>  <tt class="py-line"><tt class="py-comment"># Base json schema paths</tt> </tt>
+<a name="L50"></a><tt class="py-lineno">50</tt>  <tt class="py-line"><tt id="link-16" class="py-name" targets="Variable robotmailbox.app.core.settings.BASE_SCHEMA_PATH=robotmailbox.app.core.settings-module.html#BASE_SCHEMA_PATH"><a title="robotmailbox.app.core.settings.BASE_SCHEMA_PATH" class="py-name" href="#" onclick="return doclink('link-16', 'BASE_SCHEMA_PATH', 'link-16');">BASE_SCHEMA_PATH</a></tt> <tt class="py-op">=</tt> <tt id="link-17" class="py-name"><a title="robotmailbox.app.core.settings.BASE_PATH" class="py-name" href="#" onclick="return doclink('link-17', 'BASE_PATH', 'link-0');">BASE_PATH</a></tt><tt class="py-op">+</tt><tt class="py-string">'storage/schema/'</tt> </tt>
+<a name="L51"></a><tt class="py-lineno">51</tt>  <tt class="py-line"><tt id="link-18" class="py-name" targets="Variable robotmailbox.app.core.settings.CONFIG_SCHEMA_PATH=robotmailbox.app.core.settings-module.html#CONFIG_SCHEMA_PATH"><a title="robotmailbox.app.core.settings.CONFIG_SCHEMA_PATH" class="py-name" href="#" onclick="return doclink('link-18', 'CONFIG_SCHEMA_PATH', 'link-18');">CONFIG_SCHEMA_PATH</a></tt> <tt class="py-op">=</tt> <tt id="link-19" class="py-name"><a title="robotmailbox.app.core.settings.BASE_SCHEMA_PATH" class="py-name" href="#" onclick="return doclink('link-19', 'BASE_SCHEMA_PATH', 'link-16');">BASE_SCHEMA_PATH</a></tt><tt class="py-op">+</tt><tt class="py-string">'config-schema.json'</tt> </tt>
+<a name="L52"></a><tt class="py-lineno">52</tt>  <tt class="py-line"><tt id="link-20" class="py-name" targets="Variable robotmailbox.app.core.settings.MESSAGE_SCHEMA_PATH=robotmailbox.app.core.settings-module.html#MESSAGE_SCHEMA_PATH"><a title="robotmailbox.app.core.settings.MESSAGE_SCHEMA_PATH" class="py-name" href="#" onclick="return doclink('link-20', 'MESSAGE_SCHEMA_PATH', 'link-20');">MESSAGE_SCHEMA_PATH</a></tt> <tt class="py-op">=</tt> <tt id="link-21" class="py-name"><a title="robotmailbox.app.core.settings.BASE_SCHEMA_PATH" class="py-name" href="#" onclick="return doclink('link-21', 'BASE_SCHEMA_PATH', 'link-16');">BASE_SCHEMA_PATH</a></tt><tt class="py-op">+</tt><tt class="py-string">'message-schema.json'</tt> </tt>
+<a name="L53"></a><tt class="py-lineno">53</tt>  <tt class="py-line"><tt id="link-22" class="py-name" targets="Variable robotmailbox.app.core.settings.TEMPLATE_SCHEMA_PATH=robotmailbox.app.core.settings-module.html#TEMPLATE_SCHEMA_PATH"><a title="robotmailbox.app.core.settings.TEMPLATE_SCHEMA_PATH" class="py-name" href="#" onclick="return doclink('link-22', 'TEMPLATE_SCHEMA_PATH', 'link-22');">TEMPLATE_SCHEMA_PATH</a></tt> <tt class="py-op">=</tt> <tt id="link-23" class="py-name"><a title="robotmailbox.app.core.settings.BASE_SCHEMA_PATH" class="py-name" href="#" onclick="return doclink('link-23', 'BASE_SCHEMA_PATH', 'link-16');">BASE_SCHEMA_PATH</a></tt><tt class="py-op">+</tt><tt class="py-string">'template-schema.json'</tt> </tt>
+<a name="L54"></a><tt class="py-lineno">54</tt>  <tt class="py-line"> </tt>
+<a name="L55"></a><tt class="py-lineno">55</tt>  <tt class="py-line"><tt class="py-comment"># templatesets online repository URI</tt> </tt>
+<a name="L56"></a><tt class="py-lineno">56</tt>  <tt class="py-line"><tt id="link-24" class="py-name" targets="Variable robotmailbox.app.core.settings.TEMPLATESETS_REPO=robotmailbox.app.core.settings-module.html#TEMPLATESETS_REPO"><a title="robotmailbox.app.core.settings.TEMPLATESETS_REPO" class="py-name" href="#" onclick="return doclink('link-24', 'TEMPLATESETS_REPO', 'link-24');">TEMPLATESETS_REPO</a></tt> <tt class="py-op">=</tt> <tt class="py-string">'http://gabrenya.com/mattneeds/templatesets/'</tt> </tt>
+<a name="L57"></a><tt class="py-lineno">57</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<!--
+expandto(location.href);
+// -->
+</script>
+</pre>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="robotmailbox.app-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Mon Dec  5 13:34:45 2011
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

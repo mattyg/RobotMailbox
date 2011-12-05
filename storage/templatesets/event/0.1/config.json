@@ -1,0 +1,29 @@
+{
+	"setname":"event",
+	"version":0.1,
+	"files":[
+		{"name":"invite.json",
+		"use":"default",
+		"type":"send",
+		"responses": [
+			{"name":"rsvp.json",
+			"to" : "sender",
+			"use": "default"},
+			{"name":"requestdatechange.json",
+			"use":"option",
+			"to" : "sender"}]
+		},
+		{"name": "requestavailability.json",
+		"use":"option",
+		"type":"send",
+		"responses": [{"name":"markavailability.json",
+				"use":"option",
+				"to" : "sender",
+				"responses" : [{
+					"name":"invite.json",
+					"use":"default",
+					"to" : "recievers"}]				
+				}]
+		}
+	]
+}

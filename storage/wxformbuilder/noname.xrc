@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<resource xmlns="http://www.wxwindows.org/wxxrc" version="2.3.0.1">
+	<object class="wxFrame" name="OverheadFrame">
+		<style>wxDEFAULT_FRAME_STYLE|wxTAB_TRAVERSAL</style>
+		<size>646,367</size>
+		<title></title>
+		<centered>1</centered>
+		<object class="wxMenuBar" name="OverheadMenuBar">
+			<label>OverheadMenu</label>
+			<object class="wxMenu" name="FileMenu">
+				<label>File</label>
+				<object class="wxMenu" name="NewMenu">
+					<label>New</label>
+					<object class="wxMenuItem" name="LetterMenuItem">
+						<label>Letter</label>
+						<help></help>
+					</object>
+				</object>
+			</object>
+			<object class="wxMenu" name="view">
+				<label>View</label>
+			</object>
+		</object>
+		<object class="wxToolBar" name="OverheadToolBar">
+			<style>wxTB_HORIZONTAL</style>
+			<bitmapsize></bitmapsize>
+			<margins></margins>
+			<packing>1</packing>
+			<separation>5</separation>
+			<object class="wxStaticText" name="NewMessageText">
+				<style>wxALIGN_RIGHT</style>
+				<label>Compose New  </label>
+				<wrap>-1</wrap>
+			</object>
+			<object class="wxChoice" name="NewMessageChoice">
+				<font>
+					<family>default</family>
+					<style>normal</style>
+					<weight>normal</weight>
+					<underlined>0</underlined>
+				</font>
+				<selection>0</selection>
+				<content>
+					<item>Letter</item>
+				</content>
+			</object>
+		</object>
+		<object class="wxNotebook" name="OverheadNotebook">
+			<object class="notebookpage">
+				<label>New Messages</label>
+				<selected>0</selected>
+				<object class="wxPanel" name="NewMessagesPanel">
+					<style>wxTAB_TRAVERSAL</style>
+					<object class="wxBoxSizer">
+						<orient>wxVERTICAL</orient>
+						<object class="sizeritem">
+							<option>0</option>
+							<flag>wxALL|wxEXPAND</flag>
+							<border>5</border>
+							<object class="wxListCtrl" name="NewMessagesListCtrl">
+								<style>wxLC_REPORT</style>
+							</object>
+						</object>
+					</object>
+				</object>
+			</object>
+		</object>
+	</object>
+</resource>

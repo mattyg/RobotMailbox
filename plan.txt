@@ -1,0 +1,71 @@
+evMail & RobotMailbox
+
+My independant study will be developing and documenting a standard to store structured data in email, then implementing a basic email client that reads, writes, and acts upon messages according to this standard. 
+
+
+By working on this project I will learn how to develop proper schema documentation for data serialized with JSON. I will learn how to write a graphical desktop application that generates user interface elements and sends data according to JSON schema documents. I will learn how to write software that interacts with an email server, and has a graphical user interface to send, recieve, and manipulate messages. I will learn how to write graphical desktop applications using Python and Tk. I will learn to write software that stores a local mirror of an online document repository.
+
+
+Reading List:
+http://tools.ietf.org/html/draft-zyp-json-schema-03  -- A JSON Media Type for Describing the Structure and Meaning of JSON Documents
+
+the many pages and dicussions about various standard and exploratory microformats at:
+http://microformats.org/wiki/Main_Page#Specifications
+http://microformats.org/wiki/Main_Page#Design_Patterns
+http://microformats.org/wiki/existing-classes
+http://microformats.org/wiki/exploratory-discussion
+
+http://docs.python.org/library/imaplib.html - Python IMAP lib documentation
+
+
+
+
+Deliverables:
+- A digital document that clearly explains the method for structuring evMail messages, and the various functionality that can be stated in the evMail template config file.
+- A schema template file for Homework and Events
+- A simple desktop email client, written in Python and using Tk for its GUI. The client will be able to:
+	- read in messages through IMAP
+	- determine what type of message for each (eMail vs evMail),
+	- display an overview of all 'active' messages
+	- display a larger view of a single message
+	- generate a 'send message' GUI from its evMail template schema
+	- send email message with evMail data attached.
+
+
+timeline week-by-week (about 12 weeks):
+Sept week 1: - write & document JSON schema file for base evMail message template
+
+sept week 2: - write 'event' template set, and document included key-value functions
+
+oct week 1: - write 'homework' template set, and document previously unused key-value functions
+
+oct week 2: - document the rest of template key-value functions
+
+oct week 3: - Write code to read & backup IMAP messages locally
+
+oct week 4: - Write code to interperate IMAP messages as eMail or evMail, and determine which template to use, and write code to download specific template version from online repository
+
+nov week 1: - Write code for various template actions: (un)tag, (un)group, (de)activate, prioritize 
+
+nov week 2: - Write code to generate GUI 'send message' form from json schema template
+
+nov week 3: - Write code to either (1) display cached GUI for 'composing message' or (2) generate GUI and display it. And actually send the message
+
+nov week 4: - Write code to display 1 message
+
+dec week 1: - Write code to display all messages
+
+dec week 2:
+
+
+-----------
+
+- MINI Messages vs Fully structured messages 
+	- mini just has 'update' info
+	- full has all info
+- Describe within template files:
+	- each type of message that is sent (mini-update w/ thread id, vs full message)
+- in config files:
+	"messages" : [{
+			// if this 'messages' property exists, and the array is not empty, send each of these message templates INSTEAD of main template above
+		}]

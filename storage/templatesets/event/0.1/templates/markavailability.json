@@ -1,0 +1,50 @@
+{
+	"description" : "invitation to event",
+	"hide" : {
+		"setname" : "event",
+		"name" : "markavailability.json",
+		"version" : "0.1"
+	},
+	"show" : {
+		"title": {
+			"type" : "string"
+			"mapsto" : "subject",
+			"format" : "short",
+			"responsemapsto" : "title"
+		},
+		"datetimeblockchoices" : {
+			"type" : "array",
+			"required" : true,
+			"items" : [
+				{"type" : "object",
+				"required" : true,
+				"properties" : {
+					"starttime" : {
+						"type" : "string",
+						"format" : "time",
+						"required" : true
+					},
+					"startdate" : {
+						"type" : "string",
+						"format" : "date",
+						"required" : true
+					},
+					"endtime" : {
+						"type" : "string",
+						"format" : "time",
+						"required" : true
+					},
+					"enddate" : {
+						"type" : "string",
+						"format" : "date",
+						"required" : true
+					},
+					"available": {
+						"type" : "boolean",
+						"required" : true
+					}
+				}}
+			]
+		}
+	}
+}

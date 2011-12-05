@@ -1,0 +1,87 @@
+timestamp: 2011-10-26T15:07:55.583297
+CREATE TABLE person(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    email CHAR(512) UNIQUE,
+    name CHAR(512)
+);
+success!
+timestamp: 2011-10-26T15:07:55.759726
+CREATE TABLE attachment(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name CHAR(512)
+);
+success!
+timestamp: 2011-10-26T15:10:48.607475
+CREATE TABLE message(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    subject CHAR(512),
+    body TEXT,
+    datetime TEXT,
+    fromperson INTEGER REFERENCES person(id) ON DELETE CASCADE,
+    toperson INTEGER REFERENCES person(id) ON DELETE CASCADE,
+    cc INTEGER REFERENCES person(id) ON DELETE CASCADE,
+    bcc INTEGER REFERENCES person(id) ON DELETE CASCADE,
+    metajson TEXT,
+    attachments INTEGER REFERENCES attachment(id) ON DELETE CASCADE,
+    messageid CHAR(512) UNIQUE
+);
+success!
+timestamp: 2011-10-26T15:10:48.764166
+CREATE TABLE template(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    file TEXT UNIQUE,
+    to CHAR(512),
+    use CHAR(512),
+    responses INTEGER REFERENCES template(id) ON DELETE CASCADE
+);
+timestamp: 2011-10-26T15:11:30.839445
+CREATE TABLE template(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    file TEXT UNIQUE,
+    to CHAR(512),
+    use CHAR(512),
+    responses INTEGER REFERENCES template(id) ON DELETE CASCADE
+);
+timestamp: 2011-10-26T15:12:00.223684
+CREATE TABLE template(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    file TEXT UNIQUE,
+    to CHAR(512),
+    use CHAR(512),
+    responses INTEGER REFERENCES template(id) ON DELETE CASCADE
+);
+timestamp: 2011-10-26T15:12:57.164124
+CREATE TABLE template(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    file TEXT UNIQUE,
+    towho CHAR(512),
+    use CHAR(512),
+    responses INTEGER REFERENCES template(id) ON DELETE CASCADE
+);
+success!
+timestamp: 2011-10-26T15:12:57.352039
+CREATE TABLE templateset(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name CHAR(512),
+    version CHAR(512),
+    templates INTEGER REFERENCES template(id) ON DELETE CASCADE
+);
+success!
+timestamp: 2011-10-26T15:13:15.637114
+ALTER TABLE message ADD date TEXT;
+timestamp: 2011-10-26T16:18:02.694431
+ALTER TABLE message ADD replyto INTEGER REFERENCES person(id) ON DELETE CASCADE;
+timestamp: 2011-10-26T16:18:02.862106
+CREATE TABLE message_to_person(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    message INTEGER REFERENCES message(id) ON DELETE CASCADE,
+    person INTEGER REFERENCES person(id) ON DELETE CASCADE
+);
+success!
+timestamp: 2011-10-26T16:18:03.027078
+CREATE TABLE message_from_person(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    message INTEGER REFERENCES message(id) ON DELETE CASCADE,
+    person INTEGER REFERENCES person(id) ON DELETE CASCADE
+);
+success!

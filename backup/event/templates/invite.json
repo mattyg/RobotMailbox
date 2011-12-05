@@ -1,0 +1,53 @@
+{
+	"description" : "invitation to event",
+	"hide" : {
+		"setname" : "event",
+		"name" : "invite.json",
+		"version" : "0.1",
+		"threadid" : {
+			"type" : "string",
+			"required" : true
+			}
+		}
+	},
+	"show" : {
+		"title" : {
+		 	"type" : "string",
+			"required" : true
+		},
+		"datetimeblock" : {
+			"type" : "object",
+			"required" : true,
+			"properties" : {
+				"startdate" : {
+					"type" : "string",
+					"format" : "date",
+					"required" : true
+				},
+				"starttime" : {
+					"type" : "string",
+					"format" : "time",
+					"required" : true
+				},
+				"enddate" : {
+					"type" : "string",
+					"format" : "date",
+					"required" : true
+				},
+				"endtime" : {
+					"type" : "string",
+					"format" : "time",
+					"required" : true
+				}
+			}
+		},
+		"location" : {
+			"type" : "string",
+			"required" : true
+		},
+		"description" : {
+			"type" : "string",
+			"required" : true
+		}
+	}
+}

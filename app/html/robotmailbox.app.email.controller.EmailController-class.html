@@ -1,0 +1,418 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>robotmailbox.app.email.controller.EmailController</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="robotmailbox.app-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        Package&nbsp;robotmailbox ::
+        <a href="robotmailbox.app-module.html">Package&nbsp;app</a> ::
+        <a href="robotmailbox.app.email-module.html">Package&nbsp;email</a> ::
+        <a href="robotmailbox.app.email.controller-module.html">Module&nbsp;controller</a> ::
+        Class&nbsp;EmailController
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="robotmailbox.app.email.controller.EmailController-class.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<!-- ==================== CLASS DESCRIPTION ==================== -->
+<h1 class="epydoc">Class EmailController</h1><p class="nomargin-top"><span class="codelink"><a href="robotmailbox.app.email.controller-pysrc.html#EmailController">source&nbsp;code</a></span></p>
+<!-- ==================== INSTANCE METHODS ==================== -->
+<a name="section-InstanceMethods"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Instance Methods</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-InstanceMethods"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="robotmailbox.app.email.controller.EmailController-class.html#__init__" class="summary-sig-name">__init__</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">controller</span>,
+        <span class="summary-sig-arg">host</span>,
+        <span class="summary-sig-arg">port</span>,
+        <span class="summary-sig-arg">user</span>,
+        <span class="summary-sig-arg">passw</span>,
+        <span class="summary-sig-arg">ssl</span>=<span class="summary-sig-default">True</span>)</span><br />
+      Initialize EmailController -- works with imap</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="robotmailbox.app.email.controller-pysrc.html#EmailController.__init__">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="robotmailbox.app.email.controller.EmailController-class.html#sendMessage" class="summary-sig-name">sendMessage</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">send_from</span>,
+        <span class="summary-sig-arg">send_to</span>,
+        <span class="summary-sig-arg">mimemessage</span>)</span><br />
+      Send a message through smtp</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="robotmailbox.app.email.controller-pysrc.html#EmailController.sendMessage">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="addNewEmails"></a><span class="summary-sig-name">addNewEmails</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      Add UNSEEN emails in IMAP to DB</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="robotmailbox.app.email.controller-pysrc.html#EmailController.addNewEmails">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type"><code class="link">int</code></span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="robotmailbox.app.email.controller.EmailController-class.html#_addMessage" class="summary-sig-name" onclick="show_private();">_addMessage</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">message</span>)</span><br />
+      analyze email message &amp; add to database</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="robotmailbox.app.email.controller-pysrc.html#EmailController._addMessage">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type"><code class="link">String</code></span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="robotmailbox.app.email.controller.EmailController-class.html#_saveFile" class="summary-sig-name" onclick="show_private();">_saveFile</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">payload</span>,
+        <span class="summary-sig-arg">loadtype</span>=<span class="summary-sig-default">'text'</span>,
+        <span class="summary-sig-arg">prefix</span>=<span class="summary-sig-default">&quot;&quot;</span>,
+        <span class="summary-sig-arg">filename</span>=<span class="summary-sig-default">&quot;&quot;</span>)</span><br />
+      Save a file attachment</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="robotmailbox.app.email.controller-pysrc.html#EmailController._saveFile">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="reloadAllEmails"></a><span class="summary-sig-name">reloadAllEmails</span>(<span class="summary-sig-arg">self</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="robotmailbox.app.email.controller-pysrc.html#EmailController.reloadAllEmails">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="getFromPerson"></a><span class="summary-sig-name">getFromPerson</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">mid</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="robotmailbox.app.email.controller-pysrc.html#EmailController.getFromPerson">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="getActiveEmails"></a><span class="summary-sig-name">getActiveEmails</span>(<span class="summary-sig-arg">self</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="robotmailbox.app.email.controller-pysrc.html#EmailController.getActiveEmails">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+</table>
+<!-- ==================== METHOD DETAILS ==================== -->
+<a name="section-MethodDetails"></a>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Method Details</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-MethodDetails"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+</table>
+<a name="__init__"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">__init__</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">controller</span>,
+        <span class="sig-arg">host</span>,
+        <span class="sig-arg">port</span>,
+        <span class="sig-arg">user</span>,
+        <span class="sig-arg">passw</span>,
+        <span class="sig-arg">ssl</span>=<span class="sig-default">True</span>)</span>
+    <br /><em class="fname">(Constructor)</em>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="robotmailbox.app.email.controller-pysrc.html#EmailController.__init__">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Initialize EmailController -- works with imap</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>controller</code></strong> - parent core <a 
+          href="robotmailbox.app.core.controller.Controller-class.html" 
+          class="link">Controller</a></li>
+        <li><strong class="pname"><code>type</code></strong> - <a href="robotmailbox.app.core.controller.Controller-class.html" 
+          class="link">Controller</a></li>
+        <li><strong class="pname"><code>host</code></strong> (<code class="link">String</code>) - IMAP host address</li>
+        <li><strong class="pname"><code>port</code></strong> (<code class="link">int</code>) - IMAP port</li>
+        <li><strong class="pname"><code>user</code></strong> (<code class="link">String</code>) - IMAP username</li>
+        <li><strong class="pname"><code>passw</code></strong> (<code class="link">String</code>) - IMAP password</li>
+        <li><strong class="pname"><code>ssl</code></strong> (<code class="link">boolean</code>) - Use IMAP through SSL?</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="sendMessage"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">sendMessage</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">send_from</span>,
+        <span class="sig-arg">send_to</span>,
+        <span class="sig-arg">mimemessage</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="robotmailbox.app.email.controller-pysrc.html#EmailController.sendMessage">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Send a message through smtp</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>send_from</code></strong> (<code class="link">String</code>) - email of sender</li>
+        <li><strong class="pname"><code>send_to</code></strong> (<code class="link">String</code>) - email of reciever</li>
+        <li><strong class="pname"><code>mimemessage</code></strong> - messagedata</li>
+        <li><strong class="pname"><code>mimemessage</code></strong> - <code class="link">MIMEMessage</code></li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="_addMessage"></a>
+<div class="private">
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">_addMessage</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">message</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="robotmailbox.app.email.controller-pysrc.html#EmailController._addMessage">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>analyze email message &amp; add to database</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>message</code></strong> - the email message data</li>
+    </ul></dd>
+    <dt>Returns: <code class="link">int</code></dt>
+        <dd>new message id</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="_saveFile"></a>
+<div class="private">
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">_saveFile</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">payload</span>,
+        <span class="sig-arg">loadtype</span>=<span class="sig-default">'text'</span>,
+        <span class="sig-arg">prefix</span>=<span class="sig-default">&quot;&quot;</span>,
+        <span class="sig-arg">filename</span>=<span class="sig-default">&quot;&quot;</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="robotmailbox.app.email.controller-pysrc.html#EmailController._saveFile">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Save a file attachment</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>payload</code></strong> - mime payload</li>
+        <li><strong class="pname"><code>loadtype</code></strong> (<code class="link">String</code>) - payload type (text or binary)</li>
+        <li><strong class="pname"><code>prefix</code></strong> (<code class="link">String</code>) - File prefix</li>
+        <li><strong class="pname"><code>filename</code></strong> (<code class="link">String</code>) - original filename</li>
+    </ul></dd>
+    <dt>Returns: <code class="link">String</code></dt>
+        <dd>filepath within files directory,</dd>
+  </dl>
+</td></tr></table>
+</div>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="robotmailbox.app-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Mon Dec  5 12:42:08 2011
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

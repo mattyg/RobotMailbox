@@ -1,0 +1,25 @@
+{
+	"name" : "discussion",
+	"version" : "0.1",
+	"description" : "Send a message starting a discussion",
+	"hide" : {
+		"threadid" : {
+			"type" : "string",
+			"required" : true
+		},
+		"messageid" : {
+			"type" : "string",
+			"required" : true
+		}
+	},
+	"show" : { 
+		"subject" : {
+			"type" : "string",
+			"required" : true
+		},
+		"body" : {
+			"type" : "string",
+			"required" : true
+		}
+	}
+}

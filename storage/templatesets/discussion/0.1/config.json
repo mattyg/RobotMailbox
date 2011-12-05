@@ -1,0 +1,21 @@
+{
+	"setname":"discussion",
+	"version":"0.1",
+	"files":[
+		{"name":"message",
+		"type":"send",
+		"use":"default",
+		"responses": [
+			{"name":"respond",
+			"to" : "all",
+			"use": "default",
+			"responses" : [
+				{"name":"respond",
+				"use":"option",
+				"to" : "sender"
+				}
+				]
+			}
+			]
+		}]
+}

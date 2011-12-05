@@ -1,0 +1,95 @@
+{
+	"$schema" : "http://json-schema.org/draft-03/schema",
+	"type": "object",
+	"properties" : {
+		"setname" : {
+			"type" : "string",
+			"required": true
+		},
+		"version" : {
+			"type" : "string",
+			"required": true
+		},
+		"files" : {
+			"type" : "array",
+			"required": true,
+			"minItems":1,
+			"items" : {
+				"type":"object",
+				"properties" : {
+					"name" : {
+						"type" : "string",
+						"required" : true
+					},
+					"use" : {
+						"type" : "string",
+						"required" : true
+					},
+					"messages" : {
+						"type" : "array",
+						"required" : false,
+						"items": [
+							  {"type" : "object",
+							   "properties" : {
+								"name" : {
+									"type" : "string",
+									"required" : true
+								},
+								"to" : {
+									"type" : "string",
+									"required" : true,
+									"pattern":"(recievers|sender|all)"
+								}
+							}}
+						]
+					},
+					"responses" : {
+						"type" : "array",
+						"required" : true,
+						"minItems":0,
+						"items" : [
+							{"type" : "object",
+							"properties" : {
+								"name" : {
+									"type" : "string",
+									"required" : true
+								},
+								"to" : {
+									"type" : "string",	
+									"pattern" : "(sender|recievers|all)",
+									"required" : false
+								},
+								"use" : {
+									"type" : "string",
+									"required" : true
+								},
+								"messages" : {
+									"type" : "array",
+									"required" : false,
+									"items": [{ "type" : "object",
+										    "properties" : {
+											"name" : {
+												"type" : "string",
+												"required" : true
+											},
+											"to" : {
+												"type" : "string",
+												"required" : true,
+												"pattern":"(recievers|sender|all)"
+											}
+			 							    }
+										}]
+									}
+								},
+								"responses" : {
+									"rel" : "describedby",
+									"href" : "#properties/files/items/properties/responses",
+									"fragmentResolution" : "slash-delimited fragement resolution"
+								}
+							}]	
+						}
+					}
+				}
+			}
+		}
+}

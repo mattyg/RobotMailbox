@@ -1,0 +1,34 @@
+{
+	"description" : "request event date change",
+	"hide" : {
+		"setname" : "event",
+		"name" : "requestdatechange.json",
+		"version" : "0.1",		
+		"threadid" : {
+			"type" : "string",
+			"required" : true
+		 }
+	},
+	"show" : {
+		"starttime" : {
+			"type" : "string",
+			"format" : "time",
+			"required" : true
+		},
+		"startdate" : {
+			"type" : "string",
+			"format" : "date",
+			"required" : true
+		},
+		"endtime" : {
+			"type" : "string",
+			"format" : "time",
+			"required" : true
+		},
+		"enddate" : {
+			"type" : "string",
+			"format" : "date",
+			"required" : true
+		}
+	}
+}

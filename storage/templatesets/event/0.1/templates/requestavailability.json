@@ -1,0 +1,46 @@
+{
+	"description" : "request availability for event",
+	"hide" : {
+		"setname" : "event",
+		"name" : "requestavailability.json",
+		"version" : "0.1"
+	},
+	"show" : {
+		"title" : {
+			"type" : "string",
+			"mapsto": "subject",
+			"format" : "short",
+			"required" : true
+		},
+		"datetimeblockchoices" : {
+			"type" : "array",
+			"required" : true,
+			"items" : [
+				{"type" : "object",
+				"required" : true,
+				"properties" : {
+					"starttime" : {
+						"type" : "string",
+						"format" : "time",
+						"required" : true
+					},
+					"startdate" : {
+						"type" : "string",
+						"format" : "date",
+						"required" : true
+					},
+					"endtime" : {
+						"type" : "string",
+						"format" : "time",
+						"required" : true
+					},
+					"enddate" : {
+						"type" : "string",
+						"format" : "date",
+						"required" : true
+					}
+				}}
+			]
+		}
+	}
+}

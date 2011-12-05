@@ -1,0 +1,107 @@
+timestamp: 2011-10-31T17:40:53.831811
+CREATE TABLE person(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    email CHAR(512) UNIQUE,
+    name CHAR(512)
+);
+success!
+timestamp: 2011-10-31T17:40:53.968329
+CREATE TABLE attachment(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name CHAR(512)
+);
+success!
+timestamp: 2011-10-31T17:40:54.081028
+CREATE TABLE message(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    subject CHAR(512),
+    body TEXT,
+    date TEXT,
+    replyto INTEGER REFERENCES person(id) ON DELETE CASCADE,
+    metajson TEXT,
+    attachments INTEGER REFERENCES attachment(id) ON DELETE CASCADE,
+    messageid CHAR(512) UNIQUE
+);
+success!
+timestamp: 2011-10-31T17:40:54.171731
+CREATE TABLE message_to_person(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    message INTEGER REFERENCES message(id) ON DELETE CASCADE,
+    person INTEGER REFERENCES person(id) ON DELETE CASCADE
+);
+success!
+timestamp: 2011-10-31T17:40:54.279631
+CREATE TABLE message_from_person(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    message INTEGER REFERENCES message(id) ON DELETE CASCADE,
+    person INTEGER REFERENCES person(id) ON DELETE CASCADE
+);
+success!
+timestamp: 2011-10-31T17:40:54.359698
+CREATE TABLE template(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    file TEXT UNIQUE,
+    towho CHAR(512),
+    use CHAR(512),
+    responses INTEGER REFERENCES template(id) ON DELETE CASCADE
+);
+success!
+timestamp: 2011-10-31T17:40:54.468549
+CREATE TABLE templateset(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name CHAR(512),
+    version CHAR(512),
+    templates INTEGER REFERENCES template(id) ON DELETE CASCADE
+);
+success!
+timestamp: 2011-10-31T17:55:11.626158
+ALTER TABLE templateset ADD configpath CHAR(512);
+timestamp: 2011-10-31T18:58:48.583090
+ALTER TABLE templateset ADD path CHAR(512);
+timestamp: 2011-11-05T14:05:19.002360
+ALTER TABLE message ADD evmail TEXT;
+timestamp: 2011-11-10T21:29:10.199821
+ALTER TABLE message ADD status INTEGER;
+timestamp: 2011-11-10T21:29:10.331136
+ALTER TABLE message ADD type CHAR(512);
+timestamp: 2011-11-11T01:04:12.561091
+CREATE TABLE template_in_set(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    template INTEGER,
+    templateset INTEGER
+);
+success!
+timestamp: 2011-11-11T01:45:07.058918
+ALTER TABLE template ADD name CHAR(512);
+timestamp: 2011-11-11T15:08:29.105312
+CREATE TABLE template_response(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    template INTEGER,
+    responsetemplate INTEGER,
+    templateset INTEGER
+);
+success!
+timestamp: 2011-11-11T16:26:24.632768
+ALTER TABLE template ADD templateset INTEGER;
+timestamp: 2011-11-11T16:28:25.098552
+ALTER TABLE template ADD set INTEGER;
+timestamp: 2011-11-11T16:29:15.193634
+ALTER TABLE template ADD set INTEGER;
+timestamp: 2011-11-11T16:29:34.777342
+ALTER TABLE template ADD set INTEGER;
+timestamp: 2011-11-24T13:16:09.416166
+ALTER TABLE attachment ADD message CHAR(512);
+timestamp: 2011-11-24T15:19:13.755559
+ALTER TABLE message ADD templateset CHAR(512);
+timestamp: 2011-11-24T15:19:13.890667
+ALTER TABLE message ADD template CHAR(512);
+timestamp: 2011-11-25T15:10:06.263224
+ALTER TABLE message ADD messagesetid CHAR(512);
+timestamp: 2011-11-25T15:44:22.346131
+CREATE TABLE messageset(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    messageid CHAR(512) UNIQUE,
+    messagesetid CHAR(512),
+    status INTEGER
+);
+success!

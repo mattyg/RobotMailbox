@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>robotmailbox.app.evmail.model</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="robotmailbox.app-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        Package&nbsp;robotmailbox ::
+        <a href="robotmailbox.app-module.html">Package&nbsp;app</a> ::
+        <a href="robotmailbox.app.evmail-module.html">Package&nbsp;evmail</a> ::
+        Module&nbsp;model
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="robotmailbox.app.evmail.model-pysrc.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<h1 class="epydoc">Source Code for <a href="robotmailbox.app.evmail.model-module.html">Module robotmailbox.app.evmail.model</a></h1>
+<pre class="py-src">
+<a name="L1"></a><tt class="py-lineno"> 1</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-0" class="py-name" targets="Package robotmailbox.app=robotmailbox.app-module.html"><a title="robotmailbox.app" class="py-name" href="#" onclick="return doclink('link-0', 'app', 'link-0');">app</a></tt><tt class="py-op">.</tt><tt id="link-1" class="py-name" targets="Package robotmailbox.app.core=robotmailbox.app.core-module.html"><a title="robotmailbox.app.core" class="py-name" href="#" onclick="return doclink('link-1', 'core', 'link-1');">core</a></tt><tt class="py-op">.</tt><tt id="link-2" class="py-name" targets="Module robotmailbox.app.core.model=robotmailbox.app.core.model-module.html,Module robotmailbox.app.email.model=robotmailbox.app.email.model-module.html,Module robotmailbox.app.evmail.model=robotmailbox.app.evmail.model-module.html,Module robotmailbox.app.templateset.model=robotmailbox.app.templateset.model-module.html"><a title="robotmailbox.app.core.model
+robotmailbox.app.email.model
+robotmailbox.app.evmail.model
+robotmailbox.app.templateset.model" class="py-name" href="#" onclick="return doclink('link-2', 'model', 'link-2');">model</a></tt> <tt class="py-keyword">import</tt> <tt id="link-3" class="py-name" targets="Class robotmailbox.app.core.model.Model=robotmailbox.app.core.model.Model-class.html"><a title="robotmailbox.app.core.model.Model" class="py-name" href="#" onclick="return doclink('link-3', 'Model', 'link-3');">Model</a></tt> </tt>
+<a name="L2"></a><tt class="py-lineno"> 2</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">pysqlite2</tt><tt class="py-op">.</tt><tt class="py-name">dbapi2</tt> <tt class="py-keyword">import</tt> <tt class="py-name">IntegrityError</tt> </tt>
+<a name="L3"></a><tt class="py-lineno"> 3</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-4" class="py-name" targets="Package robotmailbox.app.email=robotmailbox.app.email-module.html"><a title="robotmailbox.app.email" class="py-name" href="#" onclick="return doclink('link-4', 'email', 'link-4');">email</a></tt><tt class="py-op">.</tt><tt class="py-name">message</tt> <tt class="py-keyword">import</tt> <tt class="py-name">Message</tt> </tt>
+<a name="L4"></a><tt class="py-lineno"> 4</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-5" class="py-name"><a title="robotmailbox.app.email" class="py-name" href="#" onclick="return doclink('link-5', 'email', 'link-4');">email</a></tt><tt class="py-op">.</tt><tt class="py-name">utils</tt> <tt class="py-keyword">import</tt> <tt class="py-name">make_msgid</tt> </tt>
+<a name="L5"></a><tt class="py-lineno"> 5</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">os</tt> </tt>
+<a name="L6"></a><tt class="py-lineno"> 6</tt>  <tt class="py-line"> </tt>
+<a name="EvmailModel"></a><div id="EvmailModel-def"><a name="L7"></a><tt class="py-lineno"> 7</tt> <a class="py-toggle" href="#" id="EvmailModel-toggle" onclick="return toggle('EvmailModel');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="robotmailbox.app.evmail.model.EvmailModel-class.html">EvmailModel</a><tt class="py-op">(</tt><tt class="py-base-class">Model</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="EvmailModel-collapsed" style="display:none;" pad="++" indent="++++"></div><div id="EvmailModel-expanded"><a name="EvmailModel.__init__"></a><div id="EvmailModel.__init__-def"><a name="L8"></a><tt class="py-lineno"> 8</tt> <a class="py-toggle" href="#" id="EvmailModel.__init__-toggle" onclick="return toggle('EvmailModel.__init__');">-</a><tt class="py-line">        <tt class="py-keyword">def</tt> <a class="py-def-name" href="robotmailbox.app.evmail.model.EvmailModel-class.html#__init__">__init__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt><tt class="py-param">controller</tt><tt class="py-op">,</tt><tt class="py-param">db</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="EvmailModel.__init__-collapsed" style="display:none;" pad="++" indent="++++++++++++"></div><div id="EvmailModel.__init__-expanded"><a name="L9"></a><tt class="py-lineno"> 9</tt>  <tt class="py-line">                <tt class="py-docstring">"""Initialize  EvmailModel</tt> </tt>
+<a name="L10"></a><tt class="py-lineno">10</tt>  <tt class="py-line"><tt class="py-docstring">                @param controller: The parent EvmailController</tt> </tt>
+<a name="L11"></a><tt class="py-lineno">11</tt>  <tt class="py-line"><tt class="py-docstring">                @type: L{Controller}    </tt> </tt>
+<a name="L12"></a><tt class="py-lineno">12</tt>  <tt class="py-line"><tt class="py-docstring">                @param db: path to database</tt> </tt>
+<a name="L13"></a><tt class="py-lineno">13</tt>  <tt class="py-line"><tt class="py-docstring">                @type db: L{String}</tt> </tt>
+<a name="L14"></a><tt class="py-lineno">14</tt>  <tt class="py-line"><tt class="py-docstring">                """</tt> </tt>
+<a name="L15"></a><tt class="py-lineno">15</tt>  <tt class="py-line">                <tt id="link-6" class="py-name"><a title="robotmailbox.app.core.model.Model" class="py-name" href="#" onclick="return doclink('link-6', 'Model', 'link-3');">Model</a></tt><tt class="py-op">.</tt><tt id="link-7" class="py-name" targets="Method robotmailbox.app.TableList.ScrolledTableList.__init__()=robotmailbox.app.TableList.ScrolledTableList-class.html#__init__,Method robotmailbox.app.TableList.TableList.__init__()=robotmailbox.app.TableList.TableList-class.html#__init__,Method robotmailbox.app.core.controller.Controller.__init__()=robotmailbox.app.core.controller.Controller-class.html#__init__,Method robotmailbox.app.core.model.Model.__init__()=robotmailbox.app.core.model.Model-class.html#__init__,Method robotmailbox.app.core.view.View.__init__()=robotmailbox.app.core.view.View-class.html#__init__,Method robotmailbox.app.core.view.ViewXRC.__init__()=robotmailbox.app.core.view.ViewXRC-class.html#__init__,Method robotmailbox.app.email.controller.EmailController.__init__()=robotmailbox.app.email.controller.EmailController-class.html#__init__,Method robotmailbox.app.email.model.EmailModel.__init__()=robotmailbox.app.email.model.EmailModel-class.html#__init__,Method robotmailbox.app.evmail.controller.EvmailController.__init__()=robotmailbox.app.evmail.controller.EvmailController-class.html#__init__,Method robotmailbox.app.evmail.controller.EvmailError.__init__()=robotmailbox.app.evmail.controller.EvmailError-class.html#__init__,Method robotmailbox.app.evmail.model.EvmailModel.__init__()=robotmailbox.app.evmail.model.EvmailModel-class.html#__init__,Method robotmailbox.app.evmail.view.EvmailView.__init__()=robotmailbox.app.evmail.view.EvmailView-class.html#__init__,Method robotmailbox.app.templateset.controller.TemplatesetController.__init__()=robotmailbox.app.templateset.controller.TemplatesetController-class.html#__init__,Method robotmailbox.app.templateset.controller.TemplatesetError.__init__()=robotmailbox.app.templateset.controller.TemplatesetError-class.html#__init__,Method robotmailbox.app.templateset.model.TemplatesetModel.__init__()=robotmailbox.app.templateset.model.TemplatesetModel-class.html#__init__,Method robotmailbox.app.templateset.model.TemplatesetModelError.__init__()=robotmailbox.app.templateset.model.TemplatesetModelError-class.html#__init__,Method robotmailbox.app.templateset.view.TemplatesetView.__init__()=robotmailbox.app.templateset.view.TemplatesetView-class.html#__init__,Method robotmailbox.app.templateset.view.TemplatesetViewForm.__init__()=robotmailbox.app.templateset.view.TemplatesetViewForm-class.html#__init__"><a title="robotmailbox.app.TableList.ScrolledTableList.__init__
+robotmailbox.app.TableList.TableList.__init__
+robotmailbox.app.core.controller.Controller.__init__
+robotmailbox.app.core.model.Model.__init__
+robotmailbox.app.core.view.View.__init__
+robotmailbox.app.core.view.ViewXRC.__init__
+robotmailbox.app.email.controller.EmailController.__init__
+robotmailbox.app.email.model.EmailModel.__init__
+robotmailbox.app.evmail.controller.EvmailController.__init__
+robotmailbox.app.evmail.controller.EvmailError.__init__
+robotmailbox.app.evmail.model.EvmailModel.__init__
+robotmailbox.app.evmail.view.EvmailView.__init__
+robotmailbox.app.templateset.controller.TemplatesetController.__init__
+robotmailbox.app.templateset.controller.TemplatesetError.__init__
+robotmailbox.app.templateset.model.TemplatesetModel.__init__
+robotmailbox.app.templateset.model.TemplatesetModelError.__init__
+robotmailbox.app.templateset.view.TemplatesetView.__init__
+robotmailbox.app.templateset.view.TemplatesetViewForm.__init__" class="py-name" href="#" onclick="return doclink('link-7', '__init__', 'link-7');">__init__</a></tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">,</tt><tt id="link-8" class="py-name" targets="Module robotmailbox.app.core.controller=robotmailbox.app.core.controller-module.html,Variable robotmailbox.app.core.model.Model.controller=robotmailbox.app.core.model.Model-class.html#controller,Variable robotmailbox.app.core.view.View.controller=robotmailbox.app.core.view.View-class.html#controller,Module robotmailbox.app.email.controller=robotmailbox.app.email.controller-module.html,Module robotmailbox.app.evmail.controller=robotmailbox.app.evmail.controller-module.html,Module robotmailbox.app.templateset.controller=robotmailbox.app.templateset.controller-module.html"><a title="robotmailbox.app.core.controller
+robotmailbox.app.core.model.Model.controller
+robotmailbox.app.core.view.View.controller
+robotmailbox.app.email.controller
+robotmailbox.app.evmail.controller
+robotmailbox.app.templateset.controller" class="py-name" href="#" onclick="return doclink('link-8', 'controller', 'link-8');">controller</a></tt><tt class="py-op">,</tt><tt id="link-9" class="py-name" targets="Variable robotmailbox.app.core.model.Model.db=robotmailbox.app.core.model.Model-class.html#db"><a title="robotmailbox.app.core.model.Model.db" class="py-name" href="#" onclick="return doclink('link-9', 'db', 'link-9');">db</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L16"></a><tt class="py-lineno">16</tt>  <tt class="py-line">                <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-10" class="py-name"><a title="robotmailbox.app.core.controller
+robotmailbox.app.core.model.Model.controller
+robotmailbox.app.core.view.View.controller
+robotmailbox.app.email.controller
+robotmailbox.app.evmail.controller
+robotmailbox.app.templateset.controller" class="py-name" href="#" onclick="return doclink('link-10', 'controller', 'link-8');">controller</a></tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-11" class="py-name"><a title="robotmailbox.app.core.controller
+robotmailbox.app.core.model.Model.controller
+robotmailbox.app.core.view.View.controller
+robotmailbox.app.email.controller
+robotmailbox.app.evmail.controller
+robotmailbox.app.templateset.controller" class="py-name" href="#" onclick="return doclink('link-11', 'controller', 'link-8');">controller</a></tt> </tt>
+</div><a name="L17"></a><tt class="py-lineno">17</tt>  <tt class="py-line"> </tt>
+<a name="EvmailModel.getMessage"></a><div id="EvmailModel.getMessage-def"><a name="L18"></a><tt class="py-lineno">18</tt> <a class="py-toggle" href="#" id="EvmailModel.getMessage-toggle" onclick="return toggle('EvmailModel.getMessage');">-</a><tt class="py-line">        <tt class="py-keyword">def</tt> <a class="py-def-name" href="robotmailbox.app.evmail.model.EvmailModel-class.html#getMessage">getMessage</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt><tt class="py-param">messageid</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="EvmailModel.getMessage-collapsed" style="display:none;" pad="++" indent="++++++++++++"></div><div id="EvmailModel.getMessage-expanded"><a name="L19"></a><tt class="py-lineno">19</tt>  <tt class="py-line">                <tt class="py-docstring">'''</tt> </tt>
+<a name="L20"></a><tt class="py-lineno">20</tt>  <tt class="py-line"><tt class="py-docstring">                Get a single message with messageid</tt> </tt>
+<a name="L21"></a><tt class="py-lineno">21</tt>  <tt class="py-line"><tt class="py-docstring">                @param messageid: the id of the message to get to persons</tt> </tt>
+<a name="L22"></a><tt class="py-lineno">22</tt>  <tt class="py-line"><tt class="py-docstring">                @type messageid: L{int}</tt> </tt>
+<a name="L23"></a><tt class="py-lineno">23</tt>  <tt class="py-line"><tt class="py-docstring">                @return: message with messageid</tt> </tt>
+<a name="L24"></a><tt class="py-lineno">24</tt>  <tt class="py-line"><tt class="py-docstring">                @rtype: L{Dict}</tt> </tt>
+<a name="L25"></a><tt class="py-lineno">25</tt>  <tt class="py-line"><tt class="py-docstring">                '''</tt> </tt>
+<a name="L26"></a><tt class="py-lineno">26</tt>  <tt class="py-line">                <tt class="py-name">row</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-12" class="py-name"><a title="robotmailbox.app.core.model.Model.db" class="py-name" href="#" onclick="return doclink('link-12', 'db', 'link-9');">db</a></tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-13" class="py-name"><a title="robotmailbox.app.core.model.Model.db" class="py-name" href="#" onclick="return doclink('link-13', 'db', 'link-9');">db</a></tt><tt class="py-op">.</tt><tt class="py-name">message</tt><tt class="py-op">.</tt><tt class="py-name">id</tt><tt class="py-op">==</tt><tt class="py-name">messageid</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt class="py-name">select</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt class="py-name">first</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L27"></a><tt class="py-lineno">27</tt>  <tt class="py-line">                <tt class="py-keyword">return</tt> <tt class="py-name">row</tt> </tt>
+</div><a name="L28"></a><tt class="py-lineno">28</tt>  <tt class="py-line"> </tt>
+<a name="EvmailModel.getMessageFroms"></a><div id="EvmailModel.getMessageFroms-def"><a name="L29"></a><tt class="py-lineno">29</tt> <a class="py-toggle" href="#" id="EvmailModel.getMessageFroms-toggle" onclick="return toggle('EvmailModel.getMessageFroms');">-</a><tt class="py-line">        <tt class="py-keyword">def</tt> <a class="py-def-name" href="robotmailbox.app.evmail.model.EvmailModel-class.html#getMessageFroms">getMessageFroms</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt><tt class="py-param">messageid</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="EvmailModel.getMessageFroms-collapsed" style="display:none;" pad="++" indent="++++++++++++"></div><div id="EvmailModel.getMessageFroms-expanded"><a name="L30"></a><tt class="py-lineno">30</tt>  <tt class="py-line">                <tt class="py-docstring">'''</tt> </tt>
+<a name="L31"></a><tt class="py-lineno">31</tt>  <tt class="py-line"><tt class="py-docstring">                Get all from persons of a message</tt> </tt>
+<a name="L32"></a><tt class="py-lineno">32</tt>  <tt class="py-line"><tt class="py-docstring">                @param messageid: the id of the message to get to persons</tt> </tt>
+<a name="L33"></a><tt class="py-lineno">33</tt>  <tt class="py-line"><tt class="py-docstring">                @type messageid: L{int}</tt> </tt>
+<a name="L34"></a><tt class="py-lineno">34</tt>  <tt class="py-line"><tt class="py-docstring">                @return: list of people who sent the message</tt> </tt>
+<a name="L35"></a><tt class="py-lineno">35</tt>  <tt class="py-line"><tt class="py-docstring">                @rtype: L{List}</tt> </tt>
+<a name="L36"></a><tt class="py-lineno">36</tt>  <tt class="py-line"><tt class="py-docstring">                '''</tt> </tt>
+<a name="L37"></a><tt class="py-lineno">37</tt>  <tt class="py-line">                <tt class="py-name">rows</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-14" class="py-name"><a title="robotmailbox.app.core.model.Model.db" class="py-name" href="#" onclick="return doclink('link-14', 'db', 'link-9');">db</a></tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-15" class="py-name"><a title="robotmailbox.app.core.model.Model.db" class="py-name" href="#" onclick="return doclink('link-15', 'db', 'link-9');">db</a></tt><tt class="py-op">.</tt><tt class="py-name">message_from_person</tt><tt class="py-op">.</tt><tt class="py-name">message</tt><tt class="py-op">==</tt><tt class="py-name">messageid</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt class="py-name">select</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L38"></a><tt class="py-lineno">38</tt>  <tt class="py-line">                <tt class="py-name">froms</tt> <tt class="py-op">=</tt> <tt class="py-op">[</tt><tt class="py-op">]</tt> </tt>
+<a name="L39"></a><tt class="py-lineno">39</tt>  <tt class="py-line">                <tt class="py-keyword">for</tt> <tt class="py-name">each</tt> <tt class="py-keyword">in</tt> <tt class="py-name">rows</tt><tt class="py-op">:</tt> </tt>
+<a name="L40"></a><tt class="py-lineno">40</tt>  <tt class="py-line">                        <tt class="py-name">froms</tt><tt class="py-op">.</tt><tt class="py-name">append</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-16" class="py-name"><a title="robotmailbox.app.core.model.Model.db" class="py-name" href="#" onclick="return doclink('link-16', 'db', 'link-9');">db</a></tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-17" class="py-name"><a title="robotmailbox.app.core.model.Model.db" class="py-name" href="#" onclick="return doclink('link-17', 'db', 'link-9');">db</a></tt><tt class="py-op">.</tt><tt class="py-name">person</tt><tt class="py-op">.</tt><tt class="py-name">id</tt><tt class="py-op">==</tt><tt class="py-name">each</tt><tt class="py-op">[</tt><tt class="py-string">'person'</tt><tt class="py-op">]</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt class="py-name">select</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt class="py-name">first</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L41"></a><tt class="py-lineno">41</tt>  <tt class="py-line">                <tt class="py-keyword">return</tt> <tt class="py-name">froms</tt> </tt>
+</div><a name="L42"></a><tt class="py-lineno">42</tt>  <tt class="py-line"> </tt>
+<a name="EvmailModel.getMessageTos"></a><div id="EvmailModel.getMessageTos-def"><a name="L43"></a><tt class="py-lineno">43</tt> <a class="py-toggle" href="#" id="EvmailModel.getMessageTos-toggle" onclick="return toggle('EvmailModel.getMessageTos');">-</a><tt class="py-line">        <tt class="py-keyword">def</tt> <a class="py-def-name" href="robotmailbox.app.evmail.model.EvmailModel-class.html#getMessageTos">getMessageTos</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt><tt class="py-param">messageid</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="EvmailModel.getMessageTos-collapsed" style="display:none;" pad="++" indent="++++++++++++"></div><div id="EvmailModel.getMessageTos-expanded"><a name="L44"></a><tt class="py-lineno">44</tt>  <tt class="py-line">                <tt class="py-docstring">'''</tt> </tt>
+<a name="L45"></a><tt class="py-lineno">45</tt>  <tt class="py-line"><tt class="py-docstring">                Get all to persons of a message</tt> </tt>
+<a name="L46"></a><tt class="py-lineno">46</tt>  <tt class="py-line"><tt class="py-docstring">                @param messageid: the id of the message to get to persons</tt> </tt>
+<a name="L47"></a><tt class="py-lineno">47</tt>  <tt class="py-line"><tt class="py-docstring">                @type messageid: L{int}</tt> </tt>
+<a name="L48"></a><tt class="py-lineno">48</tt>  <tt class="py-line"><tt class="py-docstring">                @return: list of people who recieved the message</tt> </tt>
+<a name="L49"></a><tt class="py-lineno">49</tt>  <tt class="py-line"><tt class="py-docstring">                @rtype: L{List}</tt> </tt>
+<a name="L50"></a><tt class="py-lineno">50</tt>  <tt class="py-line"><tt class="py-docstring">                '''</tt> </tt>
+<a name="L51"></a><tt class="py-lineno">51</tt>  <tt class="py-line">                <tt class="py-name">rows</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-18" class="py-name"><a title="robotmailbox.app.core.model.Model.db" class="py-name" href="#" onclick="return doclink('link-18', 'db', 'link-9');">db</a></tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-19" class="py-name"><a title="robotmailbox.app.core.model.Model.db" class="py-name" href="#" onclick="return doclink('link-19', 'db', 'link-9');">db</a></tt><tt class="py-op">.</tt><tt class="py-name">message_to_person</tt><tt class="py-op">.</tt><tt class="py-name">message</tt><tt class="py-op">==</tt><tt class="py-name">messageid</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt class="py-name">select</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L52"></a><tt class="py-lineno">52</tt>  <tt class="py-line">                <tt class="py-name">tos</tt> <tt class="py-op">=</tt> <tt class="py-op">[</tt><tt class="py-op">]</tt> </tt>
+<a name="L53"></a><tt class="py-lineno">53</tt>  <tt class="py-line">                <tt class="py-keyword">for</tt> <tt class="py-name">each</tt> <tt class="py-keyword">in</tt> <tt class="py-name">rows</tt><tt class="py-op">:</tt> </tt>
+<a name="L54"></a><tt class="py-lineno">54</tt>  <tt class="py-line">                        <tt class="py-name">tos</tt><tt class="py-op">.</tt><tt class="py-name">append</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-20" class="py-name"><a title="robotmailbox.app.core.model.Model.db" class="py-name" href="#" onclick="return doclink('link-20', 'db', 'link-9');">db</a></tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-21" class="py-name"><a title="robotmailbox.app.core.model.Model.db" class="py-name" href="#" onclick="return doclink('link-21', 'db', 'link-9');">db</a></tt><tt class="py-op">.</tt><tt class="py-name">person</tt><tt class="py-op">.</tt><tt class="py-name">id</tt><tt class="py-op">==</tt><tt class="py-name">each</tt><tt class="py-op">[</tt><tt class="py-string">'person'</tt><tt class="py-op">]</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt class="py-name">select</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt class="py-name">first</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L55"></a><tt class="py-lineno">55</tt>  <tt class="py-line">                <tt class="py-keyword">return</tt> <tt class="py-name">tos</tt> </tt>
+</div><a name="L56"></a><tt class="py-lineno">56</tt>  <tt class="py-line"> </tt>
+<a name="EvmailModel.generateResponseHideData"></a><div id="EvmailModel.generateResponseHideData-def"><a name="L57"></a><tt class="py-lineno">57</tt> <a class="py-toggle" href="#" id="EvmailModel.generateResponseHideData-toggle" onclick="return toggle('EvmailModel.generateResponseHideData');">-</a><tt class="py-line">        <tt class="py-keyword">def</tt> <a class="py-def-name" href="robotmailbox.app.evmail.model.EvmailModel-class.html#generateResponseHideData">generateResponseHideData</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt><tt class="py-param">evmail</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="EvmailModel.generateResponseHideData-collapsed" style="display:none;" pad="++" indent="++++++++++++"></div><div id="EvmailModel.generateResponseHideData-expanded"><a name="L58"></a><tt class="py-lineno">58</tt>  <tt class="py-line">                <tt class="py-docstring">'''</tt> </tt>
+<a name="L59"></a><tt class="py-lineno">59</tt>  <tt class="py-line"><tt class="py-docstring">                Generate hide data in response to another evmail message</tt> </tt>
+<a name="L60"></a><tt class="py-lineno">60</tt>  <tt class="py-line"><tt class="py-docstring">                @param evmail: message data to respond to</tt> </tt>
+<a name="L61"></a><tt class="py-lineno">61</tt>  <tt class="py-line"><tt class="py-docstring">                @type evmail: L{Dict}</tt> </tt>
+<a name="L62"></a><tt class="py-lineno">62</tt>  <tt class="py-line"><tt class="py-docstring">                @return: response hide data</tt> </tt>
+<a name="L63"></a><tt class="py-lineno">63</tt>  <tt class="py-line"><tt class="py-docstring">                @rtype: L{Dict}</tt> </tt>
+<a name="L64"></a><tt class="py-lineno">64</tt>  <tt class="py-line"><tt class="py-docstring">                '''</tt> </tt>
+<a name="L65"></a><tt class="py-lineno">65</tt>  <tt class="py-line">                <tt class="py-name">data</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-22" class="py-name"><a title="robotmailbox.app.core.controller
+robotmailbox.app.core.model.Model.controller
+robotmailbox.app.core.view.View.controller
+robotmailbox.app.email.controller
+robotmailbox.app.evmail.controller
+robotmailbox.app.templateset.controller" class="py-name" href="#" onclick="return doclink('link-22', 'controller', 'link-8');">controller</a></tt><tt class="py-op">.</tt><tt id="link-23" class="py-name"><a title="robotmailbox.app.core.controller
+robotmailbox.app.core.model.Model.controller
+robotmailbox.app.core.view.View.controller
+robotmailbox.app.email.controller
+robotmailbox.app.evmail.controller
+robotmailbox.app.templateset.controller" class="py-name" href="#" onclick="return doclink('link-23', 'controller', 'link-8');">controller</a></tt><tt class="py-op">.</tt><tt id="link-24" class="py-name" targets="Method robotmailbox.app.core.controller.Controller.getTemplatesetController()=robotmailbox.app.core.controller.Controller-class.html#getTemplatesetController"><a title="robotmailbox.app.core.controller.Controller.getTemplatesetController" class="py-name" href="#" onclick="return doclink('link-24', 'getTemplatesetController', 'link-24');">getTemplatesetController</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt id="link-25" class="py-name"><a title="robotmailbox.app.core.model
+robotmailbox.app.email.model
+robotmailbox.app.evmail.model
+robotmailbox.app.templateset.model" class="py-name" href="#" onclick="return doclink('link-25', 'model', 'link-2');">model</a></tt><tt class="py-op">.</tt><tt id="link-26" class="py-name" targets="Method robotmailbox.app.templateset.model.TemplatesetModel.readTemplate()=robotmailbox.app.templateset.model.TemplatesetModel-class.html#readTemplate"><a title="robotmailbox.app.templateset.model.TemplatesetModel.readTemplate" class="py-name" href="#" onclick="return doclink('link-26', 'readTemplate', 'link-26');">readTemplate</a></tt><tt class="py-op">(</tt><tt id="link-27" class="py-name" targets="Package robotmailbox.app.evmail=robotmailbox.app.evmail-module.html"><a title="robotmailbox.app.evmail" class="py-name" href="#" onclick="return doclink('link-27', 'evmail', 'link-27');">evmail</a></tt><tt class="py-op">[</tt><tt class="py-string">'hide'</tt><tt class="py-op">]</tt><tt class="py-op">[</tt><tt class="py-string">'setname'</tt><tt class="py-op">]</tt><tt class="py-op">,</tt><tt id="link-28" class="py-name"><a title="robotmailbox.app.evmail" class="py-name" href="#" onclick="return doclink('link-28', 'evmail', 'link-27');">evmail</a></tt><tt class="py-op">[</tt><tt class="py-string">'hide'</tt><tt class="py-op">]</tt><tt class="py-op">[</tt><tt class="py-string">'name'</tt><tt class="py-op">]</tt><tt class="py-op">,</tt><tt id="link-29" class="py-name"><a title="robotmailbox.app.evmail" class="py-name" href="#" onclick="return doclink('link-29', 'evmail', 'link-27');">evmail</a></tt><tt class="py-op">[</tt><tt class="py-string">'hide'</tt><tt class="py-op">]</tt><tt class="py-op">[</tt><tt class="py-string">'version'</tt><tt class="py-op">]</tt><tt class="py-op">)</tt> </tt>
+<a name="L66"></a><tt class="py-lineno">66</tt>  <tt class="py-line"> </tt>
+<a name="L67"></a><tt class="py-lineno">67</tt>  <tt class="py-line">                <tt class="py-name">data</tt><tt class="py-op">[</tt><tt class="py-string">'hide'</tt><tt class="py-op">]</tt><tt class="py-op">[</tt><tt class="py-string">'messageid'</tt><tt class="py-op">]</tt> <tt class="py-op">=</tt> <tt class="py-name">make_msgid</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L68"></a><tt class="py-lineno">68</tt>  <tt class="py-line">                <tt class="py-name">data</tt><tt class="py-op">[</tt><tt class="py-string">'hide'</tt><tt class="py-op">]</tt><tt class="py-op">[</tt><tt class="py-string">'messagesetid'</tt><tt class="py-op">]</tt> <tt class="py-op">=</tt> <tt id="link-30" class="py-name"><a title="robotmailbox.app.evmail" class="py-name" href="#" onclick="return doclink('link-30', 'evmail', 'link-27');">evmail</a></tt><tt class="py-op">[</tt><tt class="py-string">'hide'</tt><tt class="py-op">]</tt><tt class="py-op">[</tt><tt class="py-string">'messagesetid'</tt><tt class="py-op">]</tt> </tt>
+<a name="L69"></a><tt class="py-lineno">69</tt>  <tt class="py-line">                <tt class="py-keyword">return</tt> <tt class="py-name">data</tt><tt class="py-op">[</tt><tt class="py-string">'hide'</tt><tt class="py-op">]</tt> </tt>
+</div><a name="L70"></a><tt class="py-lineno">70</tt>  <tt class="py-line"> </tt>
+<a name="EvmailModel.generateNewHideData"></a><div id="EvmailModel.generateNewHideData-def"><a name="L71"></a><tt class="py-lineno">71</tt> <a class="py-toggle" href="#" id="EvmailModel.generateNewHideData-toggle" onclick="return toggle('EvmailModel.generateNewHideData');">-</a><tt class="py-line">        <tt class="py-keyword">def</tt> <a class="py-def-name" href="robotmailbox.app.evmail.model.EvmailModel-class.html#generateNewHideData">generateNewHideData</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt><tt class="py-param">setname</tt><tt class="py-op">,</tt><tt class="py-param">name</tt><tt class="py-op">,</tt><tt class="py-param">version</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="EvmailModel.generateNewHideData-collapsed" style="display:none;" pad="++" indent="++++++++++++"></div><div id="EvmailModel.generateNewHideData-expanded"><a name="L72"></a><tt class="py-lineno">72</tt>  <tt class="py-line">                <tt class="py-docstring">'''</tt> </tt>
+<a name="L73"></a><tt class="py-lineno">73</tt>  <tt class="py-line"><tt class="py-docstring">                Generate hide data for a new evmail message</tt> </tt>
+<a name="L74"></a><tt class="py-lineno">74</tt>  <tt class="py-line"><tt class="py-docstring">                @param setname: evmail templateset name</tt> </tt>
+<a name="L75"></a><tt class="py-lineno">75</tt>  <tt class="py-line"><tt class="py-docstring">                @type evmail: L{String}</tt> </tt>
+<a name="L76"></a><tt class="py-lineno">76</tt>  <tt class="py-line"><tt class="py-docstring">                @param name: evmail template name</tt> </tt>
+<a name="L77"></a><tt class="py-lineno">77</tt>  <tt class="py-line"><tt class="py-docstring">                @type name: L{String}</tt> </tt>
+<a name="L78"></a><tt class="py-lineno">78</tt>  <tt class="py-line"><tt class="py-docstring">                @param version: evmail templateset version</tt> </tt>
+<a name="L79"></a><tt class="py-lineno">79</tt>  <tt class="py-line"><tt class="py-docstring">                @type version:</tt> </tt>
+<a name="L80"></a><tt class="py-lineno">80</tt>  <tt class="py-line"><tt class="py-docstring">                @return: response hide data</tt> </tt>
+<a name="L81"></a><tt class="py-lineno">81</tt>  <tt class="py-line"><tt class="py-docstring">                @rtype: L{Dict}</tt> </tt>
+<a name="L82"></a><tt class="py-lineno">82</tt>  <tt class="py-line"><tt class="py-docstring">                '''</tt> </tt>
+<a name="L83"></a><tt class="py-lineno">83</tt>  <tt class="py-line">                <tt class="py-name">data</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-31" class="py-name"><a title="robotmailbox.app.core.controller
+robotmailbox.app.core.model.Model.controller
+robotmailbox.app.core.view.View.controller
+robotmailbox.app.email.controller
+robotmailbox.app.evmail.controller
+robotmailbox.app.templateset.controller" class="py-name" href="#" onclick="return doclink('link-31', 'controller', 'link-8');">controller</a></tt><tt class="py-op">.</tt><tt id="link-32" class="py-name"><a title="robotmailbox.app.core.controller
+robotmailbox.app.core.model.Model.controller
+robotmailbox.app.core.view.View.controller
+robotmailbox.app.email.controller
+robotmailbox.app.evmail.controller
+robotmailbox.app.templateset.controller" class="py-name" href="#" onclick="return doclink('link-32', 'controller', 'link-8');">controller</a></tt><tt class="py-op">.</tt><tt id="link-33" class="py-name"><a title="robotmailbox.app.core.controller.Controller.getTemplatesetController" class="py-name" href="#" onclick="return doclink('link-33', 'getTemplatesetController', 'link-24');">getTemplatesetController</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt id="link-34" class="py-name"><a title="robotmailbox.app.core.model
+robotmailbox.app.email.model
+robotmailbox.app.evmail.model
+robotmailbox.app.templateset.model" class="py-name" href="#" onclick="return doclink('link-34', 'model', 'link-2');">model</a></tt><tt class="py-op">.</tt><tt id="link-35" class="py-name"><a title="robotmailbox.app.templateset.model.TemplatesetModel.readTemplate" class="py-name" href="#" onclick="return doclink('link-35', 'readTemplate', 'link-26');">readTemplate</a></tt><tt class="py-op">(</tt><tt class="py-name">setname</tt><tt class="py-op">,</tt><tt class="py-name">name</tt><tt class="py-op">,</tt><tt class="py-name">version</tt><tt class="py-op">)</tt> </tt>
+<a name="L84"></a><tt class="py-lineno">84</tt>  <tt class="py-line"> </tt>
+<a name="L85"></a><tt class="py-lineno">85</tt>  <tt class="py-line">                <tt class="py-name">data</tt><tt class="py-op">[</tt><tt class="py-string">'hide'</tt><tt class="py-op">]</tt><tt class="py-op">[</tt><tt class="py-string">'messageid'</tt><tt class="py-op">]</tt> <tt class="py-op">=</tt> <tt class="py-name">make_msgid</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L86"></a><tt class="py-lineno">86</tt>  <tt class="py-line">                <tt class="py-name">data</tt><tt class="py-op">[</tt><tt class="py-string">'hide'</tt><tt class="py-op">]</tt><tt class="py-op">[</tt><tt class="py-string">'messagesetid'</tt><tt class="py-op">]</tt> <tt class="py-op">=</tt> <tt class="py-name">data</tt><tt class="py-op">[</tt><tt class="py-string">'hide'</tt><tt class="py-op">]</tt><tt class="py-op">[</tt><tt class="py-string">'messageid'</tt><tt class="py-op">]</tt> </tt>
+<a name="L87"></a><tt class="py-lineno">87</tt>  <tt class="py-line">                <tt class="py-keyword">return</tt> <tt class="py-name">data</tt><tt class="py-op">[</tt><tt class="py-string">'hide'</tt><tt class="py-op">]</tt> </tt>
+</div><a name="L88"></a><tt class="py-lineno">88</tt>  <tt class="py-line"> </tt>
+<a name="EvmailModel.getHideData"></a><div id="EvmailModel.getHideData-def"><a name="L89"></a><tt class="py-lineno">89</tt> <a class="py-toggle" href="#" id="EvmailModel.getHideData-toggle" onclick="return toggle('EvmailModel.getHideData');">-</a><tt class="py-line">        <tt class="py-keyword">def</tt> <a class="py-def-name" href="robotmailbox.app.evmail.model.EvmailModel-class.html#getHideData">getHideData</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt><tt class="py-param">evmail</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="EvmailModel.getHideData-collapsed" style="display:none;" pad="++" indent="++++++++++++"></div><div id="EvmailModel.getHideData-expanded"><a name="L90"></a><tt class="py-lineno">90</tt>  <tt class="py-line">                <tt class="py-keyword">pass</tt> </tt>
+</div></div><a name="L91"></a><tt class="py-lineno">91</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<!--
+expandto(location.href);
+// -->
+</script>
+</pre>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="robotmailbox.app-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Mon Dec  5 12:42:09 2011
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+{
+	"$schema" : "http://json-schema.org/draft-03/schema",
+	"description" : "Basic Schema for all Templates",
+	"type": "object",
+	"properties" : {
+		"description" : {
+			"type" : "string",
+			"required" : false
+		},
+		"hide" : {
+			"type" : "object",
+			"required" : true,
+			"properties" : {
+				"setname" : {
+					"type" : "string",
+					"required" : true
+				},
+				"name" : {
+					"type" : "string",
+					"required" : true
+				},
+				"version" : {
+					"type" : "string",
+					"required" : true
+				},
+				"threadid" : {
+					"type" : "object",
+					"required" : true
+				}
+			},
+			"additionalProperties" : {
+				"type" : "object",
+				"required" : false
+			}	
+		},
+		"show" : {
+			"type" : "object",
+			"required" : true
+		}
+	}
+}

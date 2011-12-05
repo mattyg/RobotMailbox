@@ -1,0 +1,480 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>robotmailbox.app.evmail.controller.EvmailController</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="robotmailbox.app-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        Package&nbsp;robotmailbox ::
+        <a href="robotmailbox.app-module.html">Package&nbsp;app</a> ::
+        <a href="robotmailbox.app.evmail-module.html">Package&nbsp;evmail</a> ::
+        <a href="robotmailbox.app.evmail.controller-module.html">Module&nbsp;controller</a> ::
+        Class&nbsp;EvmailController
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="robotmailbox.app.evmail.controller.EvmailController-class.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<!-- ==================== CLASS DESCRIPTION ==================== -->
+<h1 class="epydoc">Class EvmailController</h1><p class="nomargin-top"><span class="codelink"><a href="robotmailbox.app.evmail.controller-pysrc.html#EvmailController">source&nbsp;code</a></span></p>
+<!-- ==================== INSTANCE METHODS ==================== -->
+<a name="section-InstanceMethods"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Instance Methods</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-InstanceMethods"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="__init__"></a><span class="summary-sig-name">__init__</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">controller</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="robotmailbox.app.evmail.controller-pysrc.html#EvmailController.__init__">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="robotmailbox.app.evmail.controller.EvmailController-class.html#getEvmailTemplate" class="summary-sig-name">getEvmailTemplate</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">setname</span>,
+        <span class="summary-sig-arg">name</span>,
+        <span class="summary-sig-arg">version</span>)</span><br />
+      Get schema data of particular template file within a particular 
+      template set.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="robotmailbox.app.evmail.controller-pysrc.html#EvmailController.getEvmailTemplate">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="robotmailbox.app.evmail.controller.EvmailController-class.html#processEvmail" class="summary-sig-name">processEvmail</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">evmail</span>)</span><br />
+      Read meta information, determine proper templateset, download (or 
+      find) templateset, and validate to it and add it to the database</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="robotmailbox.app.evmail.controller-pysrc.html#EvmailController.processEvmail">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="robotmailbox.app.evmail.controller.EvmailController-class.html#readEvmail" class="summary-sig-name">readEvmail</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">evmail</span>)</span><br />
+      Read meta information from Evmail string</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="robotmailbox.app.evmail.controller-pysrc.html#EvmailController.readEvmail">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="robotmailbox.app.evmail.controller.EvmailController-class.html#validateEvmail" class="summary-sig-name">validateEvmail</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">evmaildata</span>,
+        <span class="summary-sig-arg">schemapath</span>)</span><br />
+      Validate Evmail to schema in templateset</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="robotmailbox.app.evmail.controller-pysrc.html#EvmailController.validateEvmail">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">MIMEMultipart</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="robotmailbox.app.evmail.controller.EvmailController-class.html#generateMessage" class="summary-sig-name">generateMessage</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">data</span>,
+        <span class="summary-sig-arg">subject</span>,
+        <span class="summary-sig-arg">tos</span>,
+        <span class="summary-sig-arg">fromemail</span>)</span><br />
+      Generate  MimeMultipart message from message data</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="robotmailbox.app.evmail.controller-pysrc.html#EvmailController.generateMessage">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="robotmailbox.app.evmail.controller.EvmailController-class.html#generateMessageView" class="summary-sig-name">generateMessageView</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">notebook</span>,
+        <span class="summary-sig-arg">messageid</span>)</span><br />
+      Generate message view for message with messageid</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="robotmailbox.app.evmail.controller-pysrc.html#EvmailController.generateMessageView">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="generateNewHideData"></a><span class="summary-sig-name">generateNewHideData</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">setname</span>,
+        <span class="summary-sig-arg">name</span>,
+        <span class="summary-sig-arg">version</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="robotmailbox.app.evmail.controller-pysrc.html#EvmailController.generateNewHideData">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="generateResponseHideData"></a><span class="summary-sig-name">generateResponseHideData</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">responseto</span>=<span class="summary-sig-default">None</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="robotmailbox.app.evmail.controller-pysrc.html#EvmailController.generateResponseHideData">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+</table>
+<!-- ==================== METHOD DETAILS ==================== -->
+<a name="section-MethodDetails"></a>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Method Details</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-MethodDetails"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+</table>
+<a name="getEvmailTemplate"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">getEvmailTemplate</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">setname</span>,
+        <span class="sig-arg">name</span>,
+        <span class="sig-arg">version</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="robotmailbox.app.evmail.controller-pysrc.html#EvmailController.getEvmailTemplate">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Get schema data of particular template file within a particular 
+  template set.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>setname</code></strong> - Name of the templateset</li>
+        <li><strong class="pname"><code>name</code></strong> - Name of the template</li>
+        <li><strong class="pname"><code>version</code></strong> - Version of the templateset</li>
+    </ul></dd>
+    <dt>Returns:</dt>
+        <dd>dict with template schema data</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="processEvmail"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">processEvmail</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">evmail</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="robotmailbox.app.evmail.controller-pysrc.html#EvmailController.processEvmail">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Read meta information, determine proper templateset, download (or 
+  find) templateset, and validate to it and add it to the database</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>evmail</code></strong> - Contents of evmail json file</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="readEvmail"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">readEvmail</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">evmail</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="robotmailbox.app.evmail.controller-pysrc.html#EvmailController.readEvmail">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Read meta information from Evmail string</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>evmail</code></strong> - Contents of evmail json file</li>
+    </ul></dd>
+    <dt>Returns:</dt>
+        <dd>tuple of (setname,name,version)</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="validateEvmail"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">validateEvmail</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">evmaildata</span>,
+        <span class="sig-arg">schemapath</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="robotmailbox.app.evmail.controller-pysrc.html#EvmailController.validateEvmail">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Validate Evmail to schema in templateset</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>evmaildata</code></strong> - data object of evmail json file</li>
+        <li><strong class="pname"><code>schemapath</code></strong> - path to the templateset template specific to this evmail message</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="generateMessage"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">generateMessage</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">data</span>,
+        <span class="sig-arg">subject</span>,
+        <span class="sig-arg">tos</span>,
+        <span class="sig-arg">fromemail</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="robotmailbox.app.evmail.controller-pysrc.html#EvmailController.generateMessage">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Generate  MimeMultipart message from message data</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>data</code></strong> - evmail message data</li>
+        <li><strong class="pname"><code>subject</code></strong> - message subject</li>
+        <li><strong class="pname"><code>tos</code></strong> (<code class="link">List</code>) - list of people to send the message to</li>
+        <li><strong class="pname"><code>fromemail</code></strong> (<code class="link">String</code>) - email of sender</li>
+    </ul></dd>
+    <dt>Returns: MIMEMultipart</dt>
+        <dd>message</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="generateMessageView"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">generateMessageView</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">notebook</span>,
+        <span class="sig-arg">messageid</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="robotmailbox.app.evmail.controller-pysrc.html#EvmailController.generateMessageView">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Generate message view for message with messageid</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>notebook</code></strong> - the wx.NoteBook to send along to generateMessageView</li>
+        <li><strong class="pname"><code>messageid</code></strong> (<code class="link">int</code>) - id of message to view</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="robotmailbox.app-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Mon Dec  5 12:42:08 2011
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+{
+	"name":"discussion",
+	"version":"0.1",
+	"files":[
+		{"name":"templates/message.json",
+		"type":"send",
+		"use":"default",
+		"responses": [
+			{"name":"templates/respond.json",
+			"to" : "all",
+			"use": "default",
+			"responses" : [
+				{"name":"templates/respond.json",
+				"use":"option",
+				"to" : "sender"
+				}
+				]
+			}
+			]
+		}]
+}

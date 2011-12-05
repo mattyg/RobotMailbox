@@ -1,0 +1,3639 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>robotmailbox.app.TableList.TableList</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="robotmailbox.app-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        Package&nbsp;robotmailbox ::
+        <a href="robotmailbox.app-module.html">Package&nbsp;app</a> ::
+        <a href="robotmailbox.app.TableList-module.html">Module&nbsp;TableList</a> ::
+        Class&nbsp;TableList
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="robotmailbox.app.TableList.TableList-class.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<!-- ==================== CLASS DESCRIPTION ==================== -->
+<h1 class="epydoc">Class TableList</h1><p class="nomargin-top"></p>
+<pre class="base-tree">
+  Tkinter.Misc --+        
+                 |        
+Tkinter.BaseWidget --+    
+                     |    
+      Tkinter.Pack --+    
+                     |    
+     Tkinter.Place --+    
+                     |    
+      Tkinter.Grid --+    
+                     |    
+        Tkinter.Widget --+
+                         |
+                        <strong class="uidshort">TableList</strong>
+</pre>
+
+<hr />
+<p>A tablelist widget is a multi-column listbox.</p>
+  <p>The width of each column can be dynamic (i.e., just large enough to 
+  hold all its elements, including the header) or static (specified in 
+  characters or pixels).  The columns are, per default, resizable.  The 
+  alignment of each column can be specified as left, right, or center.</p>
+  <p>The columns, rows, and cells can be configured individually.  Several 
+  of the global and column-specific options refer to the headers, 
+  implemented as label widgets.  For instance, the -labelcommand option 
+  specifies a Tcl command to be invoked when mouse button 1 is released 
+  over a label.  The most common value of this option is 
+  tablelist::sortByColumn, which sorts the items based on the respective 
+  column.</p>
+  <p>Interactive editing of the elements of a tablelist widget can be 
+  enabled for individual cells and for entire columns.  A great variety of 
+  widgets from the Tk core and from the packages BWidget, Iwidgets, 
+  combobox, and Mentry is supported for being used as embedded edit window.
+  In addition, a rich set of keyboard bindings is provided for a 
+  comfortable navigation between the editable cells.</p>
+  <p>The Tcl command corresponding to a tablelist widget is very similar to
+  the one associated with a normal listbox.  There are column-, row-, and 
+  cell-specific counterparts of the configure and cget subcommands 
+  (columnconfigure, rowconfigure, cellconfigure, ...).  They can be used, 
+  among others, to insert images into the cells and the header labels, or 
+  to insert embedded windows into the cells. The index, nearest, and see 
+  command options refer to the rows, but similar subcommands are provided 
+  for the columns and cells (columnindex, cellindex, ...).  The items can 
+  be sorted with the sort and sortbycolumn command options.</p>
+  <p>The bindings defined for the body of a tablelist widget make it behave
+  just like a normal listbox. This includes the support for the virtual 
+  event &lt;&lt;ListboxSelect&gt;&gt; (which is equivalent to 
+  &lt;&lt;TablelistSelect&gt;&gt;).  In addition, version 2.3 or higher of 
+  the widget callback package Wcb (written in pure Tcl/Tk code as well) can
+  be used to define callbacks for the activate,  selection set,  and  
+  selection clear  commands, and Wcb version 3.0 or higher also supports 
+  callbacks for the activatecell,  cellselection set,  and  cellselection 
+  clear  commands. The download location of Wcb is</p>
+  <p>http://www.nemethi.de</p>
+
+<!-- ==================== NESTED CLASSES ==================== -->
+<a name="section-NestedClasses"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Nested Classes</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-NestedClasses"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+  <tr>
+    <td colspan="2" class="summary">
+    <p class="indent-wrapped-lines"><b>Inherited from <code>Tkinter.Misc</code></b>:
+      <code><a href="float-class.html">getdouble</a></code>,
+      <code><a href="int-class.html">getint</a></code>
+      </p>
+    </td>
+  </tr>
+</table>
+<!-- ==================== INSTANCE METHODS ==================== -->
+<a name="section-InstanceMethods"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Instance Methods</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-InstanceMethods"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="robotmailbox.app.TableList.TableList-class.html#__init__" class="summary-sig-name">__init__</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">master</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">cnf</span>=<span class="summary-sig-default"><code class="variable-group">{</code><code class="variable-group">}</code></span>,
+        <span class="summary-sig-arg">**kw</span>)</span><br />
+      Construct a widget with the parent widget MASTER, a name WIDGETNAME 
+      and appropriate options.</td>
+          <td align="right" valign="top">
+            
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="robotmailbox.app.TableList.TableList-class.html#activate" class="summary-sig-name">activate</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">index</span>)</span><br />
+      Sets the active item to the one indicated by index if the 
+      tablelist&quot;s state is not disabled.</td>
+          <td align="right" valign="top">
+            
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="robotmailbox.app.TableList.TableList-class.html#activatecell" class="summary-sig-name">activatecell</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">index</span>)</span><br />
+      Sets the active element to the one indicated by cellIndex if the 
+      tablelist&quot;s state is not disabled.</td>
+          <td align="right" valign="top">
+            
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="robotmailbox.app.TableList.TableList-class.html#attrib" class="summary-sig-name">attrib</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">cnf</span>=<span class="summary-sig-default"><code class="variable-group">{</code><code class="variable-group">}</code></span>,
+        <span class="summary-sig-arg">**kw</span>)</span><br />
+      Queries or modifies the attributes of the widget.</td>
+          <td align="right" valign="top">
+            
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="robotmailbox.app.TableList.TableList-class.html#bbox" class="summary-sig-name">bbox</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">*args</span>)</span><br />
+      Returns a list of four numbers describing the bounding box of the row
+      given by index.</td>
+          <td align="right" valign="top">
+            
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="body_bind"></a><span class="summary-sig-name">body_bind</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">sequence</span>,
+        <span class="summary-sig-arg">func</span>,
+        <span class="summary-sig-arg">add</span>=<span class="summary-sig-default">None</span>)</span><br />
+      Bind sequence to function on tablelist BODY</td>
+          <td align="right" valign="top">
+            
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="bodypath"></a><span class="summary-sig-name">bodypath</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      Returns the path name of the body component of the widget.</td>
+          <td align="right" valign="top">
+            
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="robotmailbox.app.TableList.TableList-class.html#bodytag" class="summary-sig-name">bodytag</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Returns the name of a binding tag whose name depends on the path name
+      of the tablelist widget and which is associated with the 
+      tablelist&quot;s body, the separator frames, and the labels used for 
+      displaying embedded images.</td>
+          <td align="right" valign="top">
+            
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="robotmailbox.app.TableList.TableList-class.html#cancelediting" class="summary-sig-name">cancelediting</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      This subcommand cancels the interactive editing of the contents of 
+      the cell whose index was passed to the editcell subcommand, destroys 
+      the temporary widget embedded into the cell, and restores the 
+      original cell contents.</td>
+          <td align="right" valign="top">
+            
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="robotmailbox.app.TableList.TableList-class.html#cellcget" class="summary-sig-name">cellcget</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">index</span>,
+        <span class="summary-sig-arg">option</span>)</span><br />
+      Returns the current value of the cell configuration option given by 
+      option for the cell specified by cellIndex.</td>
+          <td align="right" valign="top">
+            
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="robotmailbox.app.TableList.TableList-class.html#cellconfigure" class="summary-sig-name">cellconfigure</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">index</span>,
+        <span class="summary-sig-arg">cnf</span>=<span class="summary-sig-default"><code class="variable-group">{</code><code class="variable-group">}</code></span>,
+        <span class="summary-sig-arg">**kw</span>)</span><br />
+      Queries or modifies the configuration options of the cell 
+given by cellIndex.</td>
+          <td align="right" valign="top">
+            
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="cellindex"></a><span class="summary-sig-name">cellindex</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">index</span>)</span><br />
+      Returns the canonical cell index value that corresponds to cellIndex,
+      in the form row,col, where row and col are integers.</td>
+          <td align="right" valign="top">
+            
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="robotmailbox.app.TableList.TableList-class.html#cellselection_anchor" class="summary-sig-name">cellselection_anchor</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">index</span>)</span><br />
+      Sets the cell selection anchor to the element given by cellIndex.</td>
+          <td align="right" valign="top">
+            
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="robotmailbox.app.TableList.TableList-class.html#cellselection_clear" class="summary-sig-name">cellselection_clear</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">first</span>,
+        <span class="summary-sig-arg">last</span>=<span class="summary-sig-default">None</span>)</span><br />
+      If any of the elements between firstCell and lastCell (inclusive) or 
+      corresponding to the cell indices specified by the list cellIndexList
+      are selected, they are deselected.</td>
+          <td align="right" valign="top">
+            
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="cellselection_includes"></a><span class="summary-sig-name">cellselection_includes</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">index</span>)</span><br />
+      Returns 1 if the element indicated by cellIndex is currently 
+      selected, 0 if it isn't</td>
+          <td align="right" valign="top">
+            
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="robotmailbox.app.TableList.TableList-class.html#cellselection_set" class="summary-sig-name">cellselection_set</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">first</span>,
+        <span class="summary-sig-arg">last</span>=<span class="summary-sig-default">None</span>)</span><br />
+      Selects all of the selectable elements in the range between firstCell
+      and lastCell, inclusive, or corresponding to the indices specified by
+      the list cellIndexList, without affecting the selection state of any 
+      other elements.</td>
+          <td align="right" valign="top">
+            
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="robotmailbox.app.TableList.TableList-class.html#cget" class="summary-sig-name">cget</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">option</span>)</span><br />
+      Returns the current value of the configuration option given by 
+      option, which may have any of the values accepted by the 
+      tablelist::tablelist command.</td>
+          <td align="right" valign="top">
+            
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="clear"></a><span class="summary-sig-name">clear</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      delete all items from the tablelist</td>
+          <td align="right" valign="top">
+            
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="robotmailbox.app.TableList.TableList-class.html#columncget" class="summary-sig-name">columncget</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">index</span>,
+        <span class="summary-sig-arg">option</span>)</span><br />
+      Returns the current value of the column configuration option given by
+      option for the column specified by columnIndex.</td>
+          <td align="right" valign="top">
+            
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="robotmailbox.app.TableList.TableList-class.html#columnconfigure" class="summary-sig-name">columnconfigure</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">index</span>,
+        <span class="summary-sig-arg">cnf</span>=<span class="summary-sig-default"><code class="variable-group">{</code><code class="variable-group">}</code></span>,
+        <span class="summary-sig-arg">**kw</span>)</span><br />
+      Queries or modifies the configuration options of the column given by 
+      columnIndex.</td>
+          <td align="right" valign="top">
+            
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="columncount"></a><span class="summary-sig-name">columncount</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      Returns the number of columns in the tablelist widget.</td>
+          <td align="right" valign="top">
+            
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="columnindex"></a><span class="summary-sig-name">columnindex</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">index</span>)</span><br />
+      Returns the integer column index value that corresponds index.</td>
+          <td align="right" valign="top">
+            
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="robotmailbox.app.TableList.TableList-class.html#config" class="summary-sig-name">config</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">cnf</span>=<span class="summary-sig-default"><code class="variable-group">{</code><code class="variable-group">}</code></span>,
+        <span class="summary-sig-arg">**kw</span>)</span><br />
+      Queries or modifies the configuration options of the widget.</td>
+          <td align="right" valign="top">
+            
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="robotmailbox.app.TableList.TableList-class.html#configure" class="summary-sig-name">configure</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">cnf</span>=<span class="summary-sig-default"><code class="variable-group">{</code><code class="variable-group">}</code></span>,
+        <span class="summary-sig-arg">**kw</span>)</span><br />
+      Queries or modifies the configuration options of the widget.</td>
+          <td align="right" valign="top">
+            
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="robotmailbox.app.TableList.TableList-class.html#containing" class="summary-sig-name">containing</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">y</span>)</span><br />
+      Given a y-coordinate within the tablelist window this command returns
+      the index of the tablelist item containing that y-coordinate.</td>
+          <td align="right" valign="top">
+            
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="robotmailbox.app.TableList.TableList-class.html#containingcell" class="summary-sig-name">containingcell</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">x</span>,
+        <span class="summary-sig-arg">y</span>)</span><br />
+      Given an x- and a y-coordinate within the tablelist window, this 
+      command returns the index of the tablelist cell containing the point 
+      having these coordinates.</td>
+          <td align="right" valign="top">
+            
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="robotmailbox.app.TableList.TableList-class.html#containingcolumn" class="summary-sig-name">containingcolumn</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">x</span>)</span><br />
+      Given an x-coordinate within the tablelist window, this command 
+      returns the index of the tablelist column containing that 
+      x-coordinate.</td>
+          <td align="right" valign="top">
+            
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="robotmailbox.app.TableList.TableList-class.html#curcellselection" class="summary-sig-name">curcellselection</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Returns a list containing the canonical indices (of the form row,col,
+      where row and col are numbers) of all of the non-hidden elements in 
+      the tablelist that are currently selected.</td>
+          <td align="right" valign="top">
+            
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="robotmailbox.app.TableList.TableList-class.html#curselection" class="summary-sig-name">curselection</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Returns a list containing the numerical indices of all of the items 
+      in the tablelist that contain at least one non-hidden selected 
+      element.</td>
+          <td align="right" valign="top">
+            
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="robotmailbox.app.TableList.TableList-class.html#delete" class="summary-sig-name">delete</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">first</span>,
+        <span class="summary-sig-arg">last</span>=<span class="summary-sig-default">None</span>)</span><br />
+      Deletes one or more items of the tablelist if its state is not 
+      disabled.</td>
+          <td align="right" valign="top">
+            
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="robotmailbox.app.TableList.TableList-class.html#deletecolumns" class="summary-sig-name">deletecolumns</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">first</span>,
+        <span class="summary-sig-arg">last</span>=<span class="summary-sig-default">None</span>)</span><br />
+      Deletes one or more columns of the tablelist if its state is not 
+      disabled.</td>
+          <td align="right" valign="top">
+            
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="robotmailbox.app.TableList.TableList-class.html#editcell" class="summary-sig-name">editcell</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">index</span>)</span><br />
+      Starts the interactive editing of the cell's contents if the 
+      tablelist's state is not disabled, the cell's column is not hidden, 
+      and the cell is editable.</td>
+          <td align="right" valign="top">
+            
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="robotmailbox.app.TableList.TableList-class.html#editwinpath" class="summary-sig-name">editwinpath</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Returns the path name of the temporary embedded widget used for 
+      interactive cell editing, created by the editcell subcommand.</td>
+          <td align="right" valign="top">
+            
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="robotmailbox.app.TableList.TableList-class.html#entrypath" class="summary-sig-name">entrypath</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Returns the path name of the entry or entry-like component of the 
+      temporary embedded widget used for interactive cell editing, created 
+      by the editcell subcommand.</td>
+          <td align="right" valign="top">
+            
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="fillcolumn"></a><span class="summary-sig-name">fillcolumn</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">index</span>,
+        <span class="summary-sig-arg">text</span>)</span><br />
+      Sets all the elements of the specified column to the value text.</td>
+          <td align="right" valign="top">
+            
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="robotmailbox.app.TableList.TableList-class.html#finishediting" class="summary-sig-name">finishediting</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      This subcommand attempts to terminate the interactive editing of the 
+      contents of the cell whose index was passed to the editcell 
+      subcommand by destroying the temporary widget embedded into the cell 
+      and updating the cell's contents.</td>
+          <td align="right" valign="top">
+            
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="robotmailbox.app.TableList.TableList-class.html#get" class="summary-sig-name">get</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">first</span>,
+        <span class="summary-sig-arg">last</span>=<span class="summary-sig-default">None</span>)</span><br />
+      The first form of the command returns a list whose elements are all 
+      of the tablelist items between first and last, inclusive.</td>
+          <td align="right" valign="top">
+            
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="robotmailbox.app.TableList.TableList-class.html#getcolumns" class="summary-sig-name">getcolumns</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">first</span>,
+        <span class="summary-sig-arg">last</span>=<span class="summary-sig-default">None</span>)</span><br />
+      The first form of the command returns a list whose elements are lists
+      themselves, where each of the sublists corresponds to exactly one 
+      column between firstColumn and lastColumn, inclusive, and consists of
+      all of the tablelist elements contained in that column.</td>
+          <td align="right" valign="top">
+            
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="getcurselection"></a><span class="summary-sig-name">getcurselection</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      return list of currently selected items (as a list of lists)</td>
+          <td align="right" valign="top">
+            
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="robotmailbox.app.TableList.TableList-class.html#getkeys" class="summary-sig-name">getkeys</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">first</span>,
+        <span class="summary-sig-arg">last</span>=<span class="summary-sig-default">None</span>)</span><br />
+      The first form of the command returns a list whose elements are all 
+      of the sequence numbers associated with the tablelist items between 
+      first and last, inclusive.</td>
+          <td align="right" valign="top">
+            
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="robotmailbox.app.TableList.TableList-class.html#index" class="summary-sig-name">index</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">index</span>)</span><br />
+      Returns the integer row index value that corresponds to index.</td>
+          <td align="right" valign="top">
+            
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="robotmailbox.app.TableList.TableList-class.html#insert" class="summary-sig-name">insert</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">index</span>,
+        <span class="summary-sig-arg">*items</span>)</span><br />
+      Inserts zero or more new items in the widget's internal list 
+       just before the item given by index if the tablelist's state is not
+       disabled.</td>
+          <td align="right" valign="top">
+            
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="robotmailbox.app.TableList.TableList-class.html#insertcolumnlist" class="summary-sig-name">insertcolumnlist</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">index</span>,
+        <span class="summary-sig-arg">list</span>)</span><br />
+      Inserts the columns specified by the list columnList just before the 
+      column given by columnIndex if the tablelist's state is not disabled.</td>
+          <td align="right" valign="top">
+            
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="robotmailbox.app.TableList.TableList-class.html#insertcolumns" class="summary-sig-name">insertcolumns</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">index</span>,
+        <span class="summary-sig-arg">*columns</span>)</span><br />
+      Inserts zero or more new columns just before the column given by 
+      index if the tablelist's state is not disabled.</td>
+          <td align="right" valign="top">
+            
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="robotmailbox.app.TableList.TableList-class.html#insertlist" class="summary-sig-name">insertlist</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">index</span>,
+        <span class="summary-sig-arg">*items</span>)</span><br />
+      Inserts the items of the list itemList in the widget's internal 
+       list just before the item given by index if the tablelist's state 
+       is not disabled.</td>
+          <td align="right" valign="top">
+            
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="robotmailbox.app.TableList.TableList-class.html#itemlistvar" class="summary-sig-name">itemlistvar</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Returns the name of a variable used by Tablelist to hold the 
+widget's internal list.</td>
+          <td align="right" valign="top">
+            
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="labelpath"></a><span class="summary-sig-name">labelpath</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">index</span>)</span><br />
+      Returns the path name of the header label corresponding to the column
+      indicated by columnIndex.</td>
+          <td align="right" valign="top">
+            
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="labels"></a><span class="summary-sig-name">labels</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      Returns a list containing the path names of all header labels of the 
+      widget.</td>
+          <td align="right" valign="top">
+            
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="robotmailbox.app.TableList.TableList-class.html#move" class="summary-sig-name">move</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">src</span>,
+        <span class="summary-sig-arg">dst</span>)</span><br />
+      Moves the item indicated by src just before the one given by dst if 
+      the tablelist's state is not disabled.</td>
+          <td align="right" valign="top">
+            
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="robotmailbox.app.TableList.TableList-class.html#movecolumn" class="summary-sig-name">movecolumn</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">src</span>,
+        <span class="summary-sig-arg">dst</span>)</span><br />
+      Moves the column indicated by src just before the one given by dst if
+      the tablelist's state is not disabled.</td>
+          <td align="right" valign="top">
+            
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="robotmailbox.app.TableList.TableList-class.html#nearest" class="summary-sig-name">nearest</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">y</span>)</span><br />
+      Given a y-coordinate within the tablelist window, this command 
+      returns the index of the tablelist item nearest to that y-coordinate.</td>
+          <td align="right" valign="top">
+            
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="robotmailbox.app.TableList.TableList-class.html#nearestcell" class="summary-sig-name">nearestcell</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">x</span>,
+        <span class="summary-sig-arg">y</span>)</span><br />
+      Given an x- and a y-coordinate within the tablelist window, this 
+      command returns the index of the non-hidden tablelist cell nearest to
+      the point having these coordinates.</td>
+          <td align="right" valign="top">
+            
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="robotmailbox.app.TableList.TableList-class.html#nearestcolumn" class="summary-sig-name">nearestcolumn</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">x</span>)</span><br />
+      Given an x-coordinate within the tablelist window, this command 
+      returns the index of the non-hidden tablelist column nearest to that 
+      x-coordinate.</td>
+          <td align="right" valign="top">
+            
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="robotmailbox.app.TableList.TableList-class.html#rejectinput" class="summary-sig-name">rejectinput</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      If invoked from within the Tcl command specified by the 
+      -editendcommand configuration option, then this subcommand prevents 
+      the termination of the interactive editing of the contents of the 
+      cell whose index was passed to the editcell subcommand.</td>
+          <td align="right" valign="top">
+            
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="robotmailbox.app.TableList.TableList-class.html#resetsortinfo" class="summary-sig-name">resetsortinfo</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Resets the information about the sorting of the items.</td>
+          <td align="right" valign="top">
+            
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="robotmailbox.app.TableList.TableList-class.html#rowcget" class="summary-sig-name">rowcget</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">index</span>,
+        <span class="summary-sig-arg">option</span>)</span><br />
+      Returns the current value of the row configuration option given by 
+      option for the row specified by index.</td>
+          <td align="right" valign="top">
+            
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="robotmailbox.app.TableList.TableList-class.html#rowconfigure" class="summary-sig-name">rowconfigure</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">index</span>,
+        <span class="summary-sig-arg">cnf</span>=<span class="summary-sig-default"><code class="variable-group">{</code><code class="variable-group">}</code></span>,
+        <span class="summary-sig-arg">**kw</span>)</span><br />
+      Queries or modifies the configuration options of the row given by 
+      index.</td>
+          <td align="right" valign="top">
+            
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="scan_dragto"></a><span class="summary-sig-name">scan_dragto</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">x</span>,
+        <span class="summary-sig-arg">y</span>)</span><br />
+      Adjust the view of the listbox to 10 times the difference between X 
+      and Y and the coordinates given in scan_mark.</td>
+          <td align="right" valign="top">
+            
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="scan_mark"></a><span class="summary-sig-name">scan_mark</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">x</span>,
+        <span class="summary-sig-arg">y</span>)</span><br />
+      Remember the current X, Y coordinates.</td>
+          <td align="right" valign="top">
+            
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="see"></a><span class="summary-sig-name">see</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">index</span>)</span><br />
+      Scroll such that INDEX is visible.</td>
+          <td align="right" valign="top">
+            
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="robotmailbox.app.TableList.TableList-class.html#seecell" class="summary-sig-name">seecell</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">index</span>)</span><br />
+      Adjusts the view in the tablelist so that the cell given by index is 
+      visible.</td>
+          <td align="right" valign="top">
+            
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="robotmailbox.app.TableList.TableList-class.html#seecolumn" class="summary-sig-name">seecolumn</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">index</span>)</span><br />
+      Adjusts the view in the tablelist so that the column given by index 
+      is visible.</td>
+          <td align="right" valign="top">
+            
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="select_anchor"></a><span class="summary-sig-name">select_anchor</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">index</span>)</span><br />
+      Set the fixed end oft the selection to INDEX.</td>
+          <td align="right" valign="top">
+            
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="select_clear"></a><span class="summary-sig-name">select_clear</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">first</span>,
+        <span class="summary-sig-arg">last</span>=<span class="summary-sig-default">None</span>)</span><br />
+      Clear the selection from FIRST to LAST (not included).</td>
+          <td align="right" valign="top">
+            
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="select_includes"></a><span class="summary-sig-name">select_includes</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">index</span>)</span><br />
+      Return 1 if INDEX is part of the selection.</td>
+          <td align="right" valign="top">
+            
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="select_set"></a><span class="summary-sig-name">select_set</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">first</span>,
+        <span class="summary-sig-arg">last</span>=<span class="summary-sig-default">None</span>)</span><br />
+      Set the selection from FIRST to LAST (not included) without changing 
+      the currently selected elements.</td>
+          <td align="right" valign="top">
+            
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="selection_anchor"></a><span class="summary-sig-name">selection_anchor</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">index</span>)</span><br />
+      Set the fixed end oft the selection to INDEX.</td>
+          <td align="right" valign="top">
+            
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="robotmailbox.app.TableList.TableList-class.html#selection_clear" class="summary-sig-name">selection_clear</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">first</span>,
+        <span class="summary-sig-arg">last</span>=<span class="summary-sig-default">None</span>)</span><br />
+      Clear the selection from FIRST to LAST (not included).</td>
+          <td align="right" valign="top">
+            
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="selection_includes"></a><span class="summary-sig-name">selection_includes</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">index</span>)</span><br />
+      Return 1 if INDEX is part of the selection.</td>
+          <td align="right" valign="top">
+            
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="selection_set"></a><span class="summary-sig-name">selection_set</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">first</span>,
+        <span class="summary-sig-arg">last</span>=<span class="summary-sig-default">None</span>)</span><br />
+      Set the selection from FIRST to LAST (not included) without changing 
+      the currently selected elements.</td>
+          <td align="right" valign="top">
+            
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="robotmailbox.app.TableList.TableList-class.html#separatorpath" class="summary-sig-name">separatorpath</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">index</span>=<span class="summary-sig-default">None</span>)</span><br />
+      If the optional argument is not specified, then this command returns 
+      the path name of the special separator frame displayed to mark the 
+      end of the title columns if the value of the -titlecolumns option is 
+      positive and an empty string otherwise.</td>
+          <td align="right" valign="top">
+            
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="robotmailbox.app.TableList.TableList-class.html#separators" class="summary-sig-name">separators</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Returns a list containing the path names of all column separators.</td>
+          <td align="right" valign="top">
+            
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="setlist"></a><span class="summary-sig-name">setlist</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">data</span>)</span><br />
+      clear the list and add the rows from the data</td>
+          <td align="right" valign="top">
+            
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="robotmailbox.app.TableList.TableList-class.html#size" class="summary-sig-name">size</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Return the number of elements in the tablelist.</td>
+          <td align="right" valign="top">
+            
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="robotmailbox.app.TableList.TableList-class.html#sort" class="summary-sig-name">sort</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">order</span>=<span class="summary-sig-default"><code class="variable-quote">'</code><code class="variable-string">increase</code><code class="variable-quote">'</code></span>)</span><br />
+      Sorts the items in increasing or decreasing order, as specified by 
+      the optional argument.</td>
+          <td align="right" valign="top">
+            
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="robotmailbox.app.TableList.TableList-class.html#sortbycolumn" class="summary-sig-name">sortbycolumn</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">index</span>,
+        <span class="summary-sig-arg">order</span>=<span class="summary-sig-default"><code class="variable-quote">'</code><code class="variable-string"></code><code class="variable-quote">'</code></span>)</span><br />
+      Sorts the items based on the elements of the column given by index in
+      increasing or decreasing order, as specified by the optional argument
+      The default is -increasing.</td>
+          <td align="right" valign="top">
+            
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="sortcolumn"></a><span class="summary-sig-name">sortcolumn</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      Returns the numerical index of the column by which the items were 
+      last sorted with the aid of the sortbycolumn command, or -1 if they 
+      were last sorted with the sort command or haven't been sorted at all,
+      or the sorting information was reset by invoking resetsortinfo.</td>
+          <td align="right" valign="top">
+            
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="sortorder"></a><span class="summary-sig-name">sortorder</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      Returns the sorting order (as increasing or decreasing) from the last
+      invocation of the sort or sortbycolumn command, or an empty string if
+      the items haven't been sorted at all, or the sorting information was 
+      reset by invoking resetsortinfo.</td>
+          <td align="right" valign="top">
+            
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="xview"></a><span class="summary-sig-name">xview</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">*what</span>)</span><br />
+      Query and change horizontal position of the view.</td>
+          <td align="right" valign="top">
+            
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="xview_moveto"></a><span class="summary-sig-name">xview_moveto</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">fraction</span>)</span><br />
+      Adjust the view in the window so that FRACTION of the total width of 
+      the entry is off-screen to the left.</td>
+          <td align="right" valign="top">
+            
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="xview_scroll"></a><span class="summary-sig-name">xview_scroll</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">number</span>,
+        <span class="summary-sig-arg">what</span>)</span><br />
+      Shift the x-view according to NUMBER which is measured in 
+      &quot;units&quot; or &quot;pages&quot; (WHAT).</td>
+          <td align="right" valign="top">
+            
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="yview"></a><span class="summary-sig-name">yview</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">*what</span>)</span><br />
+      Query and change vertical position of the view.</td>
+          <td align="right" valign="top">
+            
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="yview_moveto"></a><span class="summary-sig-name">yview_moveto</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">fraction</span>)</span><br />
+      Adjust the view in the window so that FRACTION of the total width of 
+      the entry is off-screen to the top.</td>
+          <td align="right" valign="top">
+            
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="yview_scroll"></a><span class="summary-sig-name">yview_scroll</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">number</span>,
+        <span class="summary-sig-arg">what</span>)</span><br />
+      Shift the y-view according to NUMBER which is measured in 
+      &quot;units&quot; or &quot;pages&quot; (WHAT).</td>
+          <td align="right" valign="top">
+            
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" class="summary">
+    <p class="indent-wrapped-lines"><b>Inherited from <code>Tkinter.BaseWidget</code></b>:
+      <code>destroy</code>
+      </p>
+    <div class="private">    <p class="indent-wrapped-lines"><b>Inherited from <code>Tkinter.BaseWidget</code></b> (private):
+      <code>_do</code>,
+      <code>_setup</code>
+      </p></div>
+    <p class="indent-wrapped-lines"><b>Inherited from <code>Tkinter.Misc</code></b>:
+      <code>__contains__</code>,
+      <code>__getitem__</code>,
+      <code>__setitem__</code>,
+      <code>__str__</code>,
+      <code>after</code>,
+      <code>after_cancel</code>,
+      <code>after_idle</code>,
+      <code>bell</code>,
+      <code>bind</code>,
+      <code>bind_all</code>,
+      <code>bind_class</code>,
+      <code>bindtags</code>,
+      <code>clipboard_append</code>,
+      <code>clipboard_clear</code>,
+      <code>clipboard_get</code>,
+      <code>colormodel</code>,
+      <code>deletecommand</code>,
+      <code>event_add</code>,
+      <code>event_delete</code>,
+      <code>event_generate</code>,
+      <code>event_info</code>,
+      <code>focus</code>,
+      <code>focus_displayof</code>,
+      <code>focus_force</code>,
+      <code>focus_get</code>,
+      <code>focus_lastfor</code>,
+      <code>focus_set</code>,
+      <code>getboolean</code>,
+      <code>getvar</code>,
+      <code>grab_current</code>,
+      <code>grab_release</code>,
+      <code>grab_set</code>,
+      <code>grab_set_global</code>,
+      <code>grab_status</code>,
+      <code>grid_bbox</code>,
+      <code>grid_columnconfigure</code>,
+      <code>grid_location</code>,
+      <code>grid_propagate</code>,
+      <code>grid_rowconfigure</code>,
+      <code>grid_size</code>,
+      <code>grid_slaves</code>,
+      <code>image_names</code>,
+      <code>image_types</code>,
+      <code>keys</code>,
+      <code>lift</code>,
+      <code>lower</code>,
+      <code>mainloop</code>,
+      <code>nametowidget</code>,
+      <code>option_add</code>,
+      <code>option_clear</code>,
+      <code>option_get</code>,
+      <code>option_readfile</code>,
+      <code>pack_propagate</code>,
+      <code>pack_slaves</code>,
+      <code>place_slaves</code>,
+      <code>propagate</code>,
+      <code>quit</code>,
+      <code>register</code>,
+      <code>selection_get</code>,
+      <code>selection_handle</code>,
+      <code>selection_own</code>,
+      <code>selection_own_get</code>,
+      <code>send</code>,
+      <code>setvar</code>,
+      <code>slaves</code>,
+      <code>tk_bisque</code>,
+      <code>tk_focusFollowsMouse</code>,
+      <code>tk_focusNext</code>,
+      <code>tk_focusPrev</code>,
+      <code>tk_menuBar</code>,
+      <code>tk_setPalette</code>,
+      <code>tk_strictMotif</code>,
+      <code>tkraise</code>,
+      <code>unbind</code>,
+      <code>unbind_all</code>,
+      <code>unbind_class</code>,
+      <code>update</code>,
+      <code>update_idletasks</code>,
+      <code>wait_variable</code>,
+      <code>wait_visibility</code>,
+      <code>wait_window</code>,
+      <code>waitvar</code>,
+      <code>winfo_atom</code>,
+      <code>winfo_atomname</code>,
+      <code>winfo_cells</code>,
+      <code>winfo_children</code>,
+      <code>winfo_class</code>,
+      <code>winfo_colormapfull</code>,
+      <code>winfo_containing</code>,
+      <code>winfo_depth</code>,
+      <code>winfo_exists</code>,
+      <code>winfo_fpixels</code>,
+      <code>winfo_geometry</code>,
+      <code>winfo_height</code>,
+      <code>winfo_id</code>,
+      <code>winfo_interps</code>,
+      <code>winfo_ismapped</code>,
+      <code>winfo_manager</code>,
+      <code>winfo_name</code>,
+      <code>winfo_parent</code>,
+      <code>winfo_pathname</code>,
+      <code>winfo_pixels</code>,
+      <code>winfo_pointerx</code>,
+      <code>winfo_pointerxy</code>,
+      <code>winfo_pointery</code>,
+      <code>winfo_reqheight</code>,
+      <code>winfo_reqwidth</code>,
+      <code>winfo_rgb</code>,
+      <code>winfo_rootx</code>,
+      <code>winfo_rooty</code>,
+      <code>winfo_screen</code>,
+      <code>winfo_screencells</code>,
+      <code>winfo_screendepth</code>,
+      <code>winfo_screenheight</code>,
+      <code>winfo_screenmmheight</code>,
+      <code>winfo_screenmmwidth</code>,
+      <code>winfo_screenvisual</code>,
+      <code>winfo_screenwidth</code>,
+      <code>winfo_server</code>,
+      <code>winfo_toplevel</code>,
+      <code>winfo_viewable</code>,
+      <code>winfo_visual</code>,
+      <code>winfo_visualid</code>,
+      <code>winfo_visualsavailable</code>,
+      <code>winfo_vrootheight</code>,
+      <code>winfo_vrootwidth</code>,
+      <code>winfo_vrootx</code>,
+      <code>winfo_vrooty</code>,
+      <code>winfo_width</code>,
+      <code>winfo_x</code>,
+      <code>winfo_y</code>
+      </p>
+    <div class="private">    <p class="indent-wrapped-lines"><b>Inherited from <code>Tkinter.Misc</code></b> (private):
+      <code>_bind</code>,
+      <code>_configure</code>,
+      <code>_displayof</code>,
+      <code>_getboolean</code>,
+      <code>_getdoubles</code>,
+      <code>_getints</code>,
+      <code>_grid_configure</code>,
+      <code>_nametowidget</code>,
+      <code>_options</code>,
+      <code>_register</code>,
+      <code>_report_exception</code>,
+      <code>_root</code>,
+      <code>_substitute</code>
+      </p></div>
+    <p class="indent-wrapped-lines"><b>Inherited from <code>Tkinter.Pack</code></b>:
+      <code>forget</code>,
+      <code>info</code>,
+      <code>pack</code>,
+      <code>pack_configure</code>,
+      <code>pack_forget</code>,
+      <code>pack_info</code>
+      </p>
+    <p class="indent-wrapped-lines"><b>Inherited from <code>Tkinter.Place</code></b>:
+      <code>place</code>,
+      <code>place_configure</code>,
+      <code>place_forget</code>,
+      <code>place_info</code>
+      </p>
+    <p class="indent-wrapped-lines"><b>Inherited from <code>Tkinter.Grid</code></b>:
+      <code>grid</code>,
+      <code>grid_configure</code>,
+      <code>grid_forget</code>,
+      <code>grid_info</code>,
+      <code>grid_remove</code>,
+      <code>location</code>
+      </p>
+    </td>
+  </tr>
+</table>
+<!-- ==================== CLASS VARIABLES ==================== -->
+<a name="section-ClassVariables"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Class Variables</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-ClassVariables"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+  <tr>
+    <td colspan="2" class="summary">
+    <p class="indent-wrapped-lines"><b>Inherited from <code>Tkinter.Misc</code></b>:
+      <code>_noarg_</code>
+      </p>
+    <div class="private">    <p class="indent-wrapped-lines"><b>Inherited from <code>Tkinter.Misc</code></b> (private):
+      <code>_subst_format</code>,
+      <code>_subst_format_str</code>,
+      <code>_tclCommands</code>
+      </p></div>
+    </td>
+  </tr>
+</table>
+<!-- ==================== METHOD DETAILS ==================== -->
+<a name="section-MethodDetails"></a>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Method Details</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-MethodDetails"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+</table>
+<a name="__init__"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">__init__</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">master</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">cnf</span>=<span class="sig-default"><code class="variable-group">{</code><code class="variable-group">}</code></span>,
+        <span class="sig-arg">**kw</span>)</span>
+    <br /><em class="fname">(Constructor)</em>
+  </h3>
+  </td><td align="right" valign="top"
+    >&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Construct a widget with the parent widget MASTER, a name WIDGETNAME 
+  and appropriate options.</p>
+  <dl class="fields">
+    <dt>Overrides:
+        Tkinter.BaseWidget.__init__
+        <dd><em class="note">(inherited documentation)</em></dd>
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="activate"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">activate</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">index</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    >&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Sets the active item to the one indicated by index if the 
+  tablelist&quot;s state is not disabled.</p>
+  <p>If index  is outside the range  of items in the tablelist then the 
+  closest item is activated.  The active item is drawn as specified by the 
+  -activestyle  configuration option when the widget has the input focus 
+  and the selection type is row.  Its index may be retrieved with the index
+  active.  Returns an empty string.</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="activatecell"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">activatecell</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">index</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    >&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Sets the active element to the one indicated by cellIndex if the 
+  tablelist&quot;s state is not disabled.</p>
+  <p>If cellIndex is outside the range of elements in the tablelist or it 
+  refers to a hidden element, then the closest non-hidden element is 
+  activated.  The active element is drawn as specified by the -activestyle 
+  configuration option when the widget has the input focus and the 
+  selection type is cell.  Its index may be retrieved with the cell index 
+  active.  Returns an empty string.</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="attrib"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">attrib</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">cnf</span>=<span class="sig-default"><code class="variable-group">{</code><code class="variable-group">}</code></span>,
+        <span class="sig-arg">**kw</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    >&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Queries or modifies the attributes of the widget.</p>
+  <p>If no name is specified, the command returns a list of pairs, each of 
+  which contains the name and the value of an attribute for pathName.  If 
+  name is specified with no value, then the command returns the value of 
+  the one named attribute.  If one or more name-value pairs are specified, 
+  then the command sets the given widget attribute(s) to the given 
+  value(s); in this case the return value is an empty string.  name may be 
+  an arbitrary string.</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="bbox"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">bbox</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">*args</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    >&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Returns a list of four numbers describing the bounding box of the row 
+  given by index.</p>
+  <p>The first two elements of the list give the x and y coordinates of the
+  upper-left corner of the screen area covered by the row (specified in 
+  pixels relative to the widget) and the last two elements give the width 
+  and height of the area, in pixels.  If no part of the row given by index 
+  is visible on the screen, or if index refers to a non-existent row, then 
+  the result is an empty string; if the row is partially visible, the 
+  result gives the full area of the row, including any parts that are not 
+  visible.</p>
+  <dl class="fields">
+    <dt>Overrides:
+        Tkinter.Grid.grid_bbox
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="bodytag"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">bodytag</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    >&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Returns the name of a binding tag whose name depends on the path name 
+  of the tablelist widget and which is associated with the tablelist&quot;s
+  body, the separator frames, and the labels used for displaying embedded 
+  images.  This binding tag is designed to be used when defining individual
+  binding scripts for tablelist widgets.  The main advantage of using this 
+  tag instead of the path name of the tablelist&quot;s body is that it 
+  enables you to write event handling scripts that are valid not only for 
+  the tablelist&quot;s body but also for the separators and embedded 
+  images.  This binding tag precedes the tag TablelistBody in the list of 
+  binding tags of the tablelist descendants mentioned above.</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="cancelediting"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">cancelediting</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    >&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>This subcommand cancels the interactive editing of the contents of the
+  cell whose index was passed to the editcell subcommand, destroys the 
+  temporary widget embedded into the cell, and restores the original cell 
+  contents.  This command enables you to cancel the interactive cell 
+  editing from within the Tcl command specified by the -editstartcommand 
+  configuration option if that pre-edit callback encounters an error when 
+  preparing the text to be inserted into the edit window.  The command is 
+  also invoked implicitly by pressing the Escape key when a cell is being 
+  edited.  The return value is an empty string, which is also returned if 
+  no cell was being edited when the command was invoked.</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="cellcget"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">cellcget</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">index</span>,
+        <span class="sig-arg">option</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    >&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Returns the current value of the cell configuration option given by 
+  option for the cell specified by cellIndex.  option may have any of the 
+  values accepted by the cellconfigure command.</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="cellconfigure"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">cellconfigure</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">index</span>,
+        <span class="sig-arg">cnf</span>=<span class="sig-default"><code class="variable-group">{</code><code class="variable-group">}</code></span>,
+        <span class="sig-arg">**kw</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    >&nbsp;
+    </td>
+  </tr></table>
+  
+  <pre class="literalblock">
+Queries or modifies the configuration options of the cell 
+given by cellIndex.  If no option is specified, the command 
+returns a list describing all of the available options for 
+the cell (see Tk_ConfigureInfo for information on the format 
+of this list).  If option is specified with no value, then 
+the command returns a list describing the one named option 
+(this list will be identical to the corresponding sublist of 
+the value returned if no option is specified).  If one or 
+more option-value pairs are specified, then the command 
+modifies the given cell option(s) to have the given 
+value(s); in this case the return value is an empty string.  
+option may have any of the following
+
+
+CELL CONFIGURATION OPTIONS
+
+The following options are currently supported by the cellcget
+and cellconfigure commands:
+
+-background color or -bg color
+    Specifies the normal background color to use when displaying
+    the contents of the cell.
+
+-editable boolean
+    Specifies whether the contents of the cell can be edited 
+    interactively.  The default value is 0.  This option 
+    overrides the one with the same name for the column 
+    containing the given cell.
+
+-font font
+    Specifies the font to use when displaying the contents
+    of the cell.
+
+-foreground color or -fg color
+    Specifies the normal foreground color to use when 
+    displaying the contents of the cell.
+
+-image image
+    Specifies the name of the Tk image to be displayed in the
+    cell.  image must be the result of an invocation of the  
+    image create  command, or an empty string, specifying that
+    no image is to be displayed.  If the column containing the 
+    cell is right-aligned then the image will be displayed to 
+    the right of the cell&quot;s text, otherwise to its left.  The 
+    text and the image are separated from each other by a 
+    space character.  If for the same cell the -window option 
+    was specified with a nonempty value then it overrides the 
+    -image option.  If the tablelist&quot;s state is disabled then 
+    this option will be ignored.
+    
+    To display an image in a cell, Tablelist makes use of an 
+    embedded label widget.  This requires more memory than 
+    inserting the image directly into the tablelist&quot;s body, but
+    has the main advantage of making it possible to adjust the 
+    width of the label containing the widget to fit into its 
+    column.  This has the visual effect of cutting off part of 
+    the image from its right or left side, depending on the 
+    column&quot;s alignment.&amp;nbspM; To make sure that images with 
+    transparent background will be dispklayed correctly, the 
+    background color of the label widgets containing the 
+    embedded images is automatically updated whenever necessary.
+
+-selectbackground color
+    Specifies the background color to use when displaying the 
+    contents of the cell while it is selected.
+    
+-selectforeground color
+    Specifies the foreground color to use when displaying the 
+    contents of the cell while it is selected.
+    
+-text text
+    Specifies the string to be displayed in the given cell, 
+    i.e., updates the element contained in the cell.  If the 
+    tablelist&quot;s state is disabled then this option will be 
+    ignored.
+    
+-window command
+    Specifies a Tcl command creating the window to be embedded
+    into the cell.  The command is automatically concatenated 
+    with the name of the tablelist widget, the cell&quot;s row and 
+    column indices, as well as the path name of the embedded 
+    window to be created, and the resulting script is evaluated
+    in the global scope.  command may also be an empty string, 
+    specifying that no embedded window is to be displayed.  If 
+    the column containing the cell is right-aligned then the 
+    window will be displayed to the right of the cell&quot;s text, 
+    otherwise to its left.  The text and the window are 
+    separated from each other by a space character.  If this 
+    option was specified with a nonempty value then it 
+    overrides the -image cell configuration option.  If the 
+    tablelist&quot;s state is disabled then this option will be 
+    ignored.
+    
+    There are several situations where the embedded window will 
+    be destroyed and later recreated by invoking the script 
+    mentioned above.  For example, when changing the value of 
+    some of the tablelist widget or column configuration 
+    options, sorting the items, or moving a row or a column,
+    the widget&quot;s contents will be redisplayed, which makes it 
+    necessary to recreate the embedded windows.  This operation
+    won&quot;t preserve the changes made on the embedded windows 
+    after their creation.  For this reason, you should avoid 
+    any changes on embedded windows outside their creation 
+    scripts.
+    
+The -background, -font, -foreground, -selectbackground, and 
+-selectforeground cell configuration options override the 
+options with the same names set at row, column, or widget level
+if the specified value is not an empty string.  
+
+See the COLORS AND FONTS section for further details on these options.
+
+</pre>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="cellselection_anchor"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">cellselection_anchor</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">index</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    >&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Sets the cell selection anchor to the element given by cellIndex.</p>
+  <p>If cellIndex refers to a nonexistent or hidden element, then the 
+  closest non-hidden element is used.  The cell selection anchor is the end
+  of the cell selection that is fixed while dragging out a cell selection 
+  with the mouse if the selection type is cell.  The cell index anchor may 
+  be used to refer to the anchor element.</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="cellselection_clear"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">cellselection_clear</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">first</span>,
+        <span class="sig-arg">last</span>=<span class="sig-default">None</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    >&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>If any of the elements between firstCell and lastCell (inclusive) or 
+  corresponding to the cell indices specified by the list cellIndexList are
+  selected, they are deselected. The selection state is not changed for 
+  elements outside the range given in the first form of the command or 
+  different from those specified by the cell index list given in its second
+  form.</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="cellselection_set"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">cellselection_set</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">first</span>,
+        <span class="sig-arg">last</span>=<span class="sig-default">None</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    >&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Selects all of the selectable elements in the range between firstCell 
+  and lastCell, inclusive, or corresponding to the indices specified by the
+  list cellIndexList, without affecting the selection state of any other 
+  elements.  An element is viewed as selectable if and only if the value of
+  the -selectable option of the row containing it is true.</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="cget"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">cget</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">option</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    >&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Returns the current value of the configuration option given by option,
+  which may have any of the values accepted by the tablelist::tablelist 
+  command.</p>
+  <dl class="fields">
+    <dt>Overrides:
+        Tkinter.Misc.__getitem__
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="columncget"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">columncget</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">index</span>,
+        <span class="sig-arg">option</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    >&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Returns the current value of the column configuration option given by 
+  option for the column specified by columnIndex.  option may have any of 
+  the values accepted by the columnconfigure command.</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="columnconfigure"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">columnconfigure</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">index</span>,
+        <span class="sig-arg">cnf</span>=<span class="sig-default"><code class="variable-group">{</code><code class="variable-group">}</code></span>,
+        <span class="sig-arg">**kw</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    >&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Queries or modifies the configuration options of the column given by 
+  columnIndex.</p>
+  <p>If no option is specified, the command returns a list describing all 
+  of the available options for the column (see Tk_ConfigureInfo for 
+  information on the format of this list).  If option is specified with no 
+  value, then the command returns a list describing the one named option 
+  (this list will be identical to the corresponding sublist of the value 
+  returned if no option is specified).  If one or more option-value pairs 
+  are specified, then the command modifies the given column option(s) to 
+  have the given value(s); in this case the return value is an empty 
+  string. option may have any of the values described in the COLUMN 
+  CONFIGURATION OPTIONS section.</p>
+  <dl class="fields">
+    <dt>Overrides:
+        Tkinter.Grid.grid_columnconfigure
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="config"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">config</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">cnf</span>=<span class="sig-default"><code class="variable-group">{</code><code class="variable-group">}</code></span>,
+        <span class="sig-arg">**kw</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    >&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Queries or modifies the configuration options of the widget.</p>
+  <p>If no option is specified, the command returns a list describing all 
+  of the available options for def (see Tk_ConfigureInfo for information on
+  the format of this list). If option is specified with no value, then the 
+  command returns a list describing the one named option (this list will be
+  identical to the corresponding sublist of the value returned if no option
+  is specified).  If one or more option-value pairs are specified, then the
+  command modifies the given widget option(s) to have the given value(s); 
+  in this case the return value is an empty string.  option may have any of
+  the values accepted by the tablelist::tablelist command.</p>
+  <dl class="fields">
+    <dt>Overrides:
+        Tkinter.Grid.config
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="configure"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">configure</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">cnf</span>=<span class="sig-default"><code class="variable-group">{</code><code class="variable-group">}</code></span>,
+        <span class="sig-arg">**kw</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    >&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Queries or modifies the configuration options of the widget.</p>
+  <p>If no option is specified, the command returns a list describing all 
+  of the available options for def (see Tk_ConfigureInfo for information on
+  the format of this list). If option is specified with no value, then the 
+  command returns a list describing the one named option (this list will be
+  identical to the corresponding sublist of the value returned if no option
+  is specified).  If one or more option-value pairs are specified, then the
+  command modifies the given widget option(s) to have the given value(s); 
+  in this case the return value is an empty string.  option may have any of
+  the values accepted by the tablelist::tablelist command.</p>
+  <dl class="fields">
+    <dt>Overrides:
+        Tkinter.Grid.config
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="containing"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">containing</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">y</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    >&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Given a y-coordinate within the tablelist window this command returns 
+  the index of the tablelist item containing that y-coordinate.  If no 
+  corresponding item is found then the return value is -1.  The coordinate 
+  y is expected to be relative to the tablelist window itself (not its body
+  component).</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="containingcell"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">containingcell</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">x</span>,
+        <span class="sig-arg">y</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    >&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Given an x- and a y-coordinate within the tablelist window, this 
+  command returns the index of the tablelist cell containing the point 
+  having these coordinates.  If no corresponding cell is found then the row
+  or column component (or both) of the return value is -1.  The coordinates
+  x and y are expected to be relative to the tablelist window itself (not 
+  its body component).</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="containingcolumn"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">containingcolumn</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">x</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    >&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Given an x-coordinate within the tablelist window, this command 
+  returns the index of the tablelist column containing that x-coordinate.  
+  If no corresponding column is found then the return value is -1.  The 
+  coordinate x is expected to be relative to the tablelist window itself 
+  (not its body component).</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="curcellselection"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">curcellselection</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    >&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Returns a list containing the canonical indices (of the form row,col, 
+  where row and col are numbers) of all of the non-hidden elements in the 
+  tablelist that are currently selected.  If there are no such elements in 
+  the tablelist then an empty string is returned.</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="curselection"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">curselection</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    >&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Returns a list containing the numerical indices of all of the items in
+  the tablelist that contain at least one non-hidden selected element.  If 
+  there are no such items in the tablelist then an empty string is 
+  returned.</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="delete"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">delete</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">first</span>,
+        <span class="sig-arg">last</span>=<span class="sig-default">None</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    >&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Deletes one or more items of the tablelist if its state is not 
+  disabled.  In the first form of the command, first and last are indices 
+  specifying the first and last items in the range to delete.  The 
+  command's second form accepts a list indexList of indices specifying the 
+  items to be deleted.  Returns an empty string.</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="deletecolumns"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">deletecolumns</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">first</span>,
+        <span class="sig-arg">last</span>=<span class="sig-default">None</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    >&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Deletes one or more columns of the tablelist if its state is not 
+  disabled.  In the first form of the command, firstColumn and lastColumn 
+  are indices specifying the first and last columns in the range to delete.
+  The command's second form accepts a list columnIndexList of indices 
+  specifying the columns to be deleted. Returns an empty string.</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="editcell"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">editcell</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">index</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    >&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Starts the interactive editing of the cell's contents if the 
+  tablelist's state is not disabled, the cell's column is not hidden, and 
+  the cell is editable.  Returns an empty string.  See the INTERACTIVE CELL
+  EDITING section for details on editablity and on the editing process.</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="editwinpath"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">editwinpath</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    >&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Returns the path name of the temporary embedded widget used for 
+  interactive cell editing, created by the editcell subcommand.  If no cell
+  is currently being edited then the return value is an empty string.  This
+  subcommand enables you to access the edit window from within the commands
+  specified by the -editstartcommand and -editendcommand configuration 
+  options.</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="entrypath"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">entrypath</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    >&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Returns the path name of the entry or entry-like component of the 
+  temporary embedded widget used for interactive cell editing, created by 
+  the editcell subcommand.  If no cell is currently being edited or the 
+  editing is taking place with the aid of a checkbutton or mentry widget 
+  then the return value is an empty string; otherwise it is the path name 
+  of an entry, spinbox, or BWidget Entry widget, which can be the edit 
+  window itself or one of its descendants.  This subcommand enables you to 
+  access the entry or entry-like component of the temporary embedded widget
+  from within the commands specified by the -editstartcommand and 
+  -editendcommand configuration options.</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="finishediting"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">finishediting</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    >&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>This subcommand attempts to terminate the interactive editing of the 
+  contents of the cell whose index was passed to the editcell subcommand by
+  destroying the temporary widget embedded into the cell and updating the 
+  cell's contents.  The exact steps involved are as follows:  First, the 
+  widget's final text is compared to its original one.  If they are equal 
+  then the edit window is destroyed and the cell's original contents are 
+  restored.  If the two strings are different and the value of the 
+  -editendcommand configuration option is a nonempty string, then the 
+  widget's final text is passed to that command as its last argument 
+  (following the tablelist's path name as well as the cell's row and column
+  indices), the resulting script is evaluated in the global scope, and the 
+  return value becomes the cell's new contents after destroying the edit 
+  window.  However, if from within this script the rejectinput subcommand 
+  was invoked then the cell's value is not changed and the embedded widget 
+  remains displayed in the cell; in this case the command returns the 
+  boolean value 0.  In all the other cases, the return value is 1; the 
+  latter is also returned if no cell was being edited when the command was 
+  invoked.  Before returning the value 1, the command generates the virtual
+  event &lt;&lt;TablelistCellUpdated&gt;&gt; if the cell's text was 
+  changed.  This subcommand is called implicitly by pressing Return or 
+  KP_Enter when editing a cell, or by clicking with the left mouse button 
+  anywhere in the tablelist's body, outside the cell just being edited, or 
+  moving into another editable cell by using keyboard navigation.</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="get"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">get</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">first</span>,
+        <span class="sig-arg">last</span>=<span class="sig-default">None</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    >&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>The first form of the command returns a list whose elements are all of
+  the tablelist items between first and last, inclusive. The value returned
+  by the second form depends on the number of elements in the list 
+  indexList: if the latter contains exactly one index then the return value
+  is the tablelist item indicated by that index (or an empty string if the 
+  index refers to a non-existent item); otherwise the command returns the 
+  list of all of the tablelist items corresponding to the indices specified
+  by indexList.</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="getcolumns"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">getcolumns</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">first</span>,
+        <span class="sig-arg">last</span>=<span class="sig-default">None</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    >&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>The first form of the command returns a list whose elements are lists 
+  themselves, where each of the sublists corresponds to exactly one column 
+  between firstColumn and lastColumn, inclusive, and consists of all of the
+  tablelist elements contained in that column.  The value returned by the 
+  second form depends on the number of elements in the list 
+  columnIndexList: if the latter contains exactly one column index then the
+  return value is a list consisting of all of the tablelist elements 
+  contained in the column indicated by that column index; otherwise the 
+  command returns a list whose elements are lists themselves, where each of
+  the sublists corresponds to exactly one column index in columnIndexList 
+  and consists of all of the tablelist elements contained in that 
+  column.</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="getkeys"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">getkeys</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">first</span>,
+        <span class="sig-arg">last</span>=<span class="sig-default">None</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    >&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>The first form of the command returns a list whose elements are all of
+  the sequence numbers associated with the tablelist items between first 
+  and last, inclusive.  The value returned by the second form depends on 
+  the number of elements in the list indexList: if the latter contains 
+  exactly one index then the return value is the sequence number associated
+  with the tablelist item indicated by that index (or an empty string if 
+  the index refers to a non-existent item); otherwise the command returns 
+  the list of all of the sequence numbers associated with the tablelist 
+  items corresponding to the indices specified by indexList.  Each item of 
+  a tablelist widget has a unique sequence number that remains unchanged 
+  until the item is deleted, thus acting as a key that uniquely identifies 
+  the item even if the latter's position (i.e., row index) changes.  This 
+  command provides read-only access to these internal item IDs.</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="index"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">index</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">index</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    >&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Returns the integer row index value that corresponds to index.</p>
+  <p>If index is end then the return value is the number of items in the 
+  tablelist (not the index of the last item).</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="insert"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">insert</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">index</span>,
+        <span class="sig-arg">*items</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    >&nbsp;
+    </td>
+  </tr></table>
+  
+  <pre class="literalblock">
+Inserts zero or more new items in the widget's internal list 
+       just before the item given by index if the tablelist's state is not
+       disabled.  If index equals the number of items or is specified as 
+       end then the new items are added to the end of the widget's list.  
+       Tabulator and newline characters are displayed as        and 
+(i.e.,
+       a backslash followed by a t and n, respectively), but are inserted
+       unchanged into the internal list.  The return value is an empty 
+       string.
+       
+
+</pre>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="insertcolumnlist"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">insertcolumnlist</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">index</span>,
+        <span class="sig-arg">list</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    >&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Inserts the columns specified by the list columnList just before the 
+  column given by columnIndex if the tablelist's state is not disabled.  If
+  columnIndex equals the number of columns or is specified as end then the 
+  new columns are added to the end of the column list.  The argument 
+  columnList must be a list containing the width, title, and optional 
+  alignment specifications for the new columns, in the same form as in the 
+  case of the -columns configuration option.  The return value is an empty 
+  string. The elements of the new columns are initially empty strings; the 
+  easiest way to change these values is to use the fillcolumn subcommand or
+  the -text column configuration option.</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="insertcolumns"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">insertcolumns</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">index</span>,
+        <span class="sig-arg">*columns</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    >&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Inserts zero or more new columns just before the column given by index
+  if the tablelist's state is not disabled.  If columnIndex equals the 
+  number of columns or is specified as end then the new columns are added 
+  to the end of the column list.  The arguments following the column index 
+  have the same meanings as in the case of the -columns configuration 
+  option.  The return value is an empty string.  The elements of the new 
+  columns are initially empty strings; the easiest way to change these 
+  values is to use the fillcolumn subcommand or the -text column 
+  configuration option.</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="insertlist"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">insertlist</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">index</span>,
+        <span class="sig-arg">*items</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    >&nbsp;
+    </td>
+  </tr></table>
+  
+  <pre class="literalblock">
+Inserts the items of the list itemList in the widget's internal 
+       list just before the item given by index if the tablelist's state 
+       is not disabled.  If index equals the number of items or is 
+       specified as end then the new items are added to the end of the 
+       widget's list.  Tabulator and newline characters are displayed 
+       as       and 
+(i.e., a backslash followed by a t and n, 
+       respectively), but are inserted unchanged into the internal list. 
+       The return value is an empty string.  
+       
+
+</pre>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="itemlistvar"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">itemlistvar</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    >&nbsp;
+    </td>
+  </tr></table>
+  
+  <pre class="literalblock">
+Returns the name of a variable used by Tablelist to hold the 
+widget's internal list.  The recommended way to use this variable 
+is to create a link to it with the aid of the upvar command, 
+like in the following example:
+
+    upvar #0 [.tbl itemlistvar] itemList 
+
+In this example, the value of the variable itemList will be the 
+internal list of the tablelist widget .tbl.  Each element of the
+widget's internal list corresponds to one item, and it is in turn
+a list whose elements correspond to the elements of that item, 
+except that it has one additional element, holding the item's key.
+
+The itemlistvar command provides an efficient way of accessing 
+this internal list, instead of retrieving the items with the get 
+subcommand or using the -listvariable option (these methods consume
+significantly more memory).  It can be useful in situations where 
+the elements of a tablelist widget are to be accessed for creating
+text files, HTML output, XML data, database commands, etc.  This 
+should, however, be a strictly readonly access; otherwise the 
+results will be unpredictable!
+
+</pre>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="move"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">move</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">src</span>,
+        <span class="sig-arg">dst</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    >&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Moves the item indicated by src just before the one given by dst if 
+  the tablelist's state is not disabled.  If target equals the nunber of 
+  items or is specified as end then the source item is moved after the last
+  one.  Returns an empty string.</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="movecolumn"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">movecolumn</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">src</span>,
+        <span class="sig-arg">dst</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    >&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Moves the column indicated by src just before the one given by dst if 
+  the tablelist's state is not disabled.  If dst equals the number of 
+  columns or is specified as end then the source column is moved after the 
+  last one.  Returns an empty string.</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="nearest"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">nearest</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">y</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    >&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Given a y-coordinate within the tablelist window, this command returns
+  the index of the tablelist item nearest to that y-coordinate.  The 
+  coordinate y is expected to be relative to the tablelist window itself 
+  (not its body component).</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="nearestcell"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">nearestcell</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">x</span>,
+        <span class="sig-arg">y</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    >&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Given an x- and a y-coordinate within the tablelist window, this 
+  command returns the index of the non-hidden tablelist cell nearest to the
+  point having these coordinates.  The coordinates x and y are expected to 
+  be relative to the tablelist window itself (not its body component).</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="nearestcolumn"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">nearestcolumn</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">x</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    >&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Given an x-coordinate within the tablelist window, this command 
+  returns the index of the non-hidden tablelist column nearest to that 
+  x-coordinate.  The coordinate x is expected to be relative to the 
+  tablelist window itself (not its body component).</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="rejectinput"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">rejectinput</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    >&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>If invoked from within the Tcl command specified by the 
+  -editendcommand configuration option, then this subcommand prevents the 
+  termination of the interactive editing of the contents of the cell whose 
+  index was passed to the editcell subcommand.  It invokes the seecell 
+  subcommand to make sure the respective cell becomes visible (in case it 
+  was scrolled out of view), and sets the focus to the temporary widget 
+  embedded into the cell.  This command enables you to reject the widget's 
+  text during the final validation of the string intended to become the new
+  cell contents.</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="resetsortinfo"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">resetsortinfo</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    >&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Resets the information about the sorting of the items. Subsequent 
+  invocations of sortcolumn and sortorder will return -1 and an empty 
+  string, respectively.  This command also removes an existing up- or 
+  down-arrow displayed in any of the header labels by an earlier invocation
+  of sortbycolumn.  The return value is an empty string.</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="rowcget"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">rowcget</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">index</span>,
+        <span class="sig-arg">option</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    >&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Returns the current value of the row configuration option given by 
+  option for the row specified by index.  option may have any of the values
+  accepted by the rowconfigure command.</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="rowconfigure"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">rowconfigure</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">index</span>,
+        <span class="sig-arg">cnf</span>=<span class="sig-default"><code class="variable-group">{</code><code class="variable-group">}</code></span>,
+        <span class="sig-arg">**kw</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    >&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Queries or modifies the configuration options of the row given by 
+  index.  If no option is specified, the command returns a list describing 
+  all of the available options for the row (see Tk_ConfigureInfo for 
+  information on the format of this list). If option is specified with no 
+  value, then the command returns a list describing the one named option 
+  (this list will be identical to the corresponding sublist of the value 
+  returned if no option is specified).  If one or more option-value pairs 
+  are specified, then the command modifies the given row option(s) to have 
+  the given value(s); in this case the return value is an empty string.  
+  option may have any of the values described in the ROW CONFIGURATION 
+  OPTIONS section.</p>
+  <dl class="fields">
+    <dt>Overrides:
+        Tkinter.Grid.grid_rowconfigure
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="seecell"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">seecell</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">index</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    >&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Adjusts the view in the tablelist so that the cell given by index is 
+  visible.  If the cell is already visible then the command has no effect; 
+  if the cell is near one edge of the window then the tablelist scrolls to 
+  bring the cell into view at the edge; otherwise the tablelist scrolls to 
+  center the cell.  If the value of the -titlecolumns option is positive 
+  then the centering of the cell is only done vertically; the horizontal 
+  scrolling (which in this case is performed column-wise) will just bring 
+  the cell into view next to the title columns or at the right edge of the 
+  window.</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="seecolumn"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">seecolumn</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">index</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    >&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Adjusts the view in the tablelist so that the column given by index is
+  visible.  If the column is already visible then the command has no 
+  effect; if the column is near one edge of the window then the tablelist 
+  scrolls horizontally to bring the column into view at the edge; otherwise
+  the tablelist scrolls horizontally to center the column.  If the value of
+  the -titlecolumns option is positive then the horizontal scrolling (which
+  in this case is performed column-wise) will just bring the column into 
+  view next to the title columns or at the right edge of the window.</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="selection_clear"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">selection_clear</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">first</span>,
+        <span class="sig-arg">last</span>=<span class="sig-default">None</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    >&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Clear the selection from FIRST to LAST (not included).</p>
+  <dl class="fields">
+    <dt>Overrides:
+        Tkinter.Misc.selection_clear
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="separatorpath"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">separatorpath</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">index</span>=<span class="sig-default">None</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    >&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>If the optional argument is not specified, then this command returns 
+  the path name of the special separator frame displayed to mark the end of
+  the title columns if the value of the -titlecolumns option is positive 
+  and an empty string otherwise.  If the optional argument is present, then
+  the command returns the path name of the separator frame attached to the 
+  right edge of the header label indicated by columnIndex if the value of 
+  the -showseparators configuration option is true and an empty string 
+  otherwise.</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="separators"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">separators</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    >&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Returns a list containing the path names of all column separators.  If
+  the value of the -titlecolumns option is positive then the first element 
+  of the list will be the path name of the special separator frame 
+  displayed to mark the end of the title columns.  Whether the path names 
+  of the other separators are included in the list, depends on the value of
+  the -showseparators configuration option.</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="size"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">size</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    >&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Return the number of elements in the tablelist.</p>
+  <dl class="fields">
+    <dt>Overrides:
+        Tkinter.Grid.size
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="sort"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">sort</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">order</span>=<span class="sig-default"><code class="variable-quote">'</code><code class="variable-string">increase</code><code class="variable-quote">'</code></span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    >&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Sorts the items in increasing or decreasing order, as specified by the
+  optional argument.  The default is -increasing.  Uses the value of the 
+  -sortcommand widget configuration option as comparison command.  sort 
+  also removes an existing up- or down-arrow displayed in any of the header
+  labels by an earlier invocation of the sortbycolumn command.</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="sortbycolumn"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">sortbycolumn</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">index</span>,
+        <span class="sig-arg">order</span>=<span class="sig-default"><code class="variable-quote">'</code><code class="variable-string"></code><code class="variable-quote">'</code></span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    >&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Sorts the items based on the elements of the column given by index in 
+  increasing or decreasing order, as specified by the optional argument The
+  default is -increasing.  The sorting process is controlled by the values 
+  of the -sortmode and -sortcommand options for the given column. If both 
+  the value of the -showarrow configuration option and that of the 
+  -showarrow option for the specified column are true then an up- or 
+  down-arrow indicating the sorting order will be placed into the column's 
+  label.  The shape of the arrow depends on the command's optional argument
+  and on the value of the -incrarrowtype configuration option.  If the 
+  label's contents are right-aligned then the arrow will be displayed on 
+  the left side of the label, otherwise on its right side.</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="robotmailbox.app-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Mon Dec  5 12:45:49 2011
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>
