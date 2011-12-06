@@ -15,6 +15,8 @@ class EmailController:
 	''' IMAP client library'''
 	model = None
 	''' Email model'''
+	offline = True
+	''' Is IMAP connected '''
 	def __init__(self,controller,host,port,user,passw,ssl=True):
 		'''
 		Initialize EmailController -- works with imap
@@ -32,11 +34,18 @@ class EmailController:
 		@type ssl: Boolean
 		'''
 		self.controller = controller
+		self.host = host
+		self.port = port
+		self.user = user
+		self.passw = passw
+		self.ssl = ssl
 		try:
 			self.client = IMAPClient(host,port,True,ssl)
-			self.client.login(user,passw)
+			self.client.login(user,passw)	
+			self.offline = False
 		except:
-			print "Couldn't connect to IMAP server: ",host,port,user,passw,"ssl=",ssl	
+			print "Couldn't connect to IMAP server: ",host,port,user,passw,"ssl=",ssl
+			self.offline = True
 		self.model = EmailModel(self,settings.DB_PATH)	
 	
 	def sendMessage(self,send_from,send_to,mimemessage):
@@ -141,7 +150,7 @@ class EmailController:
 		if metajson != '':
 			evmailcontroller = self.controller.getEvmailController()
 			setname,name,version,messagesetid = evmailcontroller.processEvmail(metajson)
-			self.templatesetmodel = self.controller.getTemplatesetController().templatesetmodel
+			self.templatesetmodel = self.controller.getTemplatesetController().model
 			tsid = self.templatesetmodel.hasTemplateset(setname,version)
 			tid = self.templatesetmodel.hasTemplate(setname,name,version)
 		else:
@@ -194,6 +203,14 @@ class EmailController:
 		fp.close()
 		return str(counter)+ftype
 
+	def isoffline(self,count=0):
+		if count == 3 and self.offline is True:
+			return True
+		elif self.offline is False:
+			return False
+		else:
+			self.__init__(self.controller,self.host,self.port,self.user,self.passw,self.ssl)
+			return self.isoffline(count+1)
 
 if __name__ == "__main__":
 	emailcontroller()

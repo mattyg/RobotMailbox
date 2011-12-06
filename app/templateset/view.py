@@ -1,6 +1,7 @@
 import wx
 import wx.lib.masked
 import json
+from library.db.dal import Row
 
 
 class TemplatesetViewForm:
@@ -23,15 +24,49 @@ class TemplatesetViewForm:
 		self.hide = {}
 		self.response = responsedata
 		self.responseid = responseid
+		self.valuemap = {}
+		self.itemmap = {}
 		if self.responseid is not None:
 			self.evmailmodel = self.controller.controller.getEvmailController().model
-			self.fromemail = self.evmailmodel.getMessageTos(responseid)
-			self.todata = self.evmailmodel.getMessageReplyTo(responseid)
-			self.subject = 'Re: '+self.response['show']['subject']
+			self.templaterow = self.controller.controller.getTemplatesetController().model.getTemplate(template['hide']['setname'],template['hide']['name'],template['hide']['version'])
+			self.fromemail = self.controller.controller.settings.IMAP_EMAIL
+			if self.templaterow['towho'] == 'sender' or self.templaterow['towho'] == 'all':
+				self.todata = self.evmailmodel.getMessageReplyTo(responseid)
+				if self.todata is not None:
+					if isinstance(self.todata,tuple):
+						if self.todata[1] is None or self.todata[1] == '':
+							self.todata = self.evmailmodel.getMessageFroms(responseid)
+				else:
+					self.todata = self.evmailmodel.getMessageFroms(responseid)
+				print type(self.todata)
+				if str(type(self.todata)).find('list') != -1:
+					tostr = ''
+					for each in self.todata:
+						tostr += each['name']+' '+each['email']+', '
+					self.todata = tostr
+				else:
+					print self.todata
+					self.todata = self.todata[0]+' '+self.todata[1]+', '
+
+				print self.todata
+			if self.templaterow['towho'] == 'all':
+				oldtos = self.evmailmodel.getMessageTos(responseid)
+				if str(type(oldtos)).find('list') != -1:
+					tostr = ''
+					for each in oldtos:
+						if each['email'] != self.fromemail.strip():
+							tostr += each['name']+' '+each['email']+', '
+					oldtos = tostr
+				else:
+					oldtos = oldtos[0]+' '+oldtos[1]+', '
+				self.todata += oldtos
+
+			self.valuemap['to'] = self.todata
+			self.valuemap['from'] = self.fromemail
 		else:
-			self.todata = []
-			self.fromemail = fromemail
-			self.subject = ''
+			self.templaterow = None
+			self.valuemap['to'] = ''
+			self.valuemap['from'] = fromemail
 		self.notebook = notebook
 		self.panel = wx.lib.scrolledpanel.ScrolledPanel( self.notebook, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
 		self.panel.SetupScrolling()
@@ -40,7 +75,8 @@ class TemplatesetViewForm:
 		hbox2 = wx.BoxSizer(wx.HORIZONTAL)
 		self.generateFormLabel(self.panel,hbox2,"To")
 		self.to = wx.TextCtrl(self.panel, wx.ID_ANY,size=(600,100),style=wx.TE_MULTILINE)
-		self.to.AppendText(str(self.todata[1]))
+		self.to.AppendText(str(self.valuemap['to']))
+		self.itemmap['to'] = self.to
 		hbox2.Add(self.to)
 		self.vbox.Add(hbox2,flag=wx.EXPAND|wx.LEFT|wx.RIGHT|wx.TOP, border=10)
 		self.vbox.Add((-1,10))
@@ -132,12 +168,14 @@ class TemplatesetViewForm:
 						else:
 								format = None
 						if format == 'date-time':
-							hbox = self.generateFormElement(self.panel,hbox,each,itemsdata[each]['type'],'date',mapsto)
-							hbox = self.generateFormElement(self.panel,hbox,each,itemsdata[each]['type'],'time',mapsto)
+							hbox,item = self.generateFormElement(self.panel,hbox,each,itemsdata[each]['type'],'date',mapsto)
+							hbox,item = self.generateFormElement(self.panel,hbox,each,itemsdata[each]['type'],'time',mapsto)
 						else:
-							hbox = self.generateFormElement(self.panel,hbox,each,itemsdata[each]['type'],format,mapsto)
+							hbox,item = self.generateFormElement(self.panel,hbox,each,itemsdata[each]['type'],format,mapsto)
 				else:
 					hbox = self.generateFormLabel(self.panel,hbox,each)
+				if itemsdata[each].__contains__('mapsto'):
+					self.itemmap[itemsdata[each]['mapsto']] = item
 			elif isinstance(itemsdata[each],str):
 				self.required = True
 			print hbox
@@ -216,24 +254,31 @@ class TemplatesetViewForm:
 		# get data to send		
 		data = self.readData()
 		# generate message
-		print data
-		message = self.controller.controller.getEvmailController().generateMessage(data,self.subject,self.todata,self.fromemail)
+		subject = self.itemmap['subject'].GetValue()
+		to = self.itemmap['to'].GetValue()
+		fromp = self.fromemail
+		message = self.controller.controller.getEvmailController().generateMessage(data,subject,to,fromp)
 		# add to database
 		'''datastr = json.dumps(data)
 		self.controller.getEmailController().addMessage(data['hide']['setname']+'/'+data['hide']['name'],subject,text,message['Date'],tos,fromemail,fromemail,message['Message-ID'],datastr,0)'''
 		# send message
 		try:
-			self.controller.controller.getEmailController().sendMessage(self.fromemail,self.todata,message)
-			# CLOSE TAB
-			print "controller",self.controller
-			print "parent controller",self.controller.controller
-			print "parent controller view",self.controller.controller.view
-			self.controller.controller.SetStatusText("Message sent to "+str(self.todata))
-			selected = self.notebook.GetSelection()
-			self.notebook.DeletePage(selected)
-			return "Message Sent."
+			emailcontroller = self.controller.controller.getEmailController()
+			if emailcontroller.isoffline() == False:
+				emailcontroller.sendMessage(self.fromemail,self.todata,message)
+				# CLOSE TAB
+				print "controller",self.controller
+				print "parent controller",self.controller.controller
+				print "parent controller view",self.controller.controller.view
+				selected = self.notebook.GetSelection()
+				print selected
+				self.notebook.RemovePage(selected)
+				self.controller.controller.SetStatusText("Message sent to "+str(self.todata))
+				return "Message Sent."
+			else:
+				self.controller.controller.SetStatusText("Message sending failed. Check IMAP settings in app/core/settings.py")
 		except Exception, e:
-			self.controller.controller.SetStatusText("Message sent to "+str(self.todata))
+			self.controller.controller.SetStatusText("Message sending failed.")
 			return "Message sending failed."
 
 
@@ -292,9 +337,8 @@ class TemplatesetViewForm:
 				self.show[name] = item
 				boxsizer.Add(item,flag=wx.RIGHT,border=10)
 				if responsemapsto is not None:
-					print 'RESPONSE',self.response['show']
 					item.AppendText(self.response['show'][name][responsemapsto])
-		return boxsizer
+		return boxsizer,item
 
 	def generateFormLabel(self,panel,boxsizer,label):
 		'''	

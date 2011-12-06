@@ -18,18 +18,25 @@ class Controller:
 	''' Child evmail Controller'''
 	view = None
 	''' core View'''
+	settings = None
+	''' settings link'''
 	def __init__(self):
 		'''
 		Initialize core Controller -- links all controllers, models & views together
 		'''
 		print "views"
+		self.settings = settings
 		self.emailcontroller = EmailController(self,settings.IMAP_HOST,settings.IMAP_PORT,settings.IMAP_USER,settings.IMAP_PASS,ssl=True)
 		self.templatesetcontroller = TemplatesetController(self)
 		self.evmailcontroller = EvmailController(self)
 		self.templatesetcontroller.model.reloadAll()
 		self.view = View(self,settings.XRC_PATH)
+		if self.emailcontroller.isoffline() is False:
+			self.initialstatus = 'Welcome to RobotMailbox'
+		else:
+			self.initialstatus = 'ERROR: Failed to connect to IMAP, check your settings in app/core/settings.py'
+		self.view.SetStatusText(self.initialstatus)
 		self.view.start()
-		self.view.SetStatusText('Welcome to RobotMailbox')
 
 	
 	def getTemplatesetController(self):

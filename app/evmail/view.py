@@ -26,9 +26,8 @@ class EvmailView:
 		label.SetFont(boldfont)
 		
 		sizerlist.append((label,0,wx.RIGHT,10))
-		for each in froms:
-			etext = wx.StaticText(panel,wx.ID_ANY,label=each['email'])
-			sizerlist.append((etext,0,wx.RIGHT,10))
+		etext = wx.StaticText(panel,wx.ID_ANY,label=froms)
+		sizerlist.append((etext,0,wx.RIGHT,10))
 
 		# add Tos
 		if tos is not None:
@@ -36,9 +35,8 @@ class EvmailView:
 			label.SetFont(boldfont)
 		
 			sizerlist.append((label,0,wx.RIGHT,10))
-			for each in tos:
-				etext = wx.StaticText(panel,wx.ID_ANY,label=each['email'])
-				sizerlist.append((etext,0,wx.RIGHT,10))
+			etext = wx.StaticText(panel,wx.ID_ANY,label=tos)
+			sizerlist.append((etext,0,wx.RIGHT,10))
 	
 		# add Date/time
 		label = wx.StaticText(panel,wx.ID_ANY,label='Date:')

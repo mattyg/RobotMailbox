@@ -113,6 +113,20 @@ oll		Create TemplatesetModel
 			templaterows.extend(rows)
 		return templaterows
 
+	def getTemplate(self,setname,name,version=None):
+		if version is None:
+			version = self.getNewestTemplatesetVersion(setname)
+		
+		ts = self.db((self.db.templateset.name==setname) & (self.db.templateset.version==version)).select().first()
+		if ts is not None:		
+			rows = self.db((self.db.template.name==name) & (self.db.template.templateset==ts.id)).select().first()
+			if rows is not None:
+				return rows
+			else:
+				return False
+		else:
+			return False
+
 	def addTemplateset(self,name,version):
 		'''
 		add a (already downloaded) template set to the database.

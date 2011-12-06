@@ -9,6 +9,8 @@ class View(wx.Frame):
 	'''The Controller that this View notifies and updates from.'''
 	xrc = None
 	"""The XRC xml resource File containing this view's default setup"""
+	statustext = ''
+	''' Text of the initial statusbar'''
 	def __init__(self,controller,xrcpath):
 		"""
 		@param controller: the Controller that this View notifies and updates from.
@@ -22,6 +24,7 @@ class View(wx.Frame):
 		self.evmailcontroller = self.controller.getEvmailController()
 		self.app = wx.App(False)
 		wx.Frame.__init__ ( self, None, id = wx.ID_ANY, title = wx.EmptyString, pos = wx.DefaultPosition, size = wx.Size( 646,367 ), style = wx.DEFAULT_FRAME_STYLE|wx.TAB_TRAVERSAL )	
+		self.statusbar = None
 
 	def start(self):
 		self.loadDefault(self.xrc)
@@ -55,6 +58,7 @@ class View(wx.Frame):
 
 		self.OverheadBoxSizer = wx.BoxSizer( wx.VERTICAL )
 		self.statusbar = self.CreateStatusBar()
+		self.statusbar.SetStatusText(self.statustext)
 		subbox2 = wx.BoxSizer(wx.HORIZONTAL)
 		subbox2.Add(self.statusbar,flag=wx.EXPAND|wx.LEFT|wx.RIGHT|wx.TOP, border=10)
 		self.OverheadBoxSizer.Add( self.OverheadNotebook, 1, flag=wx.EXPAND|wx.LEFT|wx.RIGHT|wx.TOP, border=0 )
@@ -139,7 +143,8 @@ class View(wx.Frame):
 		# 3. New messages to populate ListCtrl
 		num_items = self.NewMessagesListCtrl.GetItemCount()
 		emailcontroller = self.controller.getEmailController()
-		emailcontroller.addNewEmails()
+		if emailcontroller.offline is False:
+			emailcontroller.addNewEmails()
 		activemessages = emailcontroller.model.getActiveEmails()
 		for each in activemessages:
 			if len(each['templateset'].strip()) > 0:
@@ -197,8 +202,10 @@ class View(wx.Frame):
 		@param text: Text to set StatusBar
 		@type text: String
 		'''
-		self.statusbar.SetStatusText(text)
-
+		if self.statusbar is not None:
+			self.statusbar.SetStatusText(text)
+		else:
+			self.statustext = text
 	def reloadAllEmails(self,event):
 		''' Bind event to reload all emails from menu item'''
 		self.controller.getEmailController().model.reloadAllEmails()
