@@ -26,10 +26,8 @@ class Controller:
 		self.emailcontroller = EmailController(self,settings.IMAP_HOST,settings.IMAP_PORT,settings.IMAP_USER,settings.IMAP_PASS,ssl=True)
 		self.templatesetcontroller = TemplatesetController(self)
 		self.evmailcontroller = EvmailController(self)
-		#self.emailcontroller.model.reloadAllEmails()
-		print "VIEWS",self.view
+		self.templatesetcontroller.model.reloadAll()
 		self.view = View(self,settings.XRC_PATH)
-		print "VIEWS",self.view
 		self.view.start()
 		self.view.SetStatusText('Welcome to RobotMailbox')
 

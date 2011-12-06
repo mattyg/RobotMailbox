@@ -3,22 +3,19 @@
 	"version" : "0.1",
 	"description" : "Send a message responding to a discussion",
 	"hide" : {
-		"threadid" : {
+		"messageid" : {
 			"type" : "string",
 			"required" : true
 		},
-		"respondtoid" : {
-			"type" : "string",
-			"required" : true
-		},
-		"messageid" : {	
+		"messagesetid" : {	
 			"type" : "string",
 			"required" : true
 		}
 	},
 	"show" : {"subject" : {
 			"type" : "string",
-			"required" : true
+			"required" : true,
+			"responsemapsto":"subject"
 		  },
 		  "body" : {
 			"type" : "string",

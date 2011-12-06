@@ -25,7 +25,9 @@ class View(wx.Frame):
 
 	def start(self):
 		self.loadDefault(self.xrc)
+		self.populateMessages()
 		self.app.MainLoop()	
+
 
 	def loadDefault(self,xrcpath):
 		'''
@@ -70,6 +72,10 @@ class View(wx.Frame):
 		reloadbutton = wx.MenuItem(self.File,wx.ID_ANY,"Update Inbox", wx.EmptyString,wx.ITEM_NORMAL)
 		self.Bind(wx.EVT_MENU,self.updateMessages,id=reloadbutton.GetId())
 		self.File.AppendItem(reloadbutton)
+		
+		reloadallbutton = wx.MenuItem(self.File,wx.ID_ANY,"Reload Inbox",wx.EmptyString,wx.ITEM_NORMAL)
+		self.Bind(wx.EVT_MENU,self.reloadAllEmails,id=reloadallbutton.GetId())
+		self.File.AppendItem(reloadallbutton)
 
 		# add menu templates
 		templatesets = self.templatesetcontroller.model.getAllTemplatesets()
@@ -121,8 +127,6 @@ class View(wx.Frame):
 		self.NewMessagesListCtrl.SetColumnWidth(1, 500)
 		self.NewMessagesListCtrl.SetColumnWidth(2, 300)
 		self.NewMessagesListCtrl.SetColumnWidth(3, 500)
-		newcount = self.populateMessages()
-		self.SetStatusText("Welcome to RobotMailbox.")
 
 	def populateMessages(self):
 		'''
@@ -195,5 +199,8 @@ class View(wx.Frame):
 		'''
 		self.statusbar.SetStatusText(text)
 
+	def reloadAllEmails(self,event):
+		''' Bind event to reload all emails from menu item'''
+		self.controller.getEmailController().model.reloadAllEmails()
 if __name__ == "__main__":
 	View()

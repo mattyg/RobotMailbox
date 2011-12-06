@@ -4,7 +4,7 @@ import json
 
 
 class TemplatesetViewForm:
-	def __init__(self,controller,notebook,template,fromemail,response=None):
+	def __init__(self,controller,notebook,template,fromemail,responseid=None,responsedata=None):
 		'''
 		@param controller: the parent TemplatesetController
 		@type controller: TemplatesetController
@@ -17,28 +17,38 @@ class TemplatesetViewForm:
 		@param response: the message data you are responding to
 		@type response: Dict
 		'''
-		self.response = response
 		self.controller = controller
 		self.template = template
 		self.show = {}
 		self.hide = {}
-		self.fromemail = fromemail
-		self.todata = []
+		self.response = responsedata
+		self.responseid = responseid
+		if self.responseid is not None:
+			self.evmailmodel = self.controller.controller.getEvmailController().model
+			self.fromemail = self.evmailmodel.getMessageTos(responseid)
+			self.todata = self.evmailmodel.getMessageReplyTo(responseid)
+			self.subject = 'Re: '+self.response['show']['subject']
+		else:
+			self.todata = []
+			self.fromemail = fromemail
+			self.subject = ''
 		self.notebook = notebook
-		self.panel = wx.lib.scrolledpanel.ScrolledPanel( notebook, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
+		self.panel = wx.lib.scrolledpanel.ScrolledPanel( self.notebook, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
 		self.panel.SetupScrolling()
 
 		self.vbox = wx.BoxSizer(wx.VERTICAL)
 		hbox2 = wx.BoxSizer(wx.HORIZONTAL)
 		self.generateFormLabel(self.panel,hbox2,"To")
 		self.to = wx.TextCtrl(self.panel, wx.ID_ANY,size=(600,100),style=wx.TE_MULTILINE)
+		self.to.AppendText(str(self.todata[1]))
 		hbox2.Add(self.to)
 		self.vbox.Add(hbox2,flag=wx.EXPAND|wx.LEFT|wx.RIGHT|wx.TOP, border=10)
 		self.vbox.Add((-1,10))
-		self.subject = ''
-		print template
-		self.generateElements(template['show'])
+		self.vbox = self.generateElements(template['show'])
 		self.generateEndButton()
+		if self.responseid is not None:
+			lister = self.controller.controller.getEvmailController().view.generateMessageSizer(self.panel,self.evmailmodel.getMessage(responseid),self.fromemail)			
+			self.vbox.AddMany(lister)
 
 	def generateAElements(self,itemsdata,name):
 		'''
@@ -58,9 +68,10 @@ class TemplatesetViewForm:
 		for each in itemsdata:
 			hbox = wx.BoxSizer(wx.HORIZONTAL)
 			if isinstance(each,dict):
-				if each.__contains__('mapsto'):
-					if each['mapsto'] == 'subject':
-						self.subject = each
+				if each.__contains__('responsemapsto'):
+					mapsto = each['responsemapsto']
+				else:
+					mapsto = None
 				if each.__contains__('type'):
 					# add widget based on type & format
 					if each['type'] == 'object':
@@ -78,10 +89,10 @@ class TemplatesetViewForm:
 						else:
 								format = None
 						if format == 'date-time':
-							hbox = self.generateFormElement(self.panel,hbox,name,each['type'],'date')
-							hbox = self.generateFormElement(self.panel,hbox,name,each['type'],'time')
+							hbox = self.generateFormElement(self.panel,hbox,name,each['type'],'date',mapsto)
+							hbox = self.generateFormElement(self.panel,hbox,name,each['type'],'time',mapsto)
 						else:
-							hbox = self.generateFormElement(self.panel,hbox,name,itemsdata[each]['type'],format)
+							hbox = self.generateFormElement(self.panel,hbox,name,itemsdata[each]['type'],format,mapsto)
 				else:
 					hbox = self.generateFormLabel(self.panel,hbox,name)
 			elif isinstance(itemsdata[each],str):
@@ -100,9 +111,10 @@ class TemplatesetViewForm:
 		for each in itemsdata:
 			hbox = wx.BoxSizer(wx.HORIZONTAL)
 			if isinstance(itemsdata[each],dict):
-				if itemsdata[each].__contains__('mapsto'):
-					if itemsdata[each]['mapsto'] == 'subject':
-						self.subject = each
+				if itemsdata[each].__contains__('responsemapsto'):
+					mapsto = itemsdata[each]['responsemapsto']
+				else:
+					mapsto = None
 				if itemsdata[each].__contains__('type'):
 					# add widget based on type & format
 					if itemsdata[each]['type'] == 'object':
@@ -120,10 +132,10 @@ class TemplatesetViewForm:
 						else:
 								format = None
 						if format == 'date-time':
-							hbox = self.generateFormElement(self.panel,hbox,each,itemsdata[each]['type'],'date')
-							hbox = self.generateFormElement(self.panel,hbox,each,itemsdata[each]['type'],'time')
+							hbox = self.generateFormElement(self.panel,hbox,each,itemsdata[each]['type'],'date',mapsto)
+							hbox = self.generateFormElement(self.panel,hbox,each,itemsdata[each]['type'],'time',mapsto)
 						else:
-							hbox = self.generateFormElement(self.panel,hbox,each,itemsdata[each]['type'],format)
+							hbox = self.generateFormElement(self.panel,hbox,each,itemsdata[each]['type'],format,mapsto)
 				else:
 					hbox = self.generateFormLabel(self.panel,hbox,each)
 			elif isinstance(itemsdata[each],str):
@@ -131,6 +143,7 @@ class TemplatesetViewForm:
 			print hbox
 			self.vbox.Add(hbox, flag=wx.EXPAND|wx.LEFT|wx.RIGHT|wx.TOP, border=10)
 			self.vbox.Add((-1,10))
+		return self.vbox
 
 	def generateEndButton(self):
 		'''
@@ -225,7 +238,7 @@ class TemplatesetViewForm:
 
 
 
-	def generateFormElement(self,panel,boxsizer,name,ttype,format=None):
+	def generateFormElement(self,panel,boxsizer,name,ttype,format=None,responsemapsto=None):
 		'''
 		Generate a single form element
 		@param panel: panel to put the widget on
@@ -250,27 +263,37 @@ class TemplatesetViewForm:
 					item = wx.DatePickerCtrl(panel, wx.ID_ANY)
 					self.show[name] = item
 					boxsizer.Add(item,flag=wx.RIGHT,border=10)
+					# set date
 				elif format == 'time':
 					item = wx.lib.masked.TimeCtrl(panel, wx.ID_ANY)
 					self.show[name] = item
 					boxsizer.Add(item,flag=wx.RIGHT,border=10)
+					#set time
 				elif format == 'color':
 					item = wx.ColourPickerCtrl(panel, wx.ID_ANY)
 					self.show[name] = item
 					boxsizer.Add(item,flag=wx.RIGHT,border=10)
-				elif format == 'phone':
-					item = wx.TextCtrl(panel, wx.ID_ANY,size=(200,30))
-					self.show[name] = item
-					boxsizer.Add(item,flag=wx.RIGHT,border=10)
-				elif format == 'short':
-					item = wx.TextCtrl(panel, wx.ID_ANY,size=(200,30))
-					self.show[name] = item
-					boxsizer.Add(item,flag=wx.RIGHT,border=10) 
-		
+					#set color to self.msg string
+				else:
+					if format == 'phone':
+						item = wx.TextCtrl(panel, wx.ID_ANY,size=(200,30))
+						self.show[name] = item
+						boxsizer.Add(item,flag=wx.RIGHT,border=10)
+					elif format == 'short':
+						item = wx.TextCtrl(panel, wx.ID_ANY,size=(800,30))
+						self.show[name] = item
+						boxsizer.Add(item,flag=wx.RIGHT,border=10) 
+					if responsemapsto is not None:
+						print responsemapsto
+						print 'RESPONSE',self.response['show'][responsemapsto]
+						item.AppendText(self.response['show'][responsemapsto])
 			else:
-				item = wx.TextCtrl(panel, wx.ID_ANY,size=(600,400),style=wx.TE_MULTILINE)
+				item = wx.TextCtrl(panel, wx.ID_ANY,size=(800,400),style=wx.TE_MULTILINE)
 				self.show[name] = item
 				boxsizer.Add(item,flag=wx.RIGHT,border=10)
+				if responsemapsto is not None:
+					print 'RESPONSE',self.response['show']
+					item.AppendText(self.response['show'][name][responsemapsto])
 		return boxsizer
 
 	def generateFormLabel(self,panel,boxsizer,label):
@@ -314,6 +337,6 @@ class TemplatesetView(wx.Frame):
 
 	def loadDefault(self,parent):
 		pass
-	def generateFormView(self,parent,template,fromemail,response=None):
-		fv = TemplatesetViewForm(self.controller,parent,template,fromemail,response)
+	def generateFormView(self,parent,template,fromemail,responseid=None,responsedata=None):
+		fv = TemplatesetViewForm(self.controller,parent,template,fromemail,responseid,responsedata)
 		self.formviews.append(fv)

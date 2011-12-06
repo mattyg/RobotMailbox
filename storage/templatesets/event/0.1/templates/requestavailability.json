@@ -15,6 +15,7 @@
 		"datetimeblockchoices" : {
 			"type" : "array",
 			"required" : true,
+			"responsemapsto":"datetimeblockchoices",
 			"items" : [
 				{"type" : "object",
 				"required" : true,

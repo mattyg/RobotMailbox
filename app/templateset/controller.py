@@ -116,7 +116,7 @@ class TemplatesetController:
 		tname = str(templatedata['setname'])+"/"+str(templatedata['name'])
 		return tname,templatedata['version']
 
-	def generateFormView(self,panel,setname,name=None,version=None,response=None):
+	def generateFormView(self,panel,setname,name,responseid=None,responsedata=None):
 		'''
 		Read template and generate a form view from it
 		@param panel: wx parent to generate form on
@@ -125,9 +125,9 @@ class TemplatesetController:
 		@param name: name of template
 		@type name: wx.Notebook
 		'''
-		template = self.model.readTemplate(setname,name,version)
+		template = self.model.readTemplate(setname,name)
 		templatesetview = TemplatesetView(self,panel)
-		templatesetview.generateFormView(panel,template,settings.IMAP_EMAIL,response)
+		templatesetview.generateFormView(panel,template,settings.IMAP_EMAIL,responseid,responsedata)
 
 	def reloadTemplatesets(self):
 		self.model.reloadAll()

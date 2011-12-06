@@ -26,6 +26,20 @@ class EvmailModel(Model):
 		row = self.db(self.db.message.id==messageid).select().first()
 		return row
 
+	def getMessagesetId(self,messageid):
+		'''
+		Get messageset id,name from messageid
+		@param messageid: id of the message to get set of
+		@type messageid: Integer
+		'''
+		messagerow = self.db(self.db.message.messageid==messageid).select().first()
+		rows = self.db(self.db.messageset.messageid==messagerow['id']).select().first()
+		if rows is not None:
+			return rows['messagesetid']
+		else:
+			return None
+
+
 	def getMessageFroms(self,messageid):
 		'''
 		Get all from persons of a message
@@ -39,7 +53,21 @@ class EvmailModel(Model):
 		for each in rows:
 			froms.append(self.db(self.db.person.id==each['person']).select().first())
 		return froms
-
+	def getMessageReplyTo(self,messageid):
+		'''
+		Get name,email of reply to person
+		@param messageid: id of message to get replyto 
+		@type messageid: Integer
+		'''
+		row = self.db(self.db.message.id==messageid).select().first()
+		if row is not None:
+			rowp = self.db(self.db.person.id==row['replyto']).select().first()
+			if rowp is not None:
+				return rowp['name'],rowp['email']
+			else:
+				return None
+		else:
+			return None
 	def getMessageTos(self,messageid):
 		'''
 		Get all to persons of a message
@@ -85,3 +113,20 @@ class EvmailModel(Model):
 		data['hide']['messageid'] = make_msgid()
 		data['hide']['messagesetid'] = data['hide']['messageid']
 		return data['hide']
+
+	def getMessageData(self,messageid):
+		row = self.db(self.db.message.id==messageid).select().first()
+		if row['evmail'].strip() is not '':
+			return row['evmail']
+		else:
+			data = {'hide':{},'show':{}}
+			data['hide']['messageid'] = row['messageid']
+			data['hide']['setname'] = 'discussion'
+			data['hide']['name'] = 'message'
+			data['hide']['version'] = self.controller.controller.getTemplatesetController().model.getNewestTemplatesetVersion('discussion')
+			data['show']['subject'] = row['subject']
+			data['show']['body'] = row['body']
+			msrow = self.db(self.db.messageset.messageid==row['id']).select().first()
+			if msrow is not None:
+				data['hide']['messagesetid'] = msrow['messagesetid']
+			return data	

@@ -73,7 +73,6 @@ oll		Create TemplatesetModel
 			version = self.getNewestTemplatesetVersion(setname)
 		
 		ts = self.db((self.db.templateset.name==setname) & (self.db.templateset.version==version)).select().first()
-		print 'HASTEMPLATE',ts.id
 		if ts is not None:		
 			rows = self.db((self.db.template.name==name) & (self.db.template.templateset==ts.id)).select().first()
 			if rows is not None:
@@ -123,11 +122,10 @@ oll		Create TemplatesetModel
 		@type version: String
 		'''
 		if self.hasTemplateset(name,version) is False:
-			tsid = self.db.templateset.insert(name=name,version=version)
-			#try:
+			print "DOESNT HAVE TEMPLATESET"
 			configf = open(settings.TEMPLATESETS_PATH+name+'/'+version+'/config.json')
-			print settings.TEMPLATESETS_PATH+name+'/'+version+'/config.json'
 			config = simplejson.load(configf)
+			tsid = self.db.templateset.insert(name=name,version=version)
 			for each in config['files']:
 				efile = open(settings.TEMPLATESETS_PATH+name+'/'+version+'/templates/'+each['name'],'r')
 				print name+'/'+each['name']
@@ -139,7 +137,7 @@ oll		Create TemplatesetModel
 						print name+'/'+res['name']
 						resid = self.hasTemplate(name,res['name'],version)
 						if resid == False:
-							resid = self.db.template.insert(name=res['name'],templateset=tsid)
+							resid = self.db.template.insert(name=res['name'],templateset=tsid,towho=res['to'],use=res['use'])
 						self.db.template_response.insert(template=tid,templateset=tsid,responsetemplate=resid)
 						
 			#except IOError:
@@ -178,17 +176,11 @@ oll		Create TemplatesetModel
 		for each in templatesets:
 			templatesetsver = os.listdir(settings.TEMPLATESETS_PATH+each+'/')
 			for ver in templatesetsver:
-				try:
-					configfile = open(settings.TEMPLATESETS_PATH+each+'/'+ver+'/config.json','r')
-					try:
-						config = simplejson.load(configfile)
-						self.addTemplateset(config['setname'],config['version'],each+'/'+ver+'/config.json')
-					except:
-						print "Bad Templateset",each,ver,"config.json file"
-						raise TemplatesetModelError("simplejson.load( config.json ) raised JSONDecodeError")
-	
-				except:
-					print "Templateset",each,"does not have a 'config.json' file"
+				#try:
+				self.addTemplateset(each,ver)
+				print 'added ',each,ver
+				#except:
+				#print "Templateset",each,ver,"does not have a 'config.json' file"
 
 	def getAllTemplatesets(self):
 		'''
@@ -203,17 +195,18 @@ oll		Create TemplatesetModel
 		'''
 		read a template and return it in data form
 		'''
+
 		if version is None:
 			version = self.getNewestTemplatesetVersion(setname)
 		
 		try:
-			tfile = open(settings.TEMPLATESETS_PATH+setname+'/'+version+'/templates/'+name)
+			tfile = open(settings.TEMPLATESETS_PATH+setname+'/'+str(version)+'/templates/'+name)
 			#try:
 			tdata = simplejson.load(tfile,object_pairs_hook=ordereddict.OrderedDict)
 			print "TEMPLATE READ",tdata
 			return tdata
 			#except:
-			print "Template file "+settings.TEMPLATESETS_PATH+setname+'/'+version+'/templates/'+name+' is not properly formed JSON'
+			print "Template file "+settings.TEMPLATESETS_PATH+setname+'/'+str(version)+'/templates/'+name+' is not properly formed JSON'
 		except IOError:
 			raise IOError
 		return None
