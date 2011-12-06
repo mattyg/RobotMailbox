@@ -10,7 +10,7 @@
 			"type" : "string"
 			"mapsto" : "subject",
 			"format" : "short",
-			"responsemapsto" : "title"
+			
 		},
 		"datetimeblockchoices" : {
 			"type" : "array",

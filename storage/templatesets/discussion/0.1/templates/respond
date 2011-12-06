@@ -17,10 +17,12 @@
 			"required" : true
 		}
 	},
-	"show" : {"subject" : {
+	"show" : {
+		"subject" : {
 			"type" : "string",
-			"required" : true
-		  },
+			"required" : true,
+			"format" : "short"
+		},
 		  "body" : {
 			"type" : "string",
 			"required" : true

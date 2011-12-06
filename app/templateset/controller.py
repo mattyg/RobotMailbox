@@ -140,7 +140,3 @@ class TemplatesetController:
 
 	def getResponseTemplates(self,templateid):
 		return self.model.getResponseTemplates(templateid)
-
-	def getTemplateName(self,templateid):
-		return self.model.getTemplateName(templateid)
-

@@ -9,7 +9,7 @@ class TemplatesetViewForm:
 		@param controller: the parent TemplatesetController
 		@type controller: TemplatesetController
 		@param notebook: the notebook you are putting the templateset form on
-		@type notebook: L{wx.Notebook}
+		@type notebook: wx.NoteBook
 		@param template: The template data to make a form of
 		@type template: Dict
 		@param fromemail: email that the message is from
@@ -36,6 +36,7 @@ class TemplatesetViewForm:
 		self.vbox.Add(hbox2,flag=wx.EXPAND|wx.LEFT|wx.RIGHT|wx.TOP, border=10)
 		self.vbox.Add((-1,10))
 		self.subject = ''
+		print template
 		self.generateElements(template['show'])
 		self.generateEndButton()
 
@@ -153,9 +154,9 @@ class TemplatesetViewForm:
 		@type response: Dict
 		'''
 		if response is None:
-			self.hide = self.controller.controller.getEvmailController().generateNewHideData(self.template['hide']['setname'],self.template['hide']['name'],self.template['hide']['version'])
+			self.hide = self.controller.controller.getEvmailController().model.generateNewHideData(self.template['hide']['setname'],self.template['hide']['name'],self.template['hide']['version'])
 		else:
-			self.hide = self.controller.controller.getEvmailController().generateResponseHideData(response)
+			self.hide = self.controller.controller.getEvmailController().model.generateResponseHideData(response)
 
 	def readData(self):
 		'''
@@ -202,7 +203,8 @@ class TemplatesetViewForm:
 		# get data to send		
 		data = self.readData()
 		# generate message
-		message = self.controller.controller.getEvmailController().generateMessage(data,data['show'][self.subject],self.todata,self.fromemail)
+		print data
+		message = self.controller.controller.getEvmailController().generateMessage(data,self.subject,self.todata,self.fromemail)
 		# add to database
 		'''datastr = json.dumps(data)
 		self.controller.getEmailController().addMessage(data['hide']['setname']+'/'+data['hide']['name'],subject,text,message['Date'],tos,fromemail,fromemail,message['Message-ID'],datastr,0)'''
@@ -210,10 +212,15 @@ class TemplatesetViewForm:
 		try:
 			self.controller.controller.getEmailController().sendMessage(self.fromemail,self.todata,message)
 			# CLOSE TAB
+			print "controller",self.controller
+			print "parent controller",self.controller.controller
+			print "parent controller view",self.controller.controller.view
+			self.controller.controller.SetStatusText("Message sent to "+str(self.todata))
 			selected = self.notebook.GetSelection()
 			self.notebook.DeletePage(selected)
 			return "Message Sent."
 		except Exception, e:
+			self.controller.controller.SetStatusText("Message sent to "+str(self.todata))
 			return "Message sending failed."
 
 
@@ -222,9 +229,9 @@ class TemplatesetViewForm:
 		'''
 		Generate a single form element
 		@param panel: panel to put the widget on
-		@type panel: L{wx.Panel}
+		@type panel: wx.Panel
 		@param boxsizer: BoxSizer to put widget on
-		@type boxsizer: L{wx.BoxSizer}
+		@type boxsizer: wx.BoxSizer
 		@param name: name of form element
 		@type name: String
 		@param format: format of form element if any
@@ -270,13 +277,13 @@ class TemplatesetViewForm:
 		'''	
 		Generate the label for a form item
 		@param panel: the panel to draw the widget on
-		@type panel: L{wx.Panel}
+		@type panel: wx.Panel
 		@param boxsizer: the boxsizer to add the label to
-		@type boxsizer: L{wx.BoxSizer}
+		@type boxsizer: wx.BoxSizer
 		@param label: the label for the form element
 		@type label: String
 		@return: the boxsizer
-		@rtype: L{wx.BoxSizer}
+		@rtype: wx.BoxSizer
 		'''
 		# add form label
 		label = wx.StaticText(panel, wx.ID_ANY, label=label)
@@ -285,7 +292,7 @@ class TemplatesetViewForm:
 
 	def validateForm(self):
 		pass
-		def onAddArray(self,event):
+	def onAddArray(self,event):
 		print event
 
 	def onDelArray(self,event):

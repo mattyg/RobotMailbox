@@ -162,8 +162,5 @@ class EvmailController:
 		# generate message view
 		self.view.generateMessageView(notebook,message,froms,tos)
 
-	def generateNewHideData(self,setname,name,version):
-		return self.model.generateNewHideData(setname,name,version)
-
 	def generateResponseHideData(self,responseto=None):
 		return self.model.generateResponseHideData(responseto)

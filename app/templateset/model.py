@@ -5,7 +5,7 @@ import os
 import tarfile
 from app.core import settings
 from library import simplejson
-
+import ordereddict
 class TemplatesetModelError:
 	def __init__(self, value):
 		self.parameter = value
@@ -16,7 +16,7 @@ class TemplatesetModelError:
 class TemplatesetModel(Model):
 	def __init__(self,controller,db,templatesetsrepo,templatesetspath):
 		'''
-		Create TemplatesetModel
+oll		Create TemplatesetModel
 		@param controller: parent Templateset controller
 		@type controller: L{TemplatesetController}
 		@param db: path to database
@@ -29,16 +29,6 @@ class TemplatesetModel(Model):
 		Model.__init__(self,controller,db)
 		self.templatesetsrepo = templatesetsrepo
 		self.templatesetspath = templatesetspath
-
-	def getDefaultTemplates(self,name,version=None):
-		'''
-		Get Default send templates for a templateset
-		@param name: name of the templateset
-		@type name: String
-		@param version: version of templateset
-		@type version: String	
-		'''		
-		has = self.hasTemplateset(name,version)
 
 	def getNewestTemplatesetVersion(self,name):
 		'''
@@ -56,9 +46,9 @@ class TemplatesetModel(Model):
 		''' 
 		return value of template-set id if it exists, false if it doesnt
 		@param name: template set name
-		@type name: string
+		@type name: String
 		@param version: template set version
-		@type name: string
+		@type version: String
 		'''
 		if version is None:
 			version = self.getNewestTemplatesetVersion(name)
@@ -182,7 +172,6 @@ class TemplatesetModel(Model):
 		os.remove(self.templatesetspath+name+'/'+version+'/temp.tar')
 		return self.templatesetspath+name+'/'+version+'/'
 
-
 	def reloadAll(self):
 		self.db(self.db.templateset).delete()
 		templatesets = os.listdir(settings.TEMPLATESETS_PATH)
@@ -201,7 +190,7 @@ class TemplatesetModel(Model):
 				except:
 					print "Templateset",each,"does not have a 'config.json' file"
 
-	def getAll(self):
+	def getAllTemplatesets(self):
 		'''
 		get all templatesets in the database
 		@return: templateset rows
@@ -219,11 +208,12 @@ class TemplatesetModel(Model):
 		
 		try:
 			tfile = open(settings.TEMPLATESETS_PATH+setname+'/'+version+'/templates/'+name)
-			try:
-				tdata = simplejson.load(tfile)
-				return tdata
-			except:
-				print "Template file "+settings.TEMPLATESETS_PATH+setname+'/'+version+'/templates/'+name+' is not properly formed JSON'
+			#try:
+			tdata = simplejson.load(tfile,object_pairs_hook=ordereddict.OrderedDict)
+			print "TEMPLATE READ",tdata
+			return tdata
+			#except:
+			print "Template file "+settings.TEMPLATESETS_PATH+setname+'/'+version+'/templates/'+name+' is not properly formed JSON'
 		except IOError:
 			raise IOError
 		return None
@@ -240,6 +230,7 @@ class TemplatesetModel(Model):
 		'''
 		return name+'/'+version+'/'
 	
+	
  
 	def getTemplateName(self,templateid):
 		'''
@@ -247,7 +238,7 @@ class TemplatesetModel(Model):
 		@param templateid: id of template
 		@type templateid: Integer
 		@return: tuple of templateset name, template name
-		@rtype: L{Tuple}
+		@rtype: Tuple
 		'''
 		print "tid",templateid
 		t = self.db(self.db.template.id==templateid).select().first()

@@ -1,37 +1,41 @@
 """ Store global SETTINGS variables """
 
 
-# root path to application. Include trailing slash.
-BASE_PATH = "/home/matt/Brandeis/Email2.0/robotmailbox/"
+BASE_PATH = "/home/matt/Brandeis/Email2.0/RobotMailbox/"
+'''root path to application. Include trailing slash.'''
 
-# path to .xrc file with default wx interface
+
 XRC_PATH = BASE_PATH+"storage/wxformbuilder/noname.xrc"
+'''path to .xrc file with default wx interface''' 
 
-# SMTP host address
 SMTP_HOST = "smtp.gmail.com"
-# SMTP Host port
+'''# SMTP host address'''
+
 SMTP_PORT = 465
+'''SMTP Host port'''
 
-# IMAP host address
 IMAP_HOST = "imap.gmail.com"
+'''IMAP host address'''
 
-# IMAP host port (default is 143)
 IMAP_PORT = 993
+'''IMAP host port (default is 143)'''
 
-# IMAP user name
 IMAP_EMAIL = "matt.gabrenya@gmail.com"
 IMAP_USER = "matt.gabrenya"
 IMAP_PASS = "fuckSchool"
+'''IMAP user name'''
 
-# path to files directory (where attachements are stored)
 FILES_PATH = BASE_PATH+'storage/attachments/'
+'''path to files directory (where attachements are stored)'''
 
-# path to templatesets directory (where templatesets are stored)
 TEMPLATESETS_PATH = BASE_PATH+'storage/templatesets/'
+'''path to templatesets directory (where templatesets are stored)'''
 
 
-# path to database, can be any of the following:
-'''     SQLite 	sqlite://storage.db
+DB_PATH = 'sqlite://'+BASE_PATH+'storage/db/storage.db'
+'''
+path to database, can be any of the following:
+	SQLite 	sqlite://storage.db
 	MySQL 	mysql://username:password@localhost/test
 	PostgreSQL	postgres://username:password@localhost/test
 	MSSQL 	mssql://username:password@localhost/test
@@ -43,15 +47,16 @@ TEMPLATESETS_PATH = BASE_PATH+'storage/templatesets/'
 	Google App Engine/SQL	google:sql
 	Google App Engine/NoSQL	google:datastore
 '''
-DB_PATH = 'sqlite://'+BASE_PATH+'storage/db/storage.db'
 
-
-# Base json schema paths
 BASE_SCHEMA_PATH = BASE_PATH+'storage/schema/'
+''' Base json schema path '''
 CONFIG_SCHEMA_PATH = BASE_SCHEMA_PATH+'config-schema.json'
+''' Base templateset config schema path '''
 MESSAGE_SCHEMA_PATH = BASE_SCHEMA_PATH+'message-schema.json'
+''' Base templateset message schema path '''
 TEMPLATE_SCHEMA_PATH = BASE_SCHEMA_PATH+'template-schema.json'
+''' Base templatset template schema path'''
 
-# templatesets online repository URI
 TEMPLATESETS_REPO = 'http://gabrenya.com/mattneeds/templatesets/'
+'''templatesets online repository URI'''
 

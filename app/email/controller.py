@@ -1,5 +1,5 @@
 from library.imapclient.imapclient import IMAPClient
-from app.email.model import EmailModel as emailmodel
+from app.email.model import EmailModel
 from app.core import settings
 import email
 import os
@@ -7,6 +7,10 @@ import smtplib
 import time
 
 class EmailController:
+	'''
+	Email controller
+	@todo: 	create mark message as read function
+	'''
 	client = None
 	''' IMAP client library'''
 	model = None
@@ -33,7 +37,7 @@ class EmailController:
 			self.client.login(user,passw)
 		except:
 			print "Couldn't connect to IMAP server: ",host,port,user,passw,"ssl=",ssl	
-		self.model = emailmodel(EmailController,settings.DB_PATH)	
+		self.model = EmailModel(self,settings.DB_PATH)	
 	
 	def sendMessage(self,send_from,send_to,mimemessage):
 		'''
@@ -189,30 +193,6 @@ class EmailController:
 		fp.write(payload)
 		fp.close()
 		return str(counter)+ftype
-
-	def reloadAllEmails(self):
-		self.model.reloadAllEmails()
-	
-	def getFromPerson(self,mid):
-		return self.model.getFromPerson(mid)
-
-	def getActiveEmails(self):
-		return self.model.getActiveMessages()
-
-
-	'''def markRead(self,uid):
-		pass
-	
-
-	def deleteMessageDB(self,uid='*')
-		if uid == '*':
-			# remove all messages
-			pass
-		else:
-			# remove message w/ uid=uid
-			pass
-
-	'''
 
 
 if __name__ == "__main__":

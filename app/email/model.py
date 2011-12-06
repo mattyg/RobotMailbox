@@ -1,5 +1,6 @@
 from app.core.model import Model
 from pysqlite2.dbapi2 import IntegrityError
+import email
 
 '''
 db.define_table('person', Field('email','string'), Field('name','string'))
@@ -20,6 +21,7 @@ class EmailModel(Model):
 		@type db: String
 		"""
 		Model.__init__(self,controller,db)
+		self.controller = controller
 		
 	
 	def addPerson(self,email,name=""):
@@ -139,6 +141,7 @@ class EmailModel(Model):
 		@rtype: Integer
 		'''
 		print "---> Adding new message to:",to, "from:",fromp, "attachments:",attachments
+		subject = subject.replace('\n','')
 		try:
 			rid = self.addPerson(replyto)
 			mid = self.db.message.insert(templateset=settype,template=template,subject=subject,body=body,date=date,replyto=rid, evmail=metajson,messageid=messageid)
@@ -167,7 +170,7 @@ class EmailModel(Model):
 		self.db(self.db.attachment).delete()
 		self.db.commit()
 	
-	def getActiveMessages(self):
+	def getActiveEmails(self):
 		'''
 		Retrieve all active messages (status 1 or 2) in the database
 		@return: list of message rows
@@ -190,15 +193,15 @@ class EmailModel(Model):
 		Delete all and re-add emails in the database
 		'''
 		# 1. Remove all messages from database
-		self.emailmodel.deleteAllMessages()
+		self.deleteAllMessages()
 
-		self.client.select_folder("INBOX")
-		uids = self.client.search()
+		self.controller.client.select_folder("INBOX")
+		uids = self.controller.client.search()
 		for uid in uids:
 			#try:
-			messagestring = self.client.fetch([uid],['RFC822'])
+			messagestring = self.controller.client.fetch([uid],['RFC822'])
 			message = email.message_from_string(messagestring[uid]['RFC822'])
-			self._addMessage(message)		
+			self.controller._addMessage(message)		
 			#except ValueError:
 			#	print "Value Error"
 

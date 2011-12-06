@@ -13,6 +13,7 @@
 		"title" : {
 		 	"type" : "string",
 			"required" : true,
+			"format" : "short",
 			"mapsto" : "subject"
 		},
 		"datetimeblock" : {
@@ -43,6 +44,7 @@
 		},
 		"location" : {
 			"type" : "string",
+			"format" : "short",
 			"required" : true
 		},
 		"description" : {

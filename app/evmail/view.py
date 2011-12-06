@@ -32,10 +32,10 @@ class EvmailView:
 		hbox = wx.BoxSizer(wx.HORIZONTAL)
 		if message['templateset'] == '':
 			templatesetctrl = self.controller.controller.getTemplatesetController()
-			choiceids = templatesetctrl.getResponseTemplates(templatesetctrl.model.hasTemplate('discussion','message'))
+			choiceids = templatesetctrl.model.getResponseTemplates(templatesetctrl.model.hasTemplate('discussion','message'))
 			responsechoice = wx.Choice(self.ViewMessagePanel,choices=[])
 			for each in choiceids:
-				setname,templatename = templatesetctrl.getTemplateName(each)
+				setname,templatename = templatesetctrl.model.getTemplateName(each)
 				responsechoice.Append(templatename,(None,setname))		
 
 			self.ViewMessagePanel.Bind(wx.EVT_CHOICE,self.responseMessage)
@@ -43,10 +43,10 @@ class EvmailView:
 			self.vbox.Add(hbox,flag=wx.EXPAND|wx.LEFT|wx.RIGHT|wx.TOP, border=10)
 		elif message['evmail'] != '':
 			messagedata = simplejson.loads(message['evmail'])
-			choiceids = self.controller.controller.getTemplatesetController().getResponseTemplates(message['template'])
+			choiceids = self.controller.controller.getTemplatesetController().model.getResponseTemplates(message['template'])
 			responsechoice = wx.Choice(self.ViewMessagePanel,choices=[])
 			for each in choiceids:
-				setname,templatename = self.controller.controller.getTemplatesetController().getTemplateName(each)
+				setname,templatename = self.controller.controller.getTemplatesetController().model.getTemplateName(each)
 				responsechoice.Append(templatename,(messagedata,setname))
 
 			self.ViewMessagePanel.Bind(wx.EVT_CHOICE,self.responseMessage)

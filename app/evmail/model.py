@@ -85,6 +85,3 @@ class EvmailModel(Model):
 		data['hide']['messageid'] = make_msgid()
 		data['hide']['messagesetid'] = data['hide']['messageid']
 		return data['hide']
-
-	def getHideData(self,evmail):
-		pass
