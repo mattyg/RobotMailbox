@@ -137,13 +137,11 @@ class View(wx.Frame):
 			emailcontroller.addNewEmails()
 		activesets = emailcontroller.model.getActiveEmails()
 		for each in activesets:
-			if len(each['templateset'].strip()) > 0:
-				print "getTemplateName",each['template']
+			if each['templateset'] is not None and each['template'] != '':
 				res = self.templatesetcontroller.model.getTemplateName(each['template'])
 				if res is not None:
 					tsname,tname = res[0],res[1]
 				else:
-					print "TEMPLATENAME"
 					tsname='email'
 			else:
 				tsname = 'email'

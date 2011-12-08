@@ -183,3 +183,86 @@ CREATE TABLE attachment(
     name CHAR(512),
     message CHAR(512)
 );
+timestamp: 2011-12-08T13:28:39.769915
+CREATE TABLE person(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    email CHAR(512) UNIQUE,
+    name CHAR(512)
+);
+timestamp: 2011-12-08T13:28:56.480535
+CREATE TABLE attachment(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name CHAR(512),
+    message CHAR(512)
+);
+success!
+timestamp: 2011-12-08T13:29:10.700284
+CREATE TABLE person(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    email CHAR(512) UNIQUE,
+    name CHAR(512)
+);
+faked!
+timestamp: 2011-12-08T13:31:01.691501
+CREATE TABLE message(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    templateset INTEGER,
+    template INTEGER,
+    status INTEGER,
+    subject CHAR(512),
+    body TEXT,
+    date CHAR(512),
+    replyto INTEGER REFERENCES person(id) ON DELETE CASCADE,
+    evmail TEXT,
+    attachments INTEGER REFERENCES attachment(id) ON DELETE CASCADE,
+    messageid CHAR(512) UNIQUE
+);
+success!
+timestamp: 2011-12-08T13:31:01.852632
+CREATE TABLE messageset(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    messageid CHAR(512) UNIQUE,
+    messagesetid CHAR(512),
+    status INTEGER
+);
+success!
+timestamp: 2011-12-08T13:31:02.006799
+CREATE TABLE message_to_person(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    message INTEGER REFERENCES message(id) ON DELETE CASCADE,
+    person INTEGER REFERENCES person(id) ON DELETE CASCADE
+);
+success!
+timestamp: 2011-12-08T13:31:02.140137
+CREATE TABLE message_from_person(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    message INTEGER REFERENCES message(id) ON DELETE CASCADE,
+    person INTEGER REFERENCES person(id) ON DELETE CASCADE
+);
+success!
+timestamp: 2011-12-08T13:31:02.273243
+CREATE TABLE template(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name CHAR(512),
+    towho CHAR(512),
+    use CHAR(512),
+    templateset INTEGER
+);
+success!
+timestamp: 2011-12-08T13:31:02.426034
+CREATE TABLE templateset(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name CHAR(512),
+    version CHAR(512),
+    path CHAR(512),
+    templates INTEGER REFERENCES template(id) ON DELETE CASCADE
+);
+success!
+timestamp: 2011-12-08T13:31:02.556830
+CREATE TABLE template_response(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    template INTEGER,
+    responsetemplate INTEGER,
+    templateset INTEGER
+);
+success!

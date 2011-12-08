@@ -15,6 +15,17 @@ class EvmailModel(Model):
 		"""
 		Model.__init__(self,controller,db)
 		self.controller = self.controller
+	def getMessagesInSet(self,messagesetid):
+		'''
+		Read message id's of a messageset
+		@param messagesetid: id of the messageset
+		@type messagesetid: Integer
+		'''
+		row = self.db(self.db.messageset.messagesetid==messagesetid).select()
+		msgids = []
+		for each in row:
+			msgids.append(each['messageid'])
+		return msgids
 
 	def getMessage(self,messageid):
 		'''
@@ -33,7 +44,7 @@ class EvmailModel(Model):
 		@param messageid: id of the message to get set of
 		@type messageid: Integer
 		'''
-		messagerow = self.db(self.db.message.messageid==messageid).select().first()
+		messagerow = self.db(self.db.message.id==messageid).select().first()
 		rows = self.db(self.db.messageset.messageid==messagerow['id']).select().first()
 		if rows is not None:
 			return rows['messagesetid']

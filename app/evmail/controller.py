@@ -179,12 +179,29 @@ class EvmailController:
 		@param messageid: id of message to view
 		@type messageid: Integer
 		'''
-		# get message data
-		message = self.model.getMessage(messageid)
+
+		#generate initial data
+		initmessage = self.model.getMessage(messageid)
 		froms = self.model.getMessageFroms(messageid)
 		tos = self.model.getMessageTos(messageid)
-		# generate message view
-		self.view.generateMessageView(notebook,message,froms,tos)
+		# initial message view		
+		panel,vbox = self.view.generateMessageView(notebook)
+		# get more messages data
+		msgsetid = self.model.getMessagesetId(messageid)
+		messages = self.model.getMessagesInSet(msgsetid)
+		
+		# generate data
+		for messageid in messages:
+			message = self.model.getMessage(messageid)
+			froms = self.model.getMessageFroms(messageid)
+			tos = self.model.getMessageTos(messageid)
+			# generate message view
+			vbox = self.view.generateMessageViewPart(panel,vbox,message,froms,tos)
+		panel.SetSizer(vbox)
+		notebook.AddPage(panel,initmessage['subject'])
+		pcount = notebook.GetPageCount()
+		notebook.SetSelection(pcount-1)
+
 
 	def generateResponseHideData(self,responseto=None):
 		return self.model.generateResponseHideData(responseto)

@@ -1,6 +1,6 @@
 from app.core import settings
-from app.core.view import View
 from app.core.model import Model
+from app.core.view import View
 from app.email.controller import EmailController
 from app.evmail.controller import EvmailController
 from app.email.controller import EmailController
@@ -24,9 +24,9 @@ class Controller:
 		'''
 		Initialize core Controller -- links all controllers, models & views together
 		'''
-		print "views"
 		self.settings = settings
 		self.model = Model(self,settings.DB_PATH)
+		print "views"
 		self.emailcontroller = EmailController(self,settings.IMAP_HOST,settings.IMAP_PORT,settings.IMAP_USER,settings.IMAP_PASS,ssl=True)
 		self.templatesetcontroller = TemplatesetController(self)
 		self.evmailcontroller = EvmailController(self)
