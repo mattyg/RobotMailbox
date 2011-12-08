@@ -90,27 +90,17 @@ class View(wx.Frame):
 			rows = self.templatesetcontroller.model.getDefaultTemplates(each.name,each.version)
 			rcount = len(rows)
 			if rcount> 1:
-				self.Templatesets[each.name] = wx.Menu()
-				self.New.AppendSubMenu(self.Templatesets[each.name], each.name)
-				for template in rows:
-					self.Templates[each['name']+'/'+template['name']] = wx.MenuItem(self.Templatesets[each.name], wx.ID_ANY, each['name']+'/'+template['name'], wx.EmptyString, wx.ITEM_NORMAL)
-					self.Templatesets[each.name].AppendItem(self.Templates[each.name+'/'+template.name])
-					# bind events
-					self.templatedata[self.Templates[each.name+'/'+template.name].GetId()] = (each['name'],template['name'])
-					self.Bind(wx.EVT_MENU, self.newMessage,id=self.Templates[each.name+'/'+template.name].GetId())
-					#self.Bind(wx.EVT_MENU, binds.newMessage,id=self.Templates[each.name+'/'+template.name].GetId())
-			elif rcount == 1:
-				for template in rows:
-					tkey = str(each.name)+'/'+str(template.name)	
-					setname = each.name
-					templatename = template.name
-					self.Templates[tkey] = wx.MenuItem(self.New,wx.ID_ANY,each.name+'/'+template.name,wx.EmptyString,wx.ITEM_NORMAL)
-					self.New.AppendItem(self.Templates[tkey])
-
-					# bind events
-					self.templatedata[self.Templates[each.name+'/'+template.name].GetId()] = (each['name'],template['name'])
-					self.Bind(wx.EVT_MENU,self.newMessage, id=self.Templates[tkey].GetId())
-					#self.Bind(wx.EVT_MENU, Binds.Menu.New.Message,id=self.Templates[each.name+'/'+template.name].GetId())
+				tmenu = wx.Menu()
+				self.New.AppendSubMenu(tmenu, each.name+' '+each.version)
+			else:
+				tmenu = self.New
+			for template in rows:
+				tplate = wx.MenuItem(tmenu, wx.ID_ANY, each['name']+'/'+template['name'], wx.EmptyString, wx.ITEM_NORMAL)
+				tmenu.AppendItem(tplate)
+				# bind events
+				self.templatedata[tplate.GetId()] = template.id
+				self.Bind(wx.EVT_MENU, self.newMessage,id=tplate.GetId())
+				#self.Bind(wx.EVT_MENU, binds.newMessage,id=self.Templates[each.name+'/'+template.name].GetId())
 
 		self.File.AppendSubMenu( self.New, u"New" )		
 		self.OverheadMenu.Append( self.File, u"File" ) 
@@ -145,11 +135,16 @@ class View(wx.Frame):
 		emailcontroller = self.controller.getEmailController()
 		if emailcontroller.offline is False:
 			emailcontroller.addNewEmails()
-		activemessages = emailcontroller.model.getActiveEmails()
-		for each in activemessages:
+		activesets = emailcontroller.model.getActiveEmails()
+		for each in activesets:
 			if len(each['templateset'].strip()) > 0:
 				print "getTemplateName",each['template']
-				tsname,tname = self.templatesetcontroller.model.getTemplateName(each['template'])
+				res = self.templatesetcontroller.model.getTemplateName(each['template'])
+				if res is not None:
+					tsname,tname = res[0],res[1]
+				else:
+					print "TEMPLATENAME"
+					tsname='email'
 			else:
 				tsname = 'email'
 			self.NewMessagesListCtrl.InsertStringItem(num_items, str(tsname))
@@ -167,7 +162,7 @@ class View(wx.Frame):
 		
 		self.Centre( wx.BOTH )
 		self.Show()
-		return len(activemessages)
+		return len(activesets)
 
 	def viewMessage(self,event):
 		'''
@@ -190,11 +185,8 @@ class View(wx.Frame):
 		Bind callback function from wx.MenuItem New > template message click
 		'''
 		evid = event.GetId()
-		print self.templatedata[evid]
-		setname = self.templatedata[evid][0]
-		name = self.templatedata[evid][1]
-
-		self.statusbar.SetStatusText(self.templatesetcontroller.generateFormView(self.OverheadNotebook, setname,name,None))
+		templateid = self.templatedata[evid]
+		self.statusbar.SetStatusText(self.templatesetcontroller.generateFormView(self.OverheadNotebook, templateid))
 	
 	def SetStatusText(self,text):
 		'''

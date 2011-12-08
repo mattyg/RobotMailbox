@@ -10,6 +10,13 @@
 		}
 	},
 	"show" : {
+		"title" : {
+			"type" : "string",
+			"format":"short",
+			"mapsto":"RSVP [subject]",
+			"responsemapsto" : "title",
+			"editable" : false
+		},
 		"attending" : {
 			"type" : "boolean",
 			"required" : true

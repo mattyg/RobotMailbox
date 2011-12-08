@@ -26,6 +26,7 @@ class Controller:
 		'''
 		print "views"
 		self.settings = settings
+		self.model = Model(self,settings.DB_PATH)
 		self.emailcontroller = EmailController(self,settings.IMAP_HOST,settings.IMAP_PORT,settings.IMAP_USER,settings.IMAP_PASS,ssl=True)
 		self.templatesetcontroller = TemplatesetController(self)
 		self.evmailcontroller = EvmailController(self)

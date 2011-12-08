@@ -16,7 +16,7 @@ class TemplatesetModelError:
 class TemplatesetModel(Model):
 	def __init__(self,controller,db,templatesetsrepo,templatesetspath):
 		'''
-oll		Create TemplatesetModel
+		Create TemplatesetModel
 		@param controller: parent Templateset controller
 		@type controller: L{TemplatesetController}
 		@param db: path to database
@@ -52,12 +52,11 @@ oll		Create TemplatesetModel
 		'''
 		if version is None:
 			version = self.getNewestTemplatesetVersion(name)
-		
 		rows = self.db((self.db.templateset.name==name) & (self.db.templateset.version==version)).select().first()
-		if rows is None:
-			return False
+		if rows is not None:
+			return int(rows['id'])
 		else:
-			return rows['id']
+			return False
 
 	def hasTemplate(self,setname,name,version=None):
 		''' 
@@ -71,15 +70,17 @@ oll		Create TemplatesetModel
 		'''
 		if version is None:
 			version = self.getNewestTemplatesetVersion(setname)
-		
-		ts = self.db((self.db.templateset.name==setname) & (self.db.templateset.version==version)).select().first()
-		if ts is not None:		
-			rows = self.db((self.db.template.name==name) & (self.db.template.templateset==ts.id)).select().first()
+		ts = self.hasTemplateset(setname,version)
+		print 'T-TS',ts
+		if ts != False:
+			rows = self.db((self.db.template.name==name) & (self.db.template.templateset==ts)).select().first()
+			print 'T-T',rows
 			if rows is not None:
 				return rows.id
 			else:
 				return False
 		else:
+			print 'T-TS',ts
 			return False
 
 	def getResponseTemplates(self,templateid):
@@ -135,7 +136,7 @@ oll		Create TemplatesetModel
 		@param version: the Templateset version
 		@type version: String
 		'''
-		if self.hasTemplateset(name,version) is False:
+		if self.hasTemplateset(name,version) == False:
 			print "DOESNT HAVE TEMPLATESET"
 			configf = open(settings.TEMPLATESETS_PATH+name+'/'+version+'/config.json')
 			config = simplejson.load(configf)
@@ -144,8 +145,9 @@ oll		Create TemplatesetModel
 				efile = open(settings.TEMPLATESETS_PATH+name+'/'+version+'/templates/'+each['name'],'r')
 				print name+'/'+each['name']
 				template = simplejson.load(efile)
-				tid = self.db.template.insert(name=each['name'],templateset=tsid)
-				self.db.template_response.insert(template=0,responsetemplate=tid,templateset=tsid)
+				if self.hasTemplate(name,each['name'],version) == False:
+					tid = self.db.template.insert(name=each['name'],templateset=tsid)
+					self.db.template_response.insert(template=0,responsetemplate=tid,templateset=tsid)
 				if each.__contains__('responses'):
 					for res in each['responses']:
 						print name+'/'+res['name']
@@ -185,7 +187,9 @@ oll		Create TemplatesetModel
 		return self.templatesetspath+name+'/'+version+'/'
 
 	def reloadAll(self):
-		self.db(self.db.templateset).delete()
+		#self.db(self.db.templateset).delete()
+		#self.db(self.db.template).delete()
+		#self.db(self.db.template_response).delete()
 		templatesets = os.listdir(settings.TEMPLATESETS_PATH)
 		for each in templatesets:
 			templatesetsver = os.listdir(settings.TEMPLATESETS_PATH+each+'/')
@@ -205,24 +209,35 @@ oll		Create TemplatesetModel
 		rows = self.db(self.db.templateset).select()
 		return rows
 
+	def readTemplateById(self,tid):
+		'''read a template by its template id'''
+		rows = self.db(self.db.template.id==tid).select().first()
+		print 'TEMPLATE',tid,rows
+		if rows is not None:
+			tsrows = self.db(self.db.templateset.id==rows.templateset).select().first()
+			print 'TEMPLATESET',tsrows
+			if tsrows is not None:
+				res =  self.readTemplate(tsrows['name'],rows['name'],tsrows['version'])
+				return res
+			else:
+				return None
+		else:
+			return None
+
 	def readTemplate(self,setname,name,version=None):
 		'''
 		read a template and return it in data form
 		'''
-
 		if version is None:
 			version = self.getNewestTemplatesetVersion(setname)
-		
-		try:
-			tfile = open(settings.TEMPLATESETS_PATH+setname+'/'+str(version)+'/templates/'+name)
-			#try:
-			tdata = simplejson.load(tfile,object_pairs_hook=ordereddict.OrderedDict)
-			print "TEMPLATE READ",tdata
-			return tdata
-			#except:
-			print "Template file "+settings.TEMPLATESETS_PATH+setname+'/'+str(version)+'/templates/'+name+' is not properly formed JSON'
-		except IOError:
-			raise IOError
+
+		tfile = open(settings.TEMPLATESETS_PATH+setname+'/'+str(version)+'/templates/'+name)
+		#try:
+		tdata = simplejson.load(tfile,object_pairs_hook=ordereddict.OrderedDict)
+		print "TEMPLATE READ",tdata
+		return tdata
+		#except:
+		print "Template file "+settings.TEMPLATESETS_PATH+setname+'/'+str(version)+'/templates/'+name+' is not properly formed JSON'
 		return None
 
 	
@@ -255,4 +270,8 @@ oll		Create TemplatesetModel
 			if ts is not None:
 				ts = ts['name']
 				return ts,t
+			else:
+				return None
+		else:
+			return None
 

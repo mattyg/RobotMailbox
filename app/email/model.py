@@ -176,7 +176,8 @@ class EmailModel(Model):
 		@return: list of message rows
 		@rtype: List
 		'''	
-		query = "SELECT DATE(date) as dt,* FROM message INNER JOIN (SELECT DISTINCT messagesetid AS msid,messageid as msgid FROM messageset WHERE (status = 0 OR status = 1)) AS doop ON id=msgid ORDER BY dt ASC"
+		query = "SELECT DATE(date) as dt,* FROM message INNER JOIN (SELECT DISTINCT messagesetid AS msid,messageid AS msgid FROM messageset WHERE (status = 0 OR status = 1)) AS foo ON id=foo.msgid  ORDER BY dt ASC"
+		#query = "SELECT DATE(date) as dt,* FROM message WHERE template IN (SELECT responsetemplate AS id FROM response_template WHERE template=0) INNER JOIN (SELECT DISTINCT messagesetid AS msid,messageid AS msgid FROM messageset WHERE (status = 0 OR status = 1)) AS foo ON id=foo.msgid  ORDER BY dt ASC"
 		#activemessages = self.db((self.db.message.status==0) | (self.db.message.status==1)).select()
 		#activemessagesets = self.db(self.db.messageset).select(self.db.messageset.messageid,distinct=self.db.messageset.messagesetid)
 		activemessages = self.db.executesql(query,as_dict=True)		

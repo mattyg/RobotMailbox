@@ -1,6 +1,6 @@
 {
 	"setname":"event",
-	"version":0.1,
+	"version":0.2,
 	"files":[
 		{"name":"invite.json",
 		"use":"default",

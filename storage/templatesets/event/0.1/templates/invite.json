@@ -4,7 +4,7 @@
 		"setname" : "event",
 		"name" : "invite.json",
 		"version" : "0.1",
-		"threadid" : {
+		"messageid" : {
 			"type" : "string",
 			"required" : true
 		}
@@ -16,31 +16,26 @@
 			"format" : "short",
 			"mapsto" : "subject"
 		},
-		"datetimeblock" : {
-			"type" : "object",
-			"required" : true,
-			"properties" : {
-				"startdate" : {
-					"type" : "string",
-					"format" : "date",
-					"required" : true
-				},
-				"starttime" : {
-					"type" : "string",
-					"format" : "time",
-					"required" : true
-				},
-				"enddate" : {
-					"type" : "string",
-					"format" : "date",
-					"required" : true
-				},
-				"endtime" : {
-					"type" : "string",
-					"format" : "time",
-					"required" : true
-				}
-			}
+		
+		"startdate" : {
+			"type" : "string",
+			"format" : "date",
+			"required" : true
+		},
+		"starttime" : {
+			"type" : "string",
+			"format" : "time",
+			"required" : true
+		},
+		"enddate" : {
+			"type" : "string",
+			"format" : "date",
+			"required" : true
+		},
+		"endtime" : {
+			"type" : "string",
+			"format" : "time",
+			"required" : true
 		},
 		"location" : {
 			"type" : "string",

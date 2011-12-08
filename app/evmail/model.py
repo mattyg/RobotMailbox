@@ -3,6 +3,7 @@ from pysqlite2.dbapi2 import IntegrityError
 from email.message import Message
 from email.utils import make_msgid
 import os
+import simplejson
 
 class EvmailModel(Model):
 	def __init__(self,controller,db):
@@ -82,19 +83,15 @@ class EvmailModel(Model):
 			tos.append(self.db(self.db.person.id==each['person']).select().first())
 		return tos
 
-	def generateResponseHideData(self,evmail):
+	def generateMessageId(self):
 		'''
 		Generate hide data in response to another evmail message
-		@param evmail: message data to respond to
-		@type evmail: Dict
+		@param mid: message
+		@type mid: Integer
 		@return: response hide data
 		@rtype: Dict
 		'''
-		data = self.controller.controller.getTemplatesetController().model.readTemplate(evmail['hide']['setname'],evmail['hide']['name'],evmail['hide']['version'])
-
-		data['hide']['messageid'] = make_msgid()
-		data['hide']['messagesetid'] = evmail['hide']['messagesetid']
-		return data['hide']
+		return make_msgid()
 
 	def generateNewHideData(self,setname,name,version):
 		'''
@@ -112,12 +109,19 @@ class EvmailModel(Model):
 
 		data['hide']['messageid'] = make_msgid()
 		data['hide']['messagesetid'] = data['hide']['messageid']
+		print 'DHIDE',data['hide']
+		print 'DHIDE',setname,name,version
+		
 		return data['hide']
 
 	def getMessageData(self,messageid):
 		row = self.db(self.db.message.id==messageid).select().first()
 		if row['evmail'].strip() is not '':
-			return row['evmail']
+			try:
+				res = simplejson.loads(row['evmail'])
+				return res
+			except:
+				return None
 		else:
 			data = {'hide':{},'show':{}}
 			data['hide']['messageid'] = row['messageid']

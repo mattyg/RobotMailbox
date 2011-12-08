@@ -10,25 +10,36 @@
 		 }
 	},
 	"show" : {
+		"title" : {
+		 	"type" : "string",
+			"required" : true,
+			"format" : "short",
+			"mapsto" : "Request Date Change [subject]",
+			"responsemapsto":"title"
+		},
 		"starttime" : {
 			"type" : "string",
 			"format" : "time",
-			"required" : true
+			"required" : true,
+			"responsemapsto":"starttime"
 		},
 		"startdate" : {
 			"type" : "string",
 			"format" : "date",
-			"required" : true
+			"required" : true,
+			"responsemapsto":"startdate"
 		},
 		"endtime" : {
 			"type" : "string",
 			"format" : "time",
-			"required" : true
+			"required" : true,
+			"responsemapsto":"endtime"
 		},
 		"enddate" : {
 			"type" : "string",
 			"format" : "date",
-			"required" : true
+			"required" : true,
+			"responsemapsto":"enddate"
 		}
 	}
 }

@@ -16,6 +16,7 @@ class Model:
 		self.controller = controller
 		self.db = DAL(dbpath)
 		self._defineSchema()
+		self.db.commit()
 
 	def _defineSchema(self):
 		'''
@@ -24,7 +25,7 @@ class Model:
 		'''
 		self.db.define_table('person',Field('id'), Field('email','string',unique=True), Field('name','string'),migrate=False,fake_migrate=True)
 		self.db.define_table('attachment',Field('id'),Field('name','string'),Field('message'),migrate=False,fake_migrate=True)
-		self.db.define_table('message',Field('id'), Field('templateset','string'), Field('template','string'), Field('status','integer',default=0), Field('subject','string'), Field('body','text'), Field('date','string'), Field('replyto',self.db.person),Field('evmail','text'), Field('attachments', self.db.attachment), Field('messageid','string',unique=True),migrate=False,fake_migrate=True)
+		self.db.define_table('message',Field('id'), Field('templateset','integer'), Field('template','integer'), Field('status','integer',default=0), Field('subject','string'), Field('body','text'), Field('date','string'), Field('replyto',self.db.person),Field('evmail','text'), Field('attachments', self.db.attachment), Field('messageid','string',unique=True),migrate=False,fake_migrate=True)
 		self.db.define_table('messageset',Field('id'),Field('messageid','string',unique=True),Field('messagesetid','string'),Field('status','integer',default=0),migrate=False,fake_migrate=True)
 
 		# To & From persons

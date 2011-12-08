@@ -46,7 +46,7 @@ class EvmailView:
 		sizerlist.append((statictext,0,wx.RIGHT,10))
 
 		# add content
-		if message['templateset'] == '':
+		if message['template'] is None:
 			# add Content
 			label = wx.StaticText(panel,wx.ID_ANY,label='Body:')
 			label.SetFont(boldfont)
@@ -89,29 +89,40 @@ class EvmailView:
 		
 		
 		hbox = wx.BoxSizer(wx.HORIZONTAL)
-		if message['templateset'] == '':
-			templatesetctrl = self.controller.controller.getTemplatesetController()
-			choiceids = templatesetctrl.model.getResponseTemplates(templatesetctrl.model.hasTemplate('discussion','message'))
-			responsechoice = wx.Choice(self.ViewMessagePanel,choices=[])
-			for each in choiceids:
-				setname,templatename = templatesetctrl.model.getTemplateName(each)
-				responsechoice.Append(templatename,(message['id'],setname))		
-
-			self.ViewMessagePanel.Bind(wx.EVT_CHOICE,self.responseMessage)
-			hbox.Add(responsechoice,flag=wx.RIGHT,border=10)
-			self.vbox.Add(hbox,flag=wx.EXPAND|wx.LEFT|wx.RIGHT|wx.TOP, border=10)
-		elif message['evmail'] != '':
+		if message['template'] is not None and message['template'] != '':
 			messagedata = simplejson.loads(message['evmail'])
 			choiceids = self.controller.controller.getTemplatesetController().model.getResponseTemplates(message['template'])
-			responsechoice = wx.Choice(self.ViewMessagePanel,choices=[])
-			for each in choiceids:
-				setname,templatename = self.controller.controller.getTemplatesetController().model.getTemplateName(each)
-				responsechoice.Append(templatename,(message['id'],setname))
-
-			self.ViewMessagePanel.Bind(wx.EVT_CHOICE,self.responseMessage)
-			hbox.Add(responsechoice,flag=wx.RIGHT,border=10)
-			self.vbox.Add(hbox,flag=wx.EXPAND|wx.LEFT|wx.RIGHT|wx.TOP, border=10)
+			if len(choiceids) > 0:			
+				responsechoice = wx.Choice(self.ViewMessagePanel,choices=[])
+				for each in choiceids:
+					setname,templatename = self.controller.controller.getTemplatesetController().model.getTemplateName(each)
+					responsechoice.Append(templatename,(message['id'],setname))
+				self.ViewMessagePanel.Bind(wx.EVT_CHOICE,self.responseMessage)
+				hbox.Add(responsechoice,flag=wx.RIGHT,border=10)
+				self.vbox.Add(hbox,flag=wx.EXPAND|wx.LEFT|wx.RIGHT|wx.TOP, border=10)
+		else:
+			templatesetctrl = self.controller.controller.getTemplatesetController()
+			choiceids = templatesetctrl.model.getResponseTemplates(templatesetctrl.model.hasTemplate('discussion','message'))
+			if len(choiceids) > 0:
+				responsechoice = wx.Choice(self.ViewMessagePanel,choices=[])
+				for each in choiceids:
+					setname,templatename = templatesetctrl.model.getTemplateName(each)
+					responsechoice.Append(templatename,(message['id'],setname))
+				self.ViewMessagePanel.Bind(wx.EVT_CHOICE,self.responseMessage)
+				hbox.Add(responsechoice,flag=wx.RIGHT,border=10)
+				self.vbox.Add(hbox,flag=wx.EXPAND|wx.LEFT|wx.RIGHT|wx.TOP, border=10)
 		
+		
+
+		# add message type
+		if message['template'] is not None and message['template'] != '':
+			hbox = wx.BoxSizer(wx.HORIZONTAL)
+			label = wx.StaticText(self.ViewMessagePanel,wx.ID_ANY,label='Type:')
+			label.SetFont(boldfont)
+			hbox.Add(label,flag=wx.RIGHT, border=10)
+			stext = wx.StaticText(self.ViewMessagePanel, wx.ID_ANY, label=str(message['template']))
+			hbox.Add(stext,flag=wx.RIGHT,border=10)
+			self.vbox.Add(hbox,flag=wx.EXPAND|wx.LEFT|wx.RIGHT|wx.TOP, border=10)
 
 		# add Subject
 		label = wx.StaticText(self.ViewMessagePanel,wx.ID_ANY,label='Subject:')
@@ -196,4 +207,5 @@ class EvmailView:
 		messageid,setname = event.GetClientData()
 		msg = self.controller.model.getMessageData(messageid)
 		name = event.GetString()
-		self.controller.controller.getTemplatesetController().generateFormView(self.notebook,setname,name,messageid,msg)
+		templateid = self.controller.controller.getTemplatesetController().model.hasTemplate(setname,name)
+		self.controller.controller.getTemplatesetController().generateFormView(self.notebook,templateid,messageid,msg)

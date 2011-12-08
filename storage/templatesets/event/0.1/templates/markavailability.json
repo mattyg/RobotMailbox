@@ -4,6 +4,10 @@
 		"setname" : "event",
 		"name" : "markavailability.json",
 		"version" : "0.1"
+		"messageid" : {
+			"type" : "string",
+			"required":true
+		}
 	},
 	"show" : {
 		"title": {
@@ -15,7 +19,7 @@
 		"datetimeblockchoices" : {
 			"type" : "array",
 			"required" : true,
-			"responsemapsto":"datetimeblockchoices"
+			"responsemapsto":"datetimeblockchoices",
 			"items" : [
 				{"type" : "object",
 				"required" : true,

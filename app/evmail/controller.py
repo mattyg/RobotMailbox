@@ -96,7 +96,7 @@ class EvmailController:
 		return str(evmaildata['hide']['setname']),str(evmaildata['hide']['name']),str(evmaildata['hide']['version']),str(evmaildata['hide']['messagesetid'])
 
 		
-	def validateEvmail(self,evmaildata,schemapath):
+	def validateEvmail(self,evmaildata,templateschema):
 		'''
 		Validate Evmail to schema in templateset
 		@param evmaildata: data object of evmail json file
@@ -105,13 +105,12 @@ class EvmailController:
 		@type schemapath: String
 		'''
 		try:
-			validictory.validate(configdata,configschema)
+			validictory.validate(evmaildata,templateschema)
+			return True
 		except SchemaError, e:
-			print "config.json Schema validation error: ",e
-			raise TemplatesetError("validictory.validate( config.json, config-schema.json) raised SchemaError")
-		pass
+			raise Exception,e
 
-	def generateMessage(self,data,subject,tos,fromemail):
+	def generateMessage(self,template,data,subject,tos,fromemail):
 		'''
 		Generate  MimeMultipart message from message data
 		@param data: evmail message data
@@ -131,6 +130,31 @@ class EvmailController:
 		message['Date'] = formatdate(localtime=True)
 		message['Subject'] = subject
 
+		# validate message data from template
+		res = self.validateEvmail(message,template) 
+		if res is not True:
+			raise Exception,res
+		'''fail = False
+		failtext = []
+		for each in template['hide']:
+			if template['hide'][each].__contains__('required'):
+				if template['hide'][each]['required'] == True:
+					if not data['hide'].__contains__(each):
+						fail = True
+						failtext.append(each+' is required')
+					elif data['hide'][each] == '':
+						fail = True
+						failtext.append(each+' is required')
+		for each in template['show']:
+			if template['show'][each].__contains__('required'):
+				if template['show'][each]['required'] == True:
+					if not data['show'].__contains__(each):
+						fail = True
+						failtext.append(each+' is required')
+					elif data['show'][each] == '':
+						fail = True
+						failtext.append(each+' is required')'''
+					
 		# generate text from data
 		text = []
 		for each in data['show']:
