@@ -4,7 +4,7 @@ import json
 from library.db.dal import Row
 import datetime
 import time
-from library.ordereddict import ordereddict
+import ordereddict
 
 class TemplatesetViewForm:
 	def __init__(self,controller,notebook,template,fromemail,responseid=None,responsedata=None):
