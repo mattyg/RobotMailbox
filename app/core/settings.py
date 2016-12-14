@@ -20,9 +20,9 @@ IMAP_HOST = "imap.gmail.com"
 IMAP_PORT = 993
 '''IMAP host port (default is 143)'''
 
-IMAP_EMAIL = "matt.gabrenya@gmail.com"
-IMAP_USER = "matt.gabrenya"
-IMAP_PASS = "fuckSchool"
+IMAP_EMAIL = "thisismyuser@gmail.com"
+IMAP_USER = "ThisIsMyUser"
+IMAP_PASS = "ThisIsMyPassword"
 '''IMAP user name'''
 
 FILES_PATH = BASE_PATH+'storage/attachments/'
